@@ -21,6 +21,14 @@ namespace CommunityCenter.Application.Services
             if (existing != null)
                 throw new AppException("אימייל כבר קיים", 400);
 
+            if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.Password))
+                throw new AppException("אימייל וסיסמה חובה", 400);
+
+            var existingById = await _userRepository.GetByIdentityCardAsync(dto.IdentityCard);
+
+            if (existingById != null)
+                throw new AppException("תעודת זהות כבר קיימת", 400);
+
             var user = new Subscriber
             {
                 IdentityCard = dto.IdentityCard,
@@ -47,7 +55,20 @@ namespace CommunityCenter.Application.Services
             if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 throw new AppException("פרטים שגויים", 401);
 
-            return new { message = "התחברת בהצלחה" };
+            if (!user.IsActive)
+                throw new AppException("המשתמש לא פעיל", 400);
+
+            return new
+            {
+                message = "התחברת בהצלחה",
+                user = new
+                {
+                    user.Id,
+                    user.Email,
+                    user.FirstName,
+                    user.Role
+                }
+            };
         }
     }
 }

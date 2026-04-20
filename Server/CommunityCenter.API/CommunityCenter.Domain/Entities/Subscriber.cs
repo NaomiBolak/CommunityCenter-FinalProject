@@ -15,6 +15,7 @@ namespace CommunityCenter.Domain.Entities
         public DateTime BirthDate { get; set; }
         public string PasswordHash { get; set; } = string.Empty;
         public DateTime JoinDate { get; set; } = DateTime.Now;
+        public string Role { get; set; } = "User";
         public bool IsActive { get; set; } = true;
 
         // עדכון שמות האוספים שיהיו תואמים למציאות
