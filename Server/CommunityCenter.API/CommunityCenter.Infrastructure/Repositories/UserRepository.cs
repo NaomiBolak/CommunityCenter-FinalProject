@@ -19,6 +19,12 @@ namespace CommunityCenter.Infrastructure.Repositories
                 .FirstOrDefaultAsync(u => u.Email == email);
         }
 
+        public async Task<Subscriber?> GetByIdentityCardAsync(string identityCard)
+        {
+            return await _context.Subscribers
+                .FirstOrDefaultAsync(u => u.IdentityCard == identityCard);
+        }
+
         public async Task AddAsync(Subscriber user)
         {
             _context.Subscribers.Add(user);
