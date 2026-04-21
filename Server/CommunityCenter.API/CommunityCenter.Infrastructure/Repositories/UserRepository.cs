@@ -1,10 +1,10 @@
-﻿using CommunityCenter.Application.Interfaces;
-using CommunityCenter.Domain.Entities;
+﻿using CommunityCenter.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using CommunityCenter.Application.Interfaces;
 
 namespace CommunityCenter.Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository: IUserRepository
     {
         private readonly DataContext _context;
 
