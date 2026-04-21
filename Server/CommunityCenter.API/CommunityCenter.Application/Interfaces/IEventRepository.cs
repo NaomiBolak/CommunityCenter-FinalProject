@@ -14,6 +14,7 @@ namespace CommunityCenter.Application.Interfaces
         Task<Event> AddEvent(Event ev);
         Task<bool> RemoveEvent(int id);
         Task<List<Event>> GetXNextEvent(int x);
+        Task<Event> UpdateEvent(int id, Event ev);
 
     }
 }

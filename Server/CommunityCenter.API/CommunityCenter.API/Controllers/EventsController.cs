@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using CommunityCenter.Application.Interfaces;
+﻿using CommunityCenter.Application.Interfaces;
 using CommunityCenter.Domain.Entities;
+using CommunityCenter.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace CommunityCenter.API.Controllers
@@ -50,6 +51,24 @@ namespace CommunityCenter.API.Controllers
             var createdEvent = await _eventService.AddEvent(newEvent);
 
             return CreatedAtAction(nameof(GetAll), new { id = createdEvent.Id }, createdEvent);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] Event ev)
+        {
+            if (id != ev.Id)
+            {
+                return BadRequest("ה-ID של הארוע המעודכן חייב להיות זהה לID שהכנסתם");
+            }
+
+            var updatedEvent = await _eventService.UpdateEvent(id, ev);
+
+            if (updatedEvent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(updatedEvent);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace CommunityCenter.Application.Interfaces
         public Task<bool> RemoveEvent (int id);
         public Task<bool> GetEventById(int  id);
         public Task<List<Event>> GetXNextEvents(int X);
+        public Task<Event> UpdateEvent(int id, Event ev);
         
         
     }

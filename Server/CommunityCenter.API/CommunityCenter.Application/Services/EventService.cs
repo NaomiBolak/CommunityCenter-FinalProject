@@ -55,5 +55,11 @@ namespace CommunityCenter.Application.Services
             throw new NotImplementedException();
         }
 
+        public async Task<Event> UpdateEvent(int id, Event ev)
+        {
+
+            return await _eventRepository.UpdateEvent(id,ev);
+        }
+
     }
 }

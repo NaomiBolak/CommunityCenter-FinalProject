@@ -65,7 +65,25 @@ namespace CommunityCenter.Infrastructure.Repositories
             return true;
         }
 
+        public async Task<Event> UpdateEvent(int id, Event ev)
+        {
+            var existingEvent = await _context.Events.FindAsync(id);
 
+            if (existingEvent != null)
+            {
+                existingEvent.Description = ev.Description;
+                existingEvent.UnitPrice = ev.UnitPrice;
+                existingEvent.Date = ev.Date;
+                existingEvent.MaxPlaces = ev.MaxPlaces;
+                existingEvent.StartTime = ev.StartTime;
+                existingEvent.EndTime = ev.EndTime;
+                existingEvent.LocationId = ev.LocationId;
+                existingEvent.CategoryId = ev.CategoryId;
+                existingEvent.TargetAudienceId = ev.TargetAudienceId;
 
+                await _context.SaveChangesAsync();
+            }
+            return existingEvent;
+        }
     }
 }
