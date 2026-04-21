@@ -5,7 +5,10 @@ using CommunityCenter.Infrastructure;
 using CommunityCenter.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
 
 // DB
 builder.Services.AddDbContext<DataContext>(options =>
@@ -14,6 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 // DI
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
 
 // Controllers
 builder.Services.AddControllers();
@@ -30,6 +34,8 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
+builder.Services.AddControllers().AddJsonOptions(x =>
+   x.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
 // Exception handler
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityCenter.API", "CommunityCenter.API\CommunityCenter.API.csproj", "{A0A0F8F7-2C13-4828-A15C-59D45D5F278D}"
 EndProject
@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityCenter.Domain", "CommunityCenter.Domain\CommunityCenter.Domain.csproj", "{FBCAEA09-F765-46C9-9CB6-F20062B21A0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunityCenter.Infrastructure", "CommunityCenter.Infrastructure\CommunityCenter.Infrastructure.csproj", "{7312EBE2-E497-4ED4-ACA6-5457CE5E463D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{687F5BB9-323D-446C-A3AB-73617AFCC29F} = {687F5BB9-323D-446C-A3AB-73617AFCC29F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,5 +39,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F863E42D-CF8C-4160-A2A6-33F51E2C6A61}
 	EndGlobalSection
 EndGlobal

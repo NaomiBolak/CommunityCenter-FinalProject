@@ -22,10 +22,10 @@ namespace CommunityCenter.Domain.Entities
         public int CategoryId { get; set; }
         public int EmployeeId { get; set; }
 
-        public virtual TargetAudience TargetAudience { get; set; }
-        public virtual Location Location { get; set; }
-        public virtual Category Category { get; set; }
-        public virtual Employee Employee { get; set; }
+        public virtual TargetAudience? TargetAudience { get; set; }
+        public virtual Location? Location { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual Employee? Employee { get; set; }
 
         // תיקון שם המחלקה כאן
         public virtual ICollection<RegistrationEvent> Registrations { get; set; } = new List<RegistrationEvent>();
