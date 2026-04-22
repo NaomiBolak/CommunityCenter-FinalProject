@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace CommunityCenter.Domain.Entities
 {
@@ -11,19 +10,20 @@ namespace CommunityCenter.Domain.Entities
         public string Description { get; set; } = string.Empty;
 
         public decimal Price { get; set; }
-        public string DayOfWeek { get; set; } = string.Empty;
-       
-       // מתי מתחיל
-        //שעת התחלה
-        public TimeSpan Time { get; set; }
 
-        // FK
+        public DayOfWeek DayOfWeek { get; set; }
+
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
+
+        // 🖼️ הוספה חשובה
+        public string ImagePath { get; set; } = string.Empty;
+
         public int CategoryId { get; set; }
         public int TargetAudienceId { get; set; }
         public int LocationId { get; set; }
         public int EmployeeId { get; set; }
 
-        // Navigation properties
         public virtual Category Category { get; set; }
         public virtual TargetAudience TargetAudience { get; set; }
         public virtual Location Location { get; set; }
