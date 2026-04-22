@@ -23,11 +23,15 @@ namespace CommunityCenter.Infrastructure.Repositories
 
         public async Task<Event> AddEvent(Event ev)
         {
+            // רק מה שבאמת קיים אצלך במודל
+            if (ev.CategoryId == 0) ev.CategoryId = 1;
+            if (ev.TargetAudienceId == 0) ev.TargetAudienceId = 1;
+            if (ev.EmployeeId == 0) ev.EmployeeId = 1;
+
             await _context.Events.AddAsync(ev);
             await _context.SaveChangesAsync();
             return ev;
         }
-
         public async Task<List<Event>> GetAllEvents()
         {
             return await _context.Events.ToListAsync();

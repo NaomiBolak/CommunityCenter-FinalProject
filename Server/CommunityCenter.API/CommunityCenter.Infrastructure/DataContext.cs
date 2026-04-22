@@ -18,14 +18,13 @@ namespace CommunityCenter.Infrastructure
         public DbSet<Course> Courses { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<CourseRegistration> CourseRegistrations { get; set; }
-        public DbSet<RegistrationEvent> RegistrationEvents { get; set; }
         public DbSet<News> News { get; set; }
         public DbSet<ContactRequest> ContactRequests { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<TargetAudience> TargetAudiences { get; set; }
         public DbSet<Employee> Employees { get; set; }
-
+        public DbSet<RegistrationEvent> EventRegistrations { get; set; }
         // ======================
         // Fluent API
         // ======================
@@ -97,7 +96,7 @@ namespace CommunityCenter.Infrastructure
             modelBuilder.Entity<RegistrationEvent>()
                 .HasIndex(x => new { x.EventId, x.SubscriberId })
                 .IsUnique();
-
+            modelBuilder.Entity<RegistrationEvent>().ToTable("EventRegistrations");
             // ======================
             // קשרים (Relations - מומלץ לחזק)
             // ======================
@@ -122,7 +121,7 @@ namespace CommunityCenter.Infrastructure
 
             modelBuilder.Entity<RegistrationEvent>()
                 .HasOne(r => r.Event)
-                .WithMany(e => e.Registrations)
+                .WithMany(e => e.EventRegistration)
                 .HasForeignKey(r => r.EventId);
 
             modelBuilder.Entity<CourseRegistration>()
