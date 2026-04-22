@@ -6,14 +6,19 @@ namespace CommunityCenter.Domain.Entities
     public class Event
     {
         public int Id { get; set; }
-        public string Description { get; set; } = string.Empty; 
+
+        public string Description { get; set; } = string.Empty;
         public string ImagePath { get; set; } = string.Empty;
+
         public decimal UnitPrice { get; set; }
-       
+
         public int MaxPlaces { get; set; }
-        
+
+        // ✔ חשוב להוספה
+        public int CurrentRegistrations { get; set; } = 0;
+
         public DateTime Date { get; set; }
-      
+
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
 
@@ -27,7 +32,7 @@ namespace CommunityCenter.Domain.Entities
         public virtual Category? Category { get; set; }
         public virtual Employee? Employee { get; set; }
 
-        // תיקון שם המחלקה כאן
-        public virtual ICollection<RegistrationEvent> Registrations { get; set; } = new List<RegistrationEvent>();
+        public virtual ICollection<RegistrationEvent> Registrations { get; set; }
+            = new List<RegistrationEvent>();
     }
 }
