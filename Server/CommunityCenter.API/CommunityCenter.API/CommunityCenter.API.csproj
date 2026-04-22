@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.24">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -17,7 +18,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CommunityCenter.Application\CommunityCenter.Application.csproj" />
-    <ProjectReference Include="..\CommunityCenter.Domain\CommunityCenter.Domain.csproj" />
     <ProjectReference Include="..\CommunityCenter.Infrastructure\CommunityCenter.Infrastructure.csproj" />
   </ItemGroup>
 
