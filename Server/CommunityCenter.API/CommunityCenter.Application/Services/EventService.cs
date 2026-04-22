@@ -61,5 +61,25 @@ namespace CommunityCenter.Application.Services
             return await _eventRepository.UpdateEvent(id,ev);
         }
 
+        public async Task<Location> GetLocation(int id)
+        {
+            return await _eventRepository.GetLocation(id);
+        }
+
+        public async Task<List<Location>> GettAllLocation()
+        {
+            return await _eventRepository.GettAllLocation();
+        }
+
+        public async Task<Location> AddLocation(Location loc)
+        {
+            return await _eventRepository.AddLocation(loc);
+        }
+
+        public async Task<int> HowManyRegistersToEvent(int eventid)
+        {
+            return await _eventRepository.HowManyRegistersToEvent(eventid);
+        }
+
     }
 }

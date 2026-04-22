@@ -15,7 +15,10 @@ namespace CommunityCenter.Application.Interfaces
         public Task<bool> GetEventById(int  id);
         public Task<List<Event>> GetXNextEvents(int X);
         public Task<Event> UpdateEvent(int id, Event ev);
-        
-        
+        public Task<Location> GetLocation(int id);
+        public Task<List<Location>> GettAllLocation();
+        public Task<Location> AddLocation(Location loc);
+        public Task<int> HowManyRegistersToEvent(int eventid);
+
     }
 }

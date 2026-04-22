@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CommunityCenter.Infrastructure.Repositories
 {
-    public class EventRepository: IEventRepository
+    public class EventRepository : IEventRepository
 
     {
         private readonly DataContext? _context;
@@ -40,19 +40,19 @@ namespace CommunityCenter.Infrastructure.Repositories
 
         public async Task<Event> GetEventById(int id)
         {
-            return await _context.Events.FindAsync(id);      
+            return await _context.Events.FindAsync(id);
         }
 
         public async Task<List<Event>> GetXNextEvent(int x)
         {
             return await _context.Events
-        .Where(e => e.Date >= DateTime.Now) 
-        .OrderBy(e => e.Date)             
-        .Take(x)                           
+        .Where(e => e.Date >= DateTime.Now)
+        .OrderBy(e => e.Date)
+        .Take(x)
         .ToListAsync();
         }
 
-        public async Task <bool> RemoveEvent(int id)
+        public async Task<bool> RemoveEvent(int id)
         {
             var eventToDelete = await _context.Events.FindAsync(id);
             if (eventToDelete == null)
@@ -80,10 +80,38 @@ namespace CommunityCenter.Infrastructure.Repositories
                 existingEvent.LocationId = ev.LocationId;
                 existingEvent.CategoryId = ev.CategoryId;
                 existingEvent.TargetAudienceId = ev.TargetAudienceId;
+                existingEvent.ImagePath = ev.ImagePath;
 
                 await _context.SaveChangesAsync();
             }
+
+
             return existingEvent;
+        }
+
+        public async Task<Location> GetLocation(int id)
+        {
+            return await _context.Locations.FindAsync(id);
+        }
+
+        public async Task<List<Location>> GettAllLocation()
+        {
+            return await _context.Locations.ToListAsync();
+        }
+
+        public async Task<Location> AddLocation(Location loc)
+        {
+            await _context.Locations.AddAsync(loc);
+            await _context.SaveChangesAsync();
+            return loc;
+        }
+
+        public async Task<int> HowManyRegistersToEvent(int eventid)
+        {
+           return await _context.EventRegistrations
+        .Where(r => r.EventId == eventid).CountAsync();
         }
     }
 }
+
+
