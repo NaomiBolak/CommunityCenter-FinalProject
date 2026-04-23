@@ -23,7 +23,6 @@ namespace CommunityCenter.Infrastructure.Repositories
 
         public async Task<Event> AddEvent(Event ev)
         {
-            // רק מה שבאמת קיים אצלך במודל
             if (ev.CategoryId == 0) ev.CategoryId = 1;
             if (ev.TargetAudienceId == 0) ev.TargetAudienceId = 1;
             if (ev.EmployeeId == 0) ev.EmployeeId = 1;
@@ -115,6 +114,74 @@ namespace CommunityCenter.Infrastructure.Repositories
            return await _context.EventRegistrations
         .Where(r => r.EventId == eventid).CountAsync();
         }
+
+        public async Task<List<Employee>> GetEmployees()
+        {
+            return await _context.Employees.ToListAsync();
+        }
+        public async Task<List<Category>> GetCategories()
+        {
+            return await _context.Categories.ToListAsync();
+        }
+
+        public async Task<List<TargetAudience>> GetTargetAudiences()
+        {
+            return await _context.TargetAudiences.ToListAsync();
+        }
+        public async Task<Employee> AddEmployee(Employee emp)
+        {
+            await _context.Employees.AddAsync(emp);
+            await _context.SaveChangesAsync();
+
+            return emp;
+        }
+        public async Task<bool> RemoveEmployee(int empid)
+        {
+            var emp = await _context.Employees.FindAsync(empid);
+            if (emp ==null)
+                return false;
+             _context.Employees.Remove(emp);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> RemoveCategory(int catid)
+        {
+            var cat = await _context.Categories.FindAsync(catid);
+            if (cat == null)
+                return false;
+            _context.Categories.Remove(cat);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<bool> RemoveTargetAudience(int tarid)
+        {
+            var tar = await _context.TargetAudiences.FindAsync(tarid);
+            if (tar == null)
+                return false;
+            _context.TargetAudiences.Remove(tar);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+
+        public async Task<Category> AddCategory(Category cat)
+        {
+            await _context.Categories.AddAsync(cat);
+            await _context.SaveChangesAsync();
+
+            return cat;
+        }
+
+        public async Task<TargetAudience> AddtargetAudience(TargetAudience tar)
+        {
+            await _context.TargetAudiences.AddAsync(tar);
+            await _context.SaveChangesAsync();
+
+            return tar;
+        }
+
+
+
     }
 }
 

@@ -12,10 +12,10 @@ interface EventItem {
     locationId: number;
     date: string;
     imagePath: string;
-    // שדות נוספים שהשרת דורש כדי למנוע שגיאה 400
     categoryId?: number;
     targetAudienceId?: number;
     employeeId?: number;
+    employeeId1?: number; 
     currentRegistrations?: number;
 }
 
@@ -36,21 +36,60 @@ const EventCard = () => {
     const [editingEvent, setEditingEvent] = useState<EventItem | null>(null);
     const [isAddingLocation, setIsAddingLocation] = useState(false);
     const [newLocationName, setNewLocationName] = useState("");
+    const [categories, setCategories] = useState<any[]>([]);
+    const [audiences, setAudiences] = useState<any[]>([]);
+    const [employees, setEmployees] = useState<any[]>([]);
 
-    const fetchData = async () => {
-        try {
-            const eventResponse = await eventService.getEvents();
-            const extractedEvents = eventResponse.data || eventResponse;
-            setEvents(Array.isArray(extractedEvents) ? extractedEvents : []);
+const [isAddingCategory, setIsAddingCategory] = useState(false);
+const [newCategoryName, setNewCategoryName] = useState("");
 
-            const locResponse = await eventService.getLocations();
-            const extractedLocs = locResponse.data || locResponse;
-            setLocations(Array.isArray(extractedLocs) ? extractedLocs : []);
-        } catch (error) {
-            console.error("שגיאה בטעינת נתונים:", error);
-        }
-    };
+const [isAddingEmployee, setIsAddingEmployee] = useState(false);
+const [newEmpData, setNewEmpData] = useState({
+    FirstName: "",
+    LastName: "",
+    Phone: "",
+    Description:"",
+    Role: "",
+    CategoryId: editingEvent?.categoryId || 3
+});
+const [isAddingAudience, setIsAddingAudience] = useState(false);
+const [newAudienceName, setNewAudienceName] = useState("");
+    
 
+const fetchData = async () => {
+    try {
+        console.log("מתחיל טעינת נתונים...");
+
+        // 1. אירועים
+        const eventResponse = await eventService.getEvents();
+        setEvents(eventResponse.data || eventResponse);
+
+        // 2. מיקומים
+        const locResponse = await eventService.getLocations();
+        setLocations(locResponse.data || locResponse);
+
+        // 3. קטגוריות
+        const catResponse = await eventService.getCategories();
+        const catData = catResponse.data || catResponse;
+        console.log("קטגוריות שהגיעו:", catData);
+        setCategories(catData); // <--- לוודא שזה הולך ל-Categories!
+
+        // 4. קהל יעד
+        const audResponse = await eventService.gettargetadience();
+        const audData = audResponse.data || audResponse;
+        console.log("קהל יעד שהגיע:", audData);
+        setAudiences(audData); // <--- לוודא שזה הולך ל-Audiences!
+
+        // 5. עובדים
+        const empResponse = await eventService.getEmployees();
+        const empData = empResponse.data || empResponse;
+        console.log("עובדים שהגיעו:", empData);
+        setEmployees(empData);
+
+    } catch (error) {
+        console.error("שגיאה בטעינת נתונים:", error);
+    }
+};
     useEffect(() => {
         fetchData();
     }, []);
@@ -113,6 +152,72 @@ const handleSaveUpdate = async () => {
             console.error("שגיאה בשמירת מיקום:", error);
         }
     };
+    const handleAddNewCategory = async () => {
+    if (!newCategoryName.trim()) return;
+    try {
+        const response = await eventService.addcategory({ description: newCategoryName });
+        const created = response.data || response;
+        setCategories(prev => [...prev, created]);
+        setEditingEvent(prev => prev ? { ...prev, categoryId: created.id } : null);
+        setNewCategoryName("");
+        setIsAddingCategory(false);
+    } catch (e) { console.error(e); }
+};
+
+const handleAddNewEmployee = async () => {
+    // בדיקה בסיסית ששדות חובה מלאים
+    if (!newEmpData.FirstName || !newEmpData.LastName) {
+        alert("חובה למלא שם פרטי ומשפחה");
+        return;
+    }
+
+    try {
+        // כאן אנחנו בונים את האובייקט הסופי שנשלח לשרת
+        // אנחנו מוודאים שה-CategoryId מעודכן ומוסיפים Category: null כדי לעבור את הולידציה
+        const employeeToSave = {
+            ...newEmpData,
+            CategoryId: editingEvent?.categoryId || newEmpData.CategoryId || 1,
+            Category: null // זה השורה שתפתור את השגיאה שראית ב-Console!
+        };
+
+        console.log("שולח עובד לשרת:", employeeToSave);
+
+        const response = await eventService.addemployee(employeeToSave);
+        const created = response.data || response;
+        
+        setEmployees(prev => [...prev, created]);
+        
+        // בחירה אוטומטית של העובד החדש באירוע
+        setEditingEvent(prev => prev ? { ...prev, employeeId: created.id } : null);
+        
+        // איפוס השדות לפי המבנה שלך
+        setNewEmpData({ FirstName: "", LastName: "", Description: "", Phone: "", Role: "" ,CategoryId: 0});
+        setIsAddingEmployee(false);
+        alert("עובד נוסף בהצלחה!");
+
+    } catch (e: any) {
+        // הדפסה מפורטת כדי לראות אם יש עוד שדה שחסר
+        console.error("שגיאה בהוספת עובד:", e.response?.data || e);
+        const serverErrors = e.response?.data?.errors;
+        if (serverErrors) {
+            console.log("פירוט שגיאות מהשרת:", serverErrors);
+        }
+        alert("ההוספה נכשלה. בדקי את ה-Console לפרטים נוספים.");
+    }
+};
+
+const handleAddNewAudience = async () => {
+    if (!newAudienceName.trim()) return;
+    try {
+        const response = await eventService.addtargetAudience   ({ description: newAudienceName });
+        const created = response.data || response;
+        setAudiences(prev => [...prev, created]);
+        setEditingEvent(prev => prev ? { ...prev, targetAudienceId: created.id } : null);
+        setNewAudienceName("");
+        setIsAddingAudience(false);
+    } catch (e) { console.error(e); }
+};
+    
 
     const changemaxPlaces = async (event: EventItem, newMax: number) => {
         if (newMax < 0) { alert("מספר מקומות לא יכול להיות שלילי!"); return; }
@@ -136,7 +241,6 @@ const handleAddNewEvent = () => {
             locationId: locations.length > 0 ? locations[0].id : 1,
             date: new Date().toISOString().split('T')[0],
             imagePath: "",
-            // אלו השדות שהוספתי כדי למנוע את שגיאה 400/500
             startTime: "09:00:00", 
             endTime: "10:00:00",   
             categoryId: 1,      
@@ -165,74 +269,115 @@ const handleAddNewEvent = () => {
                     ➕ הוספת אירוע חדש
                 </button>
             )}
-
-            {editingEvent && (
-                <div style={modalStyle}>
-                    <h2>{editingEvent.id === 0 ? "הוספת אירוע חדש" : "עריכת אירוע"}</h2>
-                    
-                    <label>ניתוב תמונה:</label>
-                    <input 
-                        style={inputStyle} 
-                        type="text" 
-                        placeholder="הדביקי לינק לתמונה..."
-                        value={editingEvent.imagePath} 
-                        onChange={(e) => setEditingEvent({...editingEvent, imagePath: e.target.value})} 
-                    />
-                    
-                    <div style={previewBoxStyle}>
-                        {editingEvent.imagePath ? (
-                            <img src={editingEvent.imagePath} alt="Preview" style={imgStyle} />
-                        ) : (
-                            <span style={{color: '#ccc', fontSize: '12px'}}>תצוגה מקדימה</span>
-                        )}
-                    </div>
-
-                    <label>תיאור: </label>
-                    <input style={inputStyle} type="text" value={editingEvent.description} 
-                           onChange={(e) => setEditingEvent({...editingEvent, description: e.target.value})} />
-
-                    <label>מחיר: </label>
-                    <input style={inputStyle} type="number" value={editingEvent.unitPrice} 
-                           onChange={(e) => setEditingEvent({...editingEvent, unitPrice: Number(e.target.value)})} />
-                    
-                    <label>מקומות מקסימליים: </label>
-                    <input style={inputStyle} type="number" value={editingEvent.maxPlaces} 
-                           onChange={(e) => editingEvent.id === 0 ? setEditingEvent({...editingEvent, maxPlaces: Number(e.target.value)}) : changemaxPlaces(editingEvent, Number(e.target.value))} />
-
-                    <label>בחירת מיקום: </label>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-                        <div style={{ display: 'flex', gap: '5px' }}>
-                            <select style={inputStyle} value={editingEvent.locationId} 
-                                    onChange={(e) => setEditingEvent({...editingEvent, locationId: Number(e.target.value)})}>
-                                <option value={0}>בחר מיקום...</option>
-                                {locations.map(loc => (
-                                    <option key={loc.id} value={loc.id}>{loc.description}</option>
-                                ))}
-                            </select>
-                            <button type="button" onClick={() => setIsAddingLocation(!isAddingLocation)}>➕</button>
-                        </div>
-                        
-                        {/* תיבת הוספת מיקום חדש - עכשיו תופיע כשלוחצים על ה-➕ */}
-                        {isAddingLocation && (
-                            <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
-                                <input 
-                                    style={{...inputStyle, marginBottom: 0}} 
-                                    placeholder="שם מיקום חדש..." 
-                                    value={newLocationName} 
-                                    onChange={(e) => setNewLocationName(e.target.value)}
-                                />
-                                <button onClick={handleAddNewLocation} style={{...btnStyle, backgroundColor: '#4CAF50'}}>הוסף</button>
-                            </div>
-                        )}
-                    </div>
-
-                    <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
-                        <button onClick={handleSaveUpdate} style={{ ...btnStyle, backgroundColor: '#4CAF50' }}>שמור ✅</button>
-                        <button onClick={() => { setEditingEvent(null); setIsAddingLocation(false); }} style={{ ...btnStyle, backgroundColor: '#757575' }}>ביטול ❌</button>
-                    </div>
-                </div>
+{editingEvent && (
+    <div style={modalStyle}>
+        <h2>{editingEvent.id === 0 ? "הוספת אירוע חדש" : "עריכת אירוע"}</h2>
+        
+        <label>ניתוב תמונה:</label>
+        <input 
+            style={inputStyle} 
+            type="text" 
+            placeholder="הדביקי לינק לתמונה..."
+            value={editingEvent.imagePath} 
+            onChange={(e) => setEditingEvent({...editingEvent, imagePath: e.target.value})} 
+        />
+        
+        <div style={previewBoxStyle}>
+            {editingEvent.imagePath ? (
+                <img src={editingEvent.imagePath} alt="Preview" style={imgStyle} />
+            ) : (
+                <span style={{color: '#ccc', fontSize: '12px'}}>תצוגה מקדימה</span>
             )}
+        </div>
 
+        <label>תיאור: </label>
+        <input style={inputStyle} type="text" value={editingEvent.description} 
+               onChange={(e) => setEditingEvent({...editingEvent, description: e.target.value})} />
+
+        <label>מחיר: </label>
+        <input style={inputStyle} type="number" value={editingEvent.unitPrice} 
+               onChange={(e) => setEditingEvent({...editingEvent, unitPrice: Number(e.target.value)})} />
+        
+        <label>מקומות מקסימליים: </label>
+        <input style={inputStyle} type="number" value={editingEvent.maxPlaces} 
+               onChange={(e) => editingEvent.id === 0 ? setEditingEvent({...editingEvent, maxPlaces: Number(e.target.value)}) : changemaxPlaces(editingEvent, Number(e.target.value))} />
+
+        {/* --- בחירת מיקום --- */}
+        <label>בחירת מיקום: </label>
+        <div style={{ display: 'flex', gap: '5px' }}>
+            <select style={inputStyle} value={editingEvent.locationId} 
+                    onChange={(e) => setEditingEvent({...editingEvent, locationId: Number(e.target.value)})}>
+                <option value={0}>בחר מיקום...</option>
+                {locations.map(loc => (
+                    <option key={loc.id} value={loc.id}>{loc.description}</option>
+                ))}
+            </select>
+            <button type="button" onClick={() => setIsAddingLocation(!isAddingLocation)}>➕</button>
+        </div>
+        {isAddingLocation && (
+            <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+                <input style={{...inputStyle, marginBottom: 0}} placeholder="מיקום חדש..." value={newLocationName} onChange={(e) => setNewLocationName(e.target.value)} />
+                <button onClick={handleAddNewLocation} style={{...btnStyle, backgroundColor: '#4CAF50'}}>הוסף</button>
+            </div>
+        )}
+
+{/* --- קטגוריה --- */}
+<label>בחירת קטגוריה: </label>
+<div style={{ display: 'flex', gap: '5px' }}>
+    <select style={inputStyle} value={editingEvent.categoryId} onChange={(e) => setEditingEvent({...editingEvent, categoryId: Number(e.target.value)})}>
+        <option value={0}>בחר קטגוריה...</option>
+        {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.description || cat.name}</option>)}
+    </select>
+    <button type="button" onClick={() => setIsAddingCategory(!isAddingCategory)}>➕</button>
+</div>
+{isAddingCategory && (
+    <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="שם קטגוריה..." value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)} />
+        <button onClick={handleAddNewCategory} style={{...btnStyle, backgroundColor: '#4CAF50'}}>הוסף</button>
+    </div>
+)}
+
+{/* --- עובד --- */}
+<label>עובד אחראי: </label>
+<div style={{ display: 'flex', gap: '5px' }}>
+    <select style={inputStyle} value={editingEvent.employeeId} onChange={(e) => setEditingEvent({...editingEvent, employeeId: Number(e.target.value)})}>
+        <option value={0}>בחר עובד...</option>
+        {employees.map(emp => <option key={emp.id} value={emp.id}>{emp.name || emp.firstName}</option>)}
+    </select>
+    <button type="button" onClick={() => setIsAddingEmployee(!isAddingEmployee)}>➕</button>
+</div>
+{isAddingEmployee && (
+    <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="שם עובד..." value={newEmpData.FirstName} onChange={(e) => setNewEmpData({...newEmpData, FirstName: e.target.value})} />
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="שם משפחה..." value={newEmpData.LastName} onChange={(e) => setNewEmpData({...newEmpData, LastName: e.target.value})} />
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="תיאור..." value={newEmpData.Description} onChange={(e) => setNewEmpData({...newEmpData, Description: e.target.value})} />
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="טלפון..." value={newEmpData.Phone} onChange={(e) => setNewEmpData({...newEmpData, Phone: e.target.value})} />
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="תפקיד..." value={newEmpData.Role} onChange={(e) => setNewEmpData({...newEmpData, Role: e.target.value})} />
+        <button onClick={handleAddNewEmployee} style={{...btnStyle, backgroundColor: '#4CAF50'}}>הוסף</button>
+    </div>
+)}
+
+{/* --- קהל יעד (עם הכפתור שהיה חסר!) --- */}
+<label>קהל יעד: </label>
+<div style={{ display: 'flex', gap: '5px' }}>
+    <select style={inputStyle} value={editingEvent.targetAudienceId} onChange={(e) => setEditingEvent({...editingEvent, targetAudienceId: Number(e.target.value)})}>
+        <option value={0}>בחר קהל יעד...</option>
+        {audiences.map(aud => <option key={aud.id} value={aud.id}>{aud.description || aud.name}</option>)}
+    </select>
+    <button type="button" onClick={() => setIsAddingAudience(!isAddingAudience)}>➕</button>
+</div>
+{isAddingAudience && (
+    <div style={{ display: 'flex', gap: '5px', marginBottom: '10px' }}>
+        <input style={{...inputStyle, marginBottom: 0}} placeholder="קהל יעד חדש..." value={newAudienceName} onChange={(e) => setNewAudienceName(e.target.value)} />
+        <button onClick={handleAddNewAudience} style={{...btnStyle, backgroundColor: '#4CAF50'}}>הוסף</button>
+    </div>
+)}
+        <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+            <button onClick={handleSaveUpdate} style={{ ...btnStyle, backgroundColor: '#4CAF50' }}>שמור ✅</button>
+            <button onClick={() => { setEditingEvent(null); setIsAddingLocation(false); }} style={{ ...btnStyle, backgroundColor: '#757575' }}>ביטול ❌</button>
+        </div>
+    </div>
+)}
             {editingEvent && <div style={overlayStyle} onClick={() => setEditingEvent(null)} />}
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
@@ -264,7 +409,8 @@ const handleAddNewEvent = () => {
 };
 
 // עיצובים - ללא שינוי
-const modalStyle: React.CSSProperties = { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '30px', border: '2px solid #2196F3', borderRadius: '12px', zIndex: 1000, width: '350px' };
+const modalStyle: React.CSSProperties = { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '30px', border: '2px solid #2196F3', borderRadius: '12px', zIndex: 1000, width: '350px',maxHeight: '90vh',
+    overflowY: 'auto'};
 const inputStyle = { display: 'block', marginBottom: '10px', width: '100%', padding: '8px' };
 const btnStyle = { color: 'white', padding: '10px', border: 'none', borderRadius: '4px', cursor: 'pointer' };
 const cardStyle = { border: '1px solid #ccc', borderRadius: '8px', width: '250px', overflow: 'hidden', backgroundColor: '#fff' };

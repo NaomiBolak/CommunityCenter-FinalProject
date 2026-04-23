@@ -19,6 +19,15 @@ namespace CommunityCenter.Application.Interfaces
         Task<List<Location>> GettAllLocation();
         Task<Location> AddLocation(Location loc);
         Task<int> HowManyRegistersToEvent(int eventid);
+        Task<List<Employee>> GetEmployees();
+        Task<List<Category>> GetCategories();
+        Task<List<TargetAudience>> GetTargetAudiences();
+        Task<Employee> AddEmployee(Employee emp);
+        Task<bool> RemoveEmployee(int empid);
+        Task<Category> AddCategory(Category cat);
+        Task<TargetAudience> AddtargetAudience(TargetAudience tar);
+        Task<bool> RemoveCategory(int catid);
+        Task<bool> RemoveTargetAudience(int tarid);
 
     }
 }

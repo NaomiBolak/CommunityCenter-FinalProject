@@ -81,5 +81,49 @@ namespace CommunityCenter.Application.Services
             return await _eventRepository.HowManyRegistersToEvent(eventid);
         }
 
+        public async Task<List<TargetAudience>> GetTargetAudiences()
+        {
+            return await _eventRepository.GetTargetAudiences();
+        }
+
+        public async Task<List<Employee>> GetEmployees()
+        {
+            return await _eventRepository.GetEmployees();
+        }
+
+        public async Task<List<Category>> GetCategories()
+        {
+            return await _eventRepository.GetCategories();
+        }
+
+        public async Task<Employee> AddEmployee(Employee emp)
+        {
+            return await _eventRepository.AddEmployee(emp);
+        }
+
+        public async Task<bool> RemoveEmployee(int empid)
+        {
+            return await _eventRepository.RemoveEmployee(empid);
+        }
+
+        public async Task<Category> AddCategory(Category cat)
+        {
+            return await _eventRepository.AddCategory(cat);
+        }
+
+        public async Task<TargetAudience> AddtargetAudience(TargetAudience tar)
+        {
+            return await _eventRepository.AddtargetAudience(tar);
+        }
+
+        public async Task<bool> RemoveCategory(int catid)
+        {
+            return await _eventRepository.RemoveCategory(catid);
+        }
+
+        public async Task<bool> RemoveTargetAudience(int tarid)
+        {
+            return await _eventRepository.RemoveTargetAudience(tarid);
+        }
     }
 }
