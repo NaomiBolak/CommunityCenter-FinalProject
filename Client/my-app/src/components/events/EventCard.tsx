@@ -99,7 +99,18 @@ const fetchData = async () => {
         const loc = locations.find(l => Number(l.id) === Number(id));
         return loc ? (loc.description || "מיקום ללא תיאור") : `מיקום (${id}) לא נמצא`; 
     };
-
+const getTargetAudienceName = (id: any) => {
+    // 1. הגנה: אם הרשימה עדיין לא נטענה
+    if (!audiences || audiences.length === 0) return "טוען...";
+    
+    // 2. חיפוש: המרה למספר כדי למנוע בעיות של string vs number
+    const targetId = Number(id);
+    const audience = audiences.find(a => Number(a.id) === targetId);
+    
+    // 3. החזרה: שימוש ב-description או name, ואם אין - הצגת ה-ID לדיבאג
+    if (audience) return audience.description || audience.name;
+    return `לא נמצא (ID: ${targetId})`; 
+};
     const handleDelete = async (id: number) => {
         if (window.confirm("האם את בטוחה שברצונך למחוק אירוע זה?")) {
             try {
@@ -392,8 +403,11 @@ const handleAddNewEvent = () => {
                         </div>
                         <div style={{ padding: '15px' }}>
                             <h3>{ev.description}</h3>
-                            <p>מחיר: {ev.unitPrice} ₪</p>
+                            <p><strong>מחיר:</strong> {ev.unitPrice} ₪</p>
                             <p><strong>מיקום:</strong> {getLocationName(ev.locationId)}</p>
+                            <p><strong>תאריך:</strong> {new Date(ev.date).toLocaleDateString('he-IL')}</p>
+                            <p><strong>מיועד ל:</strong> {getTargetAudienceName(ev.targetAudienceId||3)}</p>
+
                             {userRole === 'admin' && (
                                 <div style={{ display: 'flex', gap: '10px' }}>
                                     <button onClick={() => setEditingEvent(ev)} style={{ ...btnStyle, backgroundColor: '#2196F3', flex: 1 }}>עדכון ✏️</button>
