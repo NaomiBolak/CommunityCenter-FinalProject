@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CommunityCenter.API.Services;
+using CommunityCenter.API.Middleware;
+using CommunityCenter.Application.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,8 +30,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtTokenGenerator>();
 
 builder.Services.AddScoped<IEventRepository, EventRepository>();
-
-
+builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -118,6 +120,7 @@ using (var scope = app.Services.CreateScope())
 
 // טיפול בשגיאות צריך להיות ראשון
 app.UseExceptionHandler();
+app.UseMiddleware<LoggingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
