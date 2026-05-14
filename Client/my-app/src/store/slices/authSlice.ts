@@ -21,20 +21,30 @@ const authSlice = createSlice({
       state.user = action.payload.subscriber;
       state.isAuthenticated = true;
       state.isAdmin = action.payload.isAdmin;
+
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
+
     registerSuccess: (state, action: PayloadAction<Subscriber>) => {
       state.user = action.payload;
       state.isAuthenticated = true;
       state.isAdmin = false;
-      localStorage.setItem('user', JSON.stringify(action.payload));
+
+      localStorage.setItem('user', JSON.stringify({
+        subscriber: action.payload,
+        isAdmin: false
+      }));
     },
+
     logout: (state) => {
       state.user = null;
       state.isAuthenticated = false;
       state.isAdmin = false;
+
       localStorage.removeItem('user');
+      localStorage.removeItem('token');
     },
+
     loadUserFromStorage: (state, action: PayloadAction<{ subscriber: Subscriber; isAdmin: boolean }>) => {
       state.user = action.payload.subscriber;
       state.isAuthenticated = true;
