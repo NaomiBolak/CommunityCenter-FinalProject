@@ -19,14 +19,13 @@ const LoginPage: React.FC = () => {
     try {
       const { data } = await api.post('/Auth/login', { email, password });
 
-      // 🔐 שמירת טוקן
+     
       localStorage.setItem('token', data.token);
 
-      // 🧠 שמירת משתמש
-      dispatch(loginSuccess({
-        subscriber: data.user,
-        isAdmin: data.user.role === "Admin"
-      }));
+    dispatch(loginSuccess({
+     subscriber: data.user,
+     isAdmin: data.user.role?.toLowerCase() === "admin"
+   }));
 
       navigate('/');
     } catch (err) {

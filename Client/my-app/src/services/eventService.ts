@@ -1,58 +1,49 @@
-import axios from 'axios';
+import api from './api';
 
-const API_URL = 'https://localhost:7134/api/Events'; 
+const BASE = '/Events';
 
-// מגדירים את האובייקט עם כל הפונקציות
 const eventService = {
-    getEvents: () => {
-        return axios.get(API_URL);
-    },
-    getEventById: (id: number) => {
-        return axios.get(`${API_URL}/${id}`);
-    },
-    addEvent: (eventData: any) => {
-        return axios.post(API_URL, eventData);
-    },
-    updateEvent: (id: number, eventData: any) => {
-        return axios.put(`${API_URL}/${id}`, eventData);
-    },
-    removeEvent: (id: number) => {
-        return axios.delete(`${API_URL}/${id}`);
-    },
 
-    getlocation: (id: number) => {
-        return axios.get(`${API_URL}/location/${id}`);
-    },
+  getEvents: () => api.get(BASE),
 
-    getLocations: () => {
-        return axios.get(`${API_URL}/locations`);
-    },
-    getCategories: () => {
-        return axios.get(`${API_URL}/categories`);
-    },
-    gettargetadience: () => {
-        return axios.get(`${API_URL}/targetAudience`);
-    },
-    getEmployees: () => {
-        return axios.get(`${API_URL}/employees`);
-    },
-    addLocation: (locationData: any) => {
-        return axios.post(`${API_URL}/locations`, locationData);
-    },
-    addemployee: (employeeData: any) => {
-        return axios.post(`${API_URL}/employee`, employeeData);
-    },
-        addcategory: (categoryData: any) => {
-        return axios.post(`${API_URL}/category`, categoryData);
-    },
-     addtargetAudience: (targetAudienceData: any) => {
-        return axios.post(`${API_URL}/targetAudience`, targetAudienceData);
-    },  
-    removeemployee: (id: number) => {
-        return axios.delete(`${API_URL}/employee/${id}`);
-    },
-    howmanyRegisterstoEvent: (eventId: number) => {
-    return axios.get(`${API_URL}/registers/count/${eventId}`);    }
+  getEventById: (id: number) =>
+    api.get(`${BASE}/${id}`),
+
+  addEvent: (data: any) =>
+    api.post(BASE, data),
+
+  updateEvent: (id: number, data: any) =>
+    api.put(`${BASE}/${id}`, data),
+
+  removeEvent: (id: number) =>
+    api.delete(`${BASE}/${id}`),
+
+  getLocations: () =>
+    api.get(`${BASE}/locations`),
+
+  getCategories: () =>
+    api.get(`${BASE}/categories`),
+
+  gettargetadience: () =>
+    api.get(`${BASE}/targetAudience`),
+
+  getEmployees: () =>
+    api.get(`${BASE}/employees`),
+
+  addLocation: (data: any) =>
+    api.post(`${BASE}/locations`, data),
+
+  addcategory: (data: any) =>
+    api.post(`${BASE}/category`, data),
+
+  addemployee: (data: any) =>
+    api.post(`${BASE}/employee`, data),
+
+  addtargetAudience: (data: any) =>
+    api.post(`${BASE}/targetAudience`, data),
+
+  howmanyRegisterstoEvent: (id: number) =>
+    api.get(`${BASE}/registers/count/${id}`)
 
 };
 

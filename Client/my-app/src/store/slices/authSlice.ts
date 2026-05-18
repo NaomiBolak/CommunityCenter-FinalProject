@@ -10,7 +10,7 @@ interface AuthState {
 const initialState: AuthState = {
   user: null,
   isAuthenticated: false,
-  isAdmin: false
+  isAdmin: false,
 };
 
 const authSlice = createSlice({
@@ -25,15 +25,13 @@ const authSlice = createSlice({
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
 
-    registerSuccess: (state, action: PayloadAction<Subscriber>) => {
-      state.user = action.payload;
+    registerSuccess: (state, action: PayloadAction<{ subscriber: Subscriber; token: string }>) => {
+      state.user = action.payload.subscriber;
       state.isAuthenticated = true;
       state.isAdmin = false;
 
-      localStorage.setItem('user', JSON.stringify({
-        subscriber: action.payload,
-        isAdmin: false
-      }));
+      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('user', JSON.stringify({ subscriber: action.payload.subscriber, isAdmin: false }));
     },
 
     logout: (state) => {
@@ -45,13 +43,19 @@ const authSlice = createSlice({
       localStorage.removeItem('token');
     },
 
-    loadUserFromStorage: (state, action: PayloadAction<{ subscriber: Subscriber; isAdmin: boolean }>) => {
-      state.user = action.payload.subscriber;
+    loadUserFromStorage: (state) => {
+      const data = localStorage.getItem('user');
+      if (!data) return;
+
+      const parsed = JSON.parse(data);
+      state.user = parsed.subscriber;
+      state.isAdmin = parsed.isAdmin;
       state.isAuthenticated = true;
-      state.isAdmin = action.payload.isAdmin;
-    }
-  }
+    },
+  },
 });
 
-export const { loginSuccess, registerSuccess, logout, loadUserFromStorage } = authSlice.actions;
+export const { loginSuccess, registerSuccess, logout, loadUserFromStorage } =
+  authSlice.actions;
+
 export default authSlice.reducer;

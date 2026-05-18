@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import api from '../services/api';
 import { registerSuccess } from '../store/slices/authSlice';
-import { RegisterData } from '../types';
+import { validateRegisterForm } from '../utils/validation';
 
 const RegisterPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [form, setForm] = useState<RegisterData>({
+  const [form, setForm] = useState({
     identityCard: '',
     firstName: '',
     lastName: '',
@@ -28,26 +28,26 @@ const RegisterPage: React.FC = () => {
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const validate = (): string => {
-    if (!/^\d{9}$/.test(form.identityCard)) return 'תעודת זהות חייבת להכיל 9 ספרות';
-    if (!/^05\d{8}$/.test(form.phone)) return 'מספר טלפון לא תקין';
-    if (!form.birthDate) return 'יש להזין תאריך לידה';
-    return '';
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const validationError = validate();
+    const validationError = validateRegisterForm(form);
     if (validationError) {
       setError(validationError);
       return;
     }
 
     try {
-      const { data } = await api.post('/Auth/register', form);
+      // התיקון: יוצרים אובייקט חדש, ומעתיקים את ה-email ל-username בשביל ה-Identity ב-C#
+      const registrationData = {
+        ...form,
+        username: form.email 
+      };
 
-      dispatch(registerSuccess(data));
+      // שולחים לשרת את האובייקט המלא שכולל את ה-username הפנימי
+      const { data } = await api.post('/Auth/register', registrationData);
+
+      dispatch(registerSuccess({ subscriber: data.user, token: data.token }));
 
       navigate('/');
     } catch (err) {
