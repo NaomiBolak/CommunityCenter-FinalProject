@@ -5,7 +5,6 @@ using CommunityCenter.Domain.Exceptions;
 using CommunityCenter.Application.Services;
 using Microsoft.Extensions.Logging;
 
-
 namespace CommunityCenter.Application.Services
 {
     public class AuthService : IAuthService
@@ -15,9 +14,9 @@ namespace CommunityCenter.Application.Services
         private readonly JwtTokenGenerator _tokenGenerator;
 
         public AuthService(
-     IUserRepository userRepository,
-     JwtTokenGenerator tokenGenerator,
-     ILoggerService logger)
+            IUserRepository userRepository,
+            JwtTokenGenerator tokenGenerator,
+            ILoggerService logger)
         {
             _userRepository = userRepository;
             _tokenGenerator = tokenGenerator;
@@ -31,13 +30,17 @@ namespace CommunityCenter.Application.Services
 
             var existingUser = await _userRepository.GetByEmailAsync(dto.Email);
             if (existingUser != null)
+            {
                 _logger.Warning($"ניסיון רישום עם אימייל קיים: {dto.Email}");
-            throw new AppException("אימייל כבר קיים", 400);
+                throw new AppException("אימייל כבר קיים", 400);
+            }
 
             var existingById = await _userRepository.GetByIdentityCardAsync(dto.IdentityCard);
             if (existingById != null)
+            {
                 _logger.Warning($"ניסיון רישום עם תעודת זהות קיימת: {dto.IdentityCard}");
-            throw new AppException("תעודת זהות כבר קיימת", 400);
+                throw new AppException("תעודת זהות כבר קיימת", 400);
+            }
 
             var user = new Subscriber
             {
@@ -56,6 +59,7 @@ namespace CommunityCenter.Application.Services
 
             await _userRepository.AddAsync(user);
             _logger.Info($"משתמש חדש נרשם: {user.Email} (ID: {user.Id})");
+
             return new
             {
                 message = "נרשמת בהצלחה",
@@ -68,7 +72,6 @@ namespace CommunityCenter.Application.Services
             var user = await _userRepository.GetByEmailAsync(dto.Email);
 
             if (user == null)
-
                 throw new AppException("פרטים שגויים", 401);
 
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))

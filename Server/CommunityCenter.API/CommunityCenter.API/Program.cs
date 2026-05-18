@@ -65,7 +65,7 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
-        policy.WithOrigins("http://localhost:3000")
+        policy.WithOrigins("http://localhost:3001")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
@@ -120,6 +120,8 @@ using (var scope = app.Services.CreateScope())
 
 // טיפול בשגיאות צריך להיות ראשון
 app.UseExceptionHandler();
+// CORS חייב לבוא לפני Authentication
+app.UseCors("AllowReactApp");
 app.UseMiddleware<LoggingMiddleware>();
 
 if (app.Environment.IsDevelopment())
@@ -130,8 +132,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// CORS חייב לבוא לפני Authentication
-app.UseCors("AllowReactApp");
+
 
 // אימות ואז הרשאות
 app.UseAuthentication();

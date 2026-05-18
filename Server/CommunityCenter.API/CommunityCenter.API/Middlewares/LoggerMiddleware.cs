@@ -1,4 +1,5 @@
 ﻿using CommunityCenter.API.Services;
+using CommunityCenter.Application.Interfaces;
 using System.Diagnostics;
 
 namespace CommunityCenter.API.Middleware
@@ -14,26 +15,31 @@ namespace CommunityCenter.API.Middleware
 
         public async Task Invoke(
             HttpContext context,
-            FileLoggerService logger)
+            ILoggerService logger)
         {
             var stopwatch = Stopwatch.StartNew();
 
             var method = context.Request.Method;
             var path = context.Request.Path;
 
-            await logger.LogAsync(
+            await logger.Info(
                 $"Request Started | {method} {path}");
 
-            await _next(context);
+            try
+            {
+                await _next(context);
+            }
+            finally
+            {
+                stopwatch.Stop();
 
-            stopwatch.Stop();
+                var statusCode = context.Response.StatusCode;
 
-            var statusCode = context.Response.StatusCode;
-
-            await logger.LogAsync(
-                $"Request Finished | {method} {path} | " +
-                $"Status: {statusCode} | " +
-                $"Time: {stopwatch.ElapsedMilliseconds}ms");
+                await logger.Info(
+                    $"Request Finished | {method} {path} | " +
+                    $"Status: {statusCode} | " +
+                    $"Time: {stopwatch.ElapsedMilliseconds}ms");
+            }
         }
     }
 }
