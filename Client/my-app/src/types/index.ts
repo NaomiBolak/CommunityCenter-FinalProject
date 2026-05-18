@@ -13,15 +13,16 @@ export interface Subscriber {
 
 export interface Event {
   id: number;
-  title: string;
   description: string;
-  date: string;
-  time: string;
-  price: number;
-  imageUrl: string;
-  maxParticipants: number;
+  unitPrice: number;
+  maxPlaces: number;
   locationId: number;
-  targetAudienceId: number;
+  date: string;
+  imagePath: string;
+  categoryId?: number;
+  targetAudienceId?: number;
+  employeeId?: number;
+  currentRegistrations?: number;
 }
 
 export interface Class {

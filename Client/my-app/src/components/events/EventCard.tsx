@@ -27,12 +27,13 @@ interface LocationItem {
 const EventCard = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
     const [locations, setLocations] = useState<LocationItem[]>([]);
-    const userFromRedux = useSelector((state: any) => state.auth?.user);
-    const userFromStorage = JSON.parse(localStorage.getItem('user') || 'null');
+   const user = useSelector((state: any) => state.auth?.user)
+    || JSON.parse(localStorage.getItem('user') || 'null');
 
-    const user = userFromRedux || userFromStorage;
-    const userRole = user?.role?.toLowerCase() === 'admin' ? 'admin' : 'user';
-
+  const userRole =
+    user?.role?.toLowerCase() === 'admin'
+        ? 'admin'
+        : 'user';
     const [editingEvent, setEditingEvent] = useState<EventItem | null>(null);
     const [isAddingLocation, setIsAddingLocation] = useState(false);
     const [newLocationName, setNewLocationName] = useState("");
@@ -261,7 +262,9 @@ const handleAddNewEvent = () => {
             currentRegistrations: 0
         } as any);
     };
-
+   if (!events) {
+    return <div style={{ padding: '20px', textAlign: 'center' }}>טוען נתונים...</div>;
+}
     return (
         <div style={{ padding: '20px' }}>
             <h1>האירועים הקרובים</h1>

@@ -21,4 +21,8 @@
     <ProjectReference Include="..\CommunityCenter.Infrastructure\CommunityCenter.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 </Project>
