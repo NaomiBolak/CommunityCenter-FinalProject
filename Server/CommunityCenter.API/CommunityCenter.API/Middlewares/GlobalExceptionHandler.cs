@@ -33,8 +33,9 @@ namespace CommunityCenter.API.Middlewares.Handlers
             {
                 Status = statusCode,
                 Title = "Error",
-                Detail = message
+                Detail = message.ToString()
             };
+           
 
             httpContext.Response.StatusCode = statusCode;
 

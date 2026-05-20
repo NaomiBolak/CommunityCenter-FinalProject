@@ -1,0 +1,24 @@
+[16:59:01] Request Started | GET /swagger
+[16:59:01] Request Finished | GET /swagger | Status: 301 | Time: 46ms
+[16:59:01] Request Started | GET /swagger/index.html
+[16:59:02] Request Started | GET /swagger/swagger-ui.css
+[16:59:02] Request Finished | GET /swagger/swagger-ui.css | Status: 200 | Time: 557ms
+[16:59:12] Request Started | GET /swagger/index.html
+[16:59:12] Request Finished | GET /swagger/index.html | Status: 200 | Time: 19ms
+[16:59:12] Request Started | GET /swagger/swagger-ui-standalone-preset.js
+[16:59:13] Request Finished | GET /swagger/swagger-ui-standalone-preset.js | Status: 200 | Time: 323ms
+[16:59:13] Request Started | GET /swagger/favicon-32x32.png
+[16:59:13] Request Finished | GET /swagger/favicon-32x32.png | Status: 200 | Time: 5ms
+[16:59:24] Request Started | GET /swagger/index.html
+[16:59:24] Request Finished | GET /swagger/index.html | Status: 200 | Time: 10ms
+[16:59:24] Request Started | GET /swagger/swagger-ui-bundle.js
+[16:59:24] Request Finished | GET /swagger/swagger-ui-bundle.js | Status: 200 | Time: 147ms
+[16:59:24] Request Started | GET /swagger/v1/swagger.json
+[16:59:25] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 80ms
+[16:59:38] Request Started | POST /api/Auth/login
+[18:34:18] Request Started | GET /swagger/index.html
+[18:34:18] Request Finished | GET /swagger/index.html | Status: 200 | Time: 330ms
+[18:34:19] Request Started | GET /swagger/v1/swagger.json
+[18:34:19] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 100ms
+[18:34:48] Request Started | POST /api/Events
+[18:34:49] Request Finished | POST /api/Events | Status: 400 | Time: 470ms

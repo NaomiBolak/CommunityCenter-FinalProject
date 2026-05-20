@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import api from '../services/api';
 import { registerSuccess } from '../store/slices/authSlice';
-import { RegisterData } from '../types';
+import { validateRegisterForm } from '../utils/validation';
 
 const RegisterPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [form, setForm] = useState<RegisterData>({
+  const [form, setForm] = useState({
     identityCard: '',
     firstName: '',
     lastName: '',
@@ -20,6 +20,7 @@ const RegisterPage: React.FC = () => {
     address: '',
     birthDate: '',
   });
+
   const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,68 +28,50 @@ const RegisterPage: React.FC = () => {
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const validate = (): string => {
-    if (!/^\d{9}$/.test(form.identityCard)) return 'תעודת זהות חייבת להכיל 9 ספרות';
-    if (!/^05\d{8}$/.test(form.phone)) return 'מספר טלפון לא תקין (לדוגמה: 0501234567)';
-    if (!form.birthDate) return 'יש להזין תאריך לידה';
-    const age = new Date().getFullYear() - new Date(form.birthDate).getFullYear();
-    if (age < 5 || age > 120) return 'תאריך לידה לא תקין';
-    return '';
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const validationError = validate();
-    if (validationError) { setError(validationError); return; }
-    setError('');
+
+    const validationError = validateRegisterForm(form);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     try {
-      const { data } = await api.post('/Auth/register', form);
-      dispatch(registerSuccess(data));
+      // התיקון: יוצרים אובייקט חדש, ומעתיקים את ה-email ל-username בשביל ה-Identity ב-C#
+      const registrationData = {
+        ...form,
+        username: form.email 
+      };
+
+      // שולחים לשרת את האובייקט המלא שכולל את ה-username הפנימי
+      const { data } = await api.post('/Auth/register', registrationData);
+
+      dispatch(registerSuccess({ subscriber: data.user, token: data.token }));
+
       navigate('/');
-    } catch(error) {
-      const axiosError = error as AxiosError;
-      // התיקון כאן: גישה ל-detail במקום message
-      setError((axiosError.response?.data as any)?.detail || 'ההרשמה נכשלה, אנא נסה שנית');
+    } catch (err) {
+      const axiosError = err as AxiosError;
+      setError((axiosError.response?.data as any)?.detail || 'שגיאה בהרשמה');
     }
   };
 
   return (
-    <div >
+    <div>
       <h1>הרשמה</h1>
+
       {error && <p style={{ color: 'red' }}>{error}</p>}
+
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>תעודת זהות</label>
-          <input name="identityCard" value={form.identityCard} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>שם פרטי</label>
-          <input name="firstName" value={form.firstName} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>שם משפחה</label>
-          <input name="lastName" value={form.lastName} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>אימייל</label>
-          <input name="email" type="email" value={form.email} onChange={handleChange} required autoComplete="off"/>
-        </div>
-        <div>
-          <label>סיסמה</label>
-          <input name="password" type="password" value={form.password} onChange={handleChange} required autoComplete="new-password" />
-        </div>
-        <div>
-          <label>טלפון</label>
-          <input name="phone" value={form.phone} onChange={handleChange} required />
-        </div>
-        <div>
-          <label>כתובת</label>
-          <input name="address" value={form.address} onChange={handleChange} />
-        </div>
-        <div>
-          <label>תאריך לידה</label>
-          <input name="birthDate" type="date" value={form.birthDate} onChange={handleChange} required />
-        </div>
+        <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required />
+        <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required />
+        <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required />
+        <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required />
+        <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required />
+        <input name="phone" placeholder="טלפון" onChange={handleChange} required />
+        <input name="address" placeholder="כתובת" onChange={handleChange} />
+        <input name="birthDate" type="date" onChange={handleChange} required />
+
         <button type="submit">הרשמה</button>
       </form>
     </div>

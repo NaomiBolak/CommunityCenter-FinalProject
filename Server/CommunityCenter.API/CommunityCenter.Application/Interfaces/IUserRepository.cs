@@ -1,10 +1,8 @@
 ﻿using CommunityCenter.Domain.Entities;
 
-namespace CommunityCenter.Application.Interfaces
+public interface IUserRepository
 {
-    public interface IUserRepository
-    {
-        Task<Subscriber?> GetByEmailAsync(string email);
-        Task AddAsync(Subscriber user);
-    }
+    Task<Subscriber?> GetByEmailAsync(string email);
+    Task<Subscriber?> GetByIdentityCardAsync(string identityCard);
+    Task AddAsync(Subscriber user);
 }

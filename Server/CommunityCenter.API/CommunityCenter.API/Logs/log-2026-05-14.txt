@@ -1,0 +1,27 @@
+[22:10:22] Request Started | GET /swagger/index.html
+[22:10:22] Request Finished | GET /swagger/index.html | Status: 200 | Time: 238ms
+[22:10:22] Request Started | GET /swagger/v1/swagger.json
+[22:10:23] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 102ms
+[22:27:02] [INFO] Request Started | GET /swagger/index.html
+[22:27:02] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 359ms
+[22:27:03] [INFO] Request Started | GET /swagger/v1/swagger.json
+[22:27:03] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 90ms
+[22:27:57] [INFO] Request Started | OPTIONS /api/Auth/login
+[22:27:57] [INFO] Request Finished | OPTIONS /api/Auth/login | Status: 204 | Time: 28ms
+[22:27:57] [INFO] Request Started | POST /api/Auth/login
+[22:28:03] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[22:28:03] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 6290ms
+[22:28:08] [INFO] Request Started | GET /api/Events
+[22:28:09] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 286ms
+[22:28:09] [INFO] Request Started | GET /api/Events
+[22:28:09] [INFO] Request Started | GET /api/Events/locations
+[22:28:09] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 96ms
+[22:28:09] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 111ms
+[22:28:09] [INFO] Request Started | GET /api/Events/locations
+[22:28:09] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 302ms
+[22:28:09] [INFO] Request Started | GET /api/Events/categories
+[22:28:09] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 74ms
+[22:28:10] [INFO] Request Started | GET /api/Events/targetAudience
+[22:28:10] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 68ms
+[22:28:10] [INFO] Request Started | GET /api/Events/employees
+[22:28:10] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 86ms

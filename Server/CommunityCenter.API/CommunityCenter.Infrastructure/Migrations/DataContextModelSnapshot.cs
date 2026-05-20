@@ -50,10 +50,18 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsHandled")
                         .HasColumnType("bit");
 
                     b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -77,9 +85,8 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DayOfWeek")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -87,6 +94,14 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
@@ -96,14 +111,14 @@ namespace CommunityCenter.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
 
                     b.Property<int>("TargetAudienceId")
                         .HasColumnType("int");
-
-                    b.Property<TimeSpan>("Time")
-                        .HasColumnType("time");
 
                     b.HasKey("Id");
 
@@ -137,9 +152,10 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
-
                     b.HasIndex("SubscriberId");
+
+                    b.HasIndex("CourseId", "SubscriberId")
+                        .IsUnique();
 
                     b.ToTable("CourseRegistrations");
                 });
@@ -190,7 +206,10 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CurrentRegistrations")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
@@ -200,7 +219,7 @@ namespace CommunityCenter.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int?>("EmployeeId1")
@@ -210,10 +229,10 @@ namespace CommunityCenter.Infrastructure.Migrations
                         .HasColumnType("time");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("LocationId")
+                    b.Property<int?>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<int>("MaxPlaces")
@@ -222,12 +241,12 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
 
-                    b.Property<int>("TargetAudienceId")
+                    b.Property<int?>("TargetAudienceId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
+                        .HasPrecision(10, 2)
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("Id");
 
@@ -276,11 +295,21 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.Property<DateTime>("DatePublished")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("News");
                 });
@@ -310,11 +339,12 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EventId");
-
                     b.HasIndex("SubscriberId");
 
-                    b.ToTable("EventRegistrations");
+                    b.HasIndex("EventId", "SubscriberId")
+                        .IsUnique();
+
+                    b.ToTable("EventRegistrations", (string)null);
                 });
 
             modelBuilder.Entity("CommunityCenter.Domain.Entities.Subscriber", b =>
@@ -334,7 +364,7 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -342,7 +372,7 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.Property<string>("IdentityCard")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -362,7 +392,18 @@ namespace CommunityCenter.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
+
+                    b.HasIndex("IdentityCard")
+                        .IsUnique();
 
                     b.ToTable("Subscribers");
                 });
@@ -389,13 +430,13 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.HasOne("CommunityCenter.Domain.Entities.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CommunityCenter.Domain.Entities.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CommunityCenter.Domain.Entities.Location", "Location")
@@ -453,15 +494,12 @@ namespace CommunityCenter.Infrastructure.Migrations
                 {
                     b.HasOne("CommunityCenter.Domain.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("CommunityCenter.Domain.Entities.Employee", "Employee")
                         .WithMany()
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("CommunityCenter.Domain.Entities.Employee", null)
                         .WithMany("Events")
@@ -469,15 +507,11 @@ namespace CommunityCenter.Infrastructure.Migrations
 
                     b.HasOne("CommunityCenter.Domain.Entities.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LocationId");
 
                     b.HasOne("CommunityCenter.Domain.Entities.TargetAudience", "TargetAudience")
                         .WithMany()
-                        .HasForeignKey("TargetAudienceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TargetAudienceId");
 
                     b.Navigation("Category");
 
@@ -488,10 +522,19 @@ namespace CommunityCenter.Infrastructure.Migrations
                     b.Navigation("TargetAudience");
                 });
 
+            modelBuilder.Entity("CommunityCenter.Domain.Entities.News", b =>
+                {
+                    b.HasOne("CommunityCenter.Domain.Entities.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("CommunityCenter.Domain.Entities.RegistrationEvent", b =>
                 {
                     b.HasOne("CommunityCenter.Domain.Entities.Event", "Event")
-                        .WithMany("Registrations")
+                        .WithMany("EventRegistration")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -514,7 +557,7 @@ namespace CommunityCenter.Infrastructure.Migrations
 
             modelBuilder.Entity("CommunityCenter.Domain.Entities.Event", b =>
                 {
-                    b.Navigation("Registrations");
+                    b.Navigation("EventRegistration");
                 });
 
             modelBuilder.Entity("CommunityCenter.Domain.Entities.Subscriber", b =>
