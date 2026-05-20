@@ -12,7 +12,7 @@ namespace CommunityCenter.Domain.Entities
         public string Phone { get; set; } = string.Empty;
 
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Category? Category { get; set; }
 
         public virtual ICollection<Event> Events { get; set; } = new List<Event>();
     }

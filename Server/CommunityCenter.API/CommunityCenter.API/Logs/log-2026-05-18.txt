@@ -1,0 +1,448 @@
+[13:20:07] [INFO] Request Started | GET /swagger/index.html
+[13:20:07] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 246ms
+[13:20:07] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:20:07] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 59ms
+[13:27:05] [INFO] Request Started | GET /swagger/index.html
+[13:27:05] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 286ms
+[13:27:06] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:27:06] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 102ms
+[13:27:19] [INFO] Request Started | OPTIONS /api/Auth/login
+[13:27:19] [INFO] Request Finished | OPTIONS /api/Auth/login | Status: 204 | Time: 13ms
+[13:33:43] [INFO] Request Started | GET /swagger/index.html
+[13:33:43] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 262ms
+[13:33:44] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:33:44] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 86ms
+[13:34:35] [INFO] Request Started | OPTIONS /api/Auth/login
+[13:34:35] [INFO] Request Finished | OPTIONS /api/Auth/login | Status: 204 | Time: 22ms
+[13:34:35] [INFO] Request Started | POST /api/Auth/login
+[13:34:41] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[13:34:41] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 6134ms
+[13:34:57] [INFO] Request Started | OPTIONS /api/Events
+[13:34:57] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 4ms
+[13:34:58] [INFO] Request Started | GET /api/Events
+[13:34:58] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 560ms
+[13:34:58] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:34:58] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 5ms
+[13:34:58] [INFO] Request Started | GET /api/Events/locations
+[13:34:58] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 55ms
+[13:34:58] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:34:58] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 4ms
+[13:34:58] [INFO] Request Started | GET /api/Events/categories
+[13:34:58] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 70ms
+[13:34:58] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:34:58] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 6ms
+[13:34:58] [INFO] Request Started | GET /api/Events/targetAudience
+[13:34:59] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 49ms
+[13:34:59] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:34:59] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 5ms
+[13:34:59] [INFO] Request Started | GET /api/Events/employees
+[13:34:59] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 53ms
+[13:40:23] [INFO] Request Started | OPTIONS /api/Events
+[13:40:23] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 16ms
+[13:40:23] [INFO] Request Started | GET /api/Events
+[13:40:24] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 298ms
+[13:40:24] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:40:24] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 5ms
+[13:40:24] [INFO] Request Started | GET /api/Events/locations
+[13:40:24] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 27ms
+[13:40:24] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:40:24] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 6ms
+[13:40:24] [INFO] Request Started | GET /api/Events/categories
+[13:40:24] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 31ms
+[13:40:24] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:40:24] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 5ms
+[13:40:24] [INFO] Request Started | GET /api/Events/targetAudience
+[13:40:24] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 24ms
+[13:40:24] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:40:24] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 24ms
+[13:40:24] [INFO] Request Started | GET /api/Events/employees
+[13:40:24] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 30ms
+[13:40:33] [INFO] Request Started | OPTIONS /api/Events
+[13:40:33] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 5ms
+[13:40:34] [INFO] Request Started | POST /api/Events
+[13:40:35] [INFO] Request Finished | POST /api/Events | Status: 200 | Time: 1384ms
+[13:43:42] [INFO] Request Started | GET /swagger/index.html
+[13:43:42] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 245ms
+[13:43:43] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:43:50] [INFO] Request Started | GET /swagger/index.html
+[13:43:50] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 24ms
+[13:43:50] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:43:50] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 67ms
+[13:44:13] [INFO] Request Started | POST /api/Events
+[13:44:13] [INFO] Request Finished | POST /api/Events | Status: 400 | Time: 434ms
+[13:45:57] [INFO] Request Started | OPTIONS /api/Events
+[13:45:57] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 96ms
+[13:45:57] [INFO] Request Started | GET /api/Events
+[13:45:58] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 619ms
+[13:45:58] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:45:58] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 6ms
+[13:45:58] [INFO] Request Started | GET /api/Events/locations
+[13:45:58] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 222ms
+[13:45:58] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:45:58] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 5ms
+[13:45:58] [INFO] Request Started | GET /api/Events/categories
+[13:45:58] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 48ms
+[13:45:58] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:45:58] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 6ms
+[13:45:58] [INFO] Request Started | GET /api/Events/targetAudience
+[13:45:58] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 56ms
+[13:45:58] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:45:58] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 5ms
+[13:45:58] [INFO] Request Started | GET /api/Events/employees
+[13:45:58] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 67ms
+[13:46:08] [INFO] Request Started | OPTIONS /api/Events
+[13:46:08] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 7ms
+[13:46:08] [INFO] Request Started | GET /api/Events
+[13:46:08] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 111ms
+[13:46:08] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:46:08] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 5ms
+[13:46:08] [INFO] Request Started | GET /api/Events/locations
+[13:46:08] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 26ms
+[13:46:08] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:46:08] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 7ms
+[13:46:08] [INFO] Request Started | GET /api/Events/categories
+[13:46:08] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 28ms
+[13:46:08] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:46:08] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 4ms
+[13:46:08] [INFO] Request Started | GET /api/Events/targetAudience
+[13:46:08] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 22ms
+[13:46:08] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:46:08] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 5ms
+[13:46:08] [INFO] Request Started | GET /api/Events/employees
+[13:46:08] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 23ms
+[13:46:18] [INFO] Request Started | OPTIONS /api/Events
+[13:46:18] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 8ms
+[13:46:18] [INFO] Request Started | GET /api/Events
+[13:46:18] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 91ms
+[13:46:18] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:46:18] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 4ms
+[13:46:18] [INFO] Request Started | GET /api/Events/locations
+[13:46:18] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 21ms
+[13:46:18] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:46:18] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 5ms
+[13:46:18] [INFO] Request Started | GET /api/Events/categories
+[13:46:18] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 27ms
+[13:46:18] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:46:18] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 10ms
+[13:46:18] [INFO] Request Started | GET /api/Events/targetAudience
+[13:46:18] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 25ms
+[13:46:18] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:46:18] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 4ms
+[13:46:18] [INFO] Request Started | GET /api/Events/employees
+[13:46:18] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 33ms
+[13:46:36] [INFO] Request Started | OPTIONS /api/Events
+[13:46:36] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 7ms
+[13:46:36] [INFO] Request Started | POST /api/Events
+[13:46:37] [INFO] Request Finished | POST /api/Events | Status: 200 | Time: 1435ms
+[13:50:17] [INFO] Request Started | GET /swagger/index.html
+[13:50:17] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 268ms
+[13:50:18] [INFO] Request Started | GET /swagger/v1/swagger.json
+[13:50:18] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 86ms
+[13:50:24] [INFO] Request Started | OPTIONS /api/Events
+[13:50:24] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 229ms
+[13:50:24] [INFO] Request Started | GET /api/Events
+[13:50:25] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 669ms
+[13:50:25] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:50:25] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 10ms
+[13:50:25] [INFO] Request Started | GET /api/Events/locations
+[13:50:25] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 210ms
+[13:50:25] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:50:25] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 7ms
+[13:50:25] [INFO] Request Started | GET /api/Events/categories
+[13:50:25] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 62ms
+[13:50:25] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:50:25] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 6ms
+[13:50:25] [INFO] Request Started | GET /api/Events/targetAudience
+[13:50:25] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 53ms
+[13:50:25] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:50:25] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 6ms
+[13:50:25] [INFO] Request Started | GET /api/Events/employees
+[13:50:25] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 53ms
+[13:55:21] [INFO] Request Started | GET /api/Events
+[13:55:21] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 75ms
+[13:58:56] [INFO] Request Started | OPTIONS /api/Events
+[13:58:56] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 28ms
+[13:58:56] [INFO] Request Started | GET /api/Events
+[13:58:56] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 74ms
+[13:58:56] [INFO] Request Started | OPTIONS /api/Events/locations
+[13:58:56] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 6ms
+[13:58:56] [INFO] Request Started | GET /api/Events/locations
+[13:58:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 39ms
+[13:58:56] [INFO] Request Started | OPTIONS /api/Events/categories
+[13:58:56] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 5ms
+[13:58:56] [INFO] Request Started | GET /api/Events/categories
+[13:58:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 34ms
+[13:58:56] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[13:58:56] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 7ms
+[13:58:56] [INFO] Request Started | GET /api/Events/targetAudience
+[13:58:56] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 42ms
+[13:58:56] [INFO] Request Started | OPTIONS /api/Events/employees
+[13:58:56] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 4ms
+[13:58:56] [INFO] Request Started | GET /api/Events/employees
+[13:58:56] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 17ms
+[14:01:25] [INFO] Request Started | GET /api/Events
+[14:01:26] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 74ms
+[14:01:26] [INFO] Request Started | GET /favicon.ico
+[14:01:26] [INFO] Request Finished | GET /favicon.ico | Status: 404 | Time: 7ms
+[14:01:57] [INFO] Request Started | OPTIONS /api/Events
+[14:01:57] [INFO] Request Started | OPTIONS /api/Events
+[14:01:57] [INFO] Request Finished | OPTIONS /api/Events | Status: 204 | Time: 16ms
+[14:01:58] [INFO] Request Started | GET /api/Events
+[14:01:58] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 111ms
+[14:01:58] [INFO] Request Started | OPTIONS /api/Events/locations
+[14:01:58] [INFO] Request Finished | OPTIONS /api/Events/locations | Status: 204 | Time: 10ms
+[14:01:58] [INFO] Request Started | GET /api/Events/locations
+[14:01:58] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 37ms
+[14:01:58] [INFO] Request Started | OPTIONS /api/Events/categories
+[14:01:58] [INFO] Request Finished | OPTIONS /api/Events/categories | Status: 204 | Time: 5ms
+[14:01:58] [INFO] Request Started | GET /api/Events/categories
+[14:01:58] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 27ms
+[14:01:58] [INFO] Request Started | OPTIONS /api/Events/targetAudience
+[14:01:58] [INFO] Request Finished | OPTIONS /api/Events/targetAudience | Status: 204 | Time: 4ms
+[14:01:58] [INFO] Request Started | GET /api/Events/targetAudience
+[14:01:58] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 29ms
+[14:01:58] [INFO] Request Started | OPTIONS /api/Events/employees
+[14:01:58] [INFO] Request Finished | OPTIONS /api/Events/employees | Status: 204 | Time: 11ms
+[14:01:58] [INFO] Request Started | GET /api/Events/employees
+[14:01:58] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 29ms
+[14:06:43] [INFO] Request Started | GET /swagger/index.html
+[14:06:43] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 265ms
+[14:06:44] [INFO] Request Started | GET /swagger/v1/swagger.json
+[14:06:44] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 118ms
+[14:06:50] [INFO] Request Started | GET /api/Events
+[14:06:51] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 855ms
+[14:06:51] [INFO] Request Started | GET /api/Events
+[14:06:51] [INFO] Request Started | GET /api/Events/locations
+[14:06:51] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 315ms
+[14:06:51] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 301ms
+[14:06:51] [INFO] Request Started | GET /api/Events/locations
+[14:06:51] [INFO] Request Started | GET /api/Events/categories
+[14:06:51] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 33ms
+[14:06:51] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 57ms
+[14:06:51] [INFO] Request Started | GET /api/Events/categories
+[14:06:51] [INFO] Request Started | GET /api/Events/targetAudience
+[14:06:51] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 29ms
+[14:06:51] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 69ms
+[14:06:51] [INFO] Request Started | GET /api/Events/targetAudience
+[14:06:51] [INFO] Request Started | GET /api/Events/employees
+[14:06:51] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 29ms
+[14:06:51] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 95ms
+[14:06:51] [INFO] Request Started | GET /api/Events/employees
+[14:06:51] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 33ms
+[14:40:53] [INFO] Request Started | GET /swagger/index.html
+[14:40:53] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 174ms
+[14:40:53] [INFO] Request Started | GET /swagger/v1/swagger.json
+[14:40:53] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 45ms
+[14:41:00] [INFO] Request Started | GET /api/Events
+[14:41:03] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 3805ms
+[14:41:03] [INFO] Request Started | GET /api/Events
+[14:41:04] [INFO] Request Started | GET /api/Events/locations
+[14:41:04] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 190ms
+[14:41:04] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 186ms
+[14:41:04] [INFO] Request Started | GET /api/Events/locations
+[14:41:04] [INFO] Request Started | GET /api/Events/categories
+[14:41:04] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 23ms
+[14:41:04] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 39ms
+[14:41:04] [INFO] Request Started | GET /api/Events/categories
+[14:41:04] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:04] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 30ms
+[14:41:04] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 30ms
+[14:41:04] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:04] [INFO] Request Started | GET /api/Events/employees
+[14:41:04] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 14ms
+[14:41:04] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 40ms
+[14:41:04] [INFO] Request Started | GET /api/Events/employees
+[14:41:04] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 15ms
+[14:41:10] [INFO] Request Started | GET /api/Events
+[14:41:10] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 40ms
+[14:41:10] [INFO] Request Started | GET /api/Events
+[14:41:10] [INFO] Request Started | GET /api/Events/locations
+[14:41:10] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 45ms
+[14:41:10] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 37ms
+[14:41:10] [INFO] Request Started | GET /api/Events/locations
+[14:41:10] [INFO] Request Started | GET /api/Events/categories
+[14:41:10] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 38ms
+[14:41:10] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 34ms
+[14:41:10] [INFO] Request Started | GET /api/Events/categories
+[14:41:10] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:10] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 42ms
+[14:41:10] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 37ms
+[14:41:10] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:10] [INFO] Request Started | GET /api/Events/employees
+[14:41:10] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 38ms
+[14:41:10] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 52ms
+[14:41:10] [INFO] Request Started | GET /api/Events/employees
+[14:41:10] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 24ms
+[14:41:36] [INFO] Request Started | GET /api/Events
+[14:41:36] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 40ms
+[14:41:36] [INFO] Request Started | GET /api/Events
+[14:41:36] [INFO] Request Started | GET /api/Events/locations
+[14:41:36] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 79ms
+[14:41:36] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 94ms
+[14:41:36] [INFO] Request Started | GET /api/Events/locations
+[14:41:36] [INFO] Request Started | GET /api/Events/categories
+[14:41:36] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 38ms
+[14:41:36] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 40ms
+[14:41:36] [INFO] Request Started | GET /api/Events/categories
+[14:41:36] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:36] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 34ms
+[14:41:36] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 57ms
+[14:41:36] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:36] [INFO] Request Started | GET /api/Events/employees
+[14:41:36] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 35ms
+[14:41:36] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 42ms
+[14:41:36] [INFO] Request Started | GET /api/Events/employees
+[14:41:36] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 25ms
+[14:41:50] [INFO] Request Started | GET /api/Events
+[14:41:50] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 29ms
+[14:41:50] [INFO] Request Started | GET /api/Events
+[14:41:50] [INFO] Request Started | GET /api/Events/locations
+[14:41:50] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 17ms
+[14:41:50] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 18ms
+[14:41:50] [INFO] Request Started | GET /api/Events/locations
+[14:41:50] [INFO] Request Started | GET /api/Events/categories
+[14:41:50] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 40ms
+[14:41:50] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 37ms
+[14:41:50] [INFO] Request Started | GET /api/Events/categories
+[14:41:50] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:50] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 46ms
+[14:41:50] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 50ms
+[14:41:50] [INFO] Request Started | GET /api/Events/targetAudience
+[14:41:50] [INFO] Request Started | GET /api/Events/employees
+[14:41:50] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 29ms
+[14:41:50] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 38ms
+[14:41:50] [INFO] Request Started | GET /api/Events/employees
+[14:41:50] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 24ms
+[14:45:07] [INFO] Request Started | POST /api/Auth/login
+[14:45:08] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 753ms
+[14:46:04] [INFO] Request Started | POST /api/Auth/login
+[14:46:05] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[14:46:05] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 489ms
+[14:46:11] [INFO] Request Started | GET /api/Events
+[14:46:11] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 79ms
+[14:46:11] [INFO] Request Started | GET /api/Events
+[14:46:11] [INFO] Request Started | GET /api/Events/locations
+[14:46:11] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 39ms
+[14:46:11] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 45ms
+[14:46:11] [INFO] Request Started | GET /api/Events/locations
+[14:46:11] [INFO] Request Started | GET /api/Events/categories
+[14:46:11] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 22ms
+[14:46:11] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 39ms
+[14:46:11] [INFO] Request Started | GET /api/Events/categories
+[14:46:11] [INFO] Request Started | GET /api/Events/targetAudience
+[14:46:11] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 24ms
+[14:46:11] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 32ms
+[14:46:11] [INFO] Request Started | GET /api/Events/targetAudience
+[14:46:11] [INFO] Request Started | GET /api/Events/employees
+[14:46:11] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 27ms
+[14:46:11] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 24ms
+[14:46:11] [INFO] Request Started | GET /api/Events/employees
+[14:46:11] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 23ms
+[14:46:45] [INFO] Request Started | GET /api/Events
+[14:46:45] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 28ms
+[14:46:45] [INFO] Request Started | GET /api/Events
+[14:46:45] [INFO] Request Started | GET /api/Events/locations
+[14:46:45] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 55ms
+[14:46:45] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 47ms
+[14:46:45] [INFO] Request Started | GET /api/Events/locations
+[14:46:45] [INFO] Request Started | GET /api/Events/categories
+[14:46:45] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 50ms
+[14:46:45] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 61ms
+[14:46:45] [INFO] Request Started | GET /api/Events/categories
+[14:46:45] [INFO] Request Started | GET /api/Events/targetAudience
+[14:46:45] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 29ms
+[14:46:45] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 30ms
+[14:46:45] [INFO] Request Started | GET /api/Events/targetAudience
+[14:46:45] [INFO] Request Started | GET /api/Events/employees
+[14:46:45] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 39ms
+[14:46:45] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 61ms
+[14:46:45] [INFO] Request Started | GET /api/Events/employees
+[14:46:45] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 21ms
+[14:47:32] [INFO] Request Started | POST /api/Auth/login
+[14:47:32] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[14:47:32] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 258ms
+[14:47:47] [INFO] Request Started | GET /api/Events
+[14:47:47] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 24ms
+[14:47:47] [INFO] Request Started | GET /api/Events
+[14:47:47] [INFO] Request Started | GET /api/Events/locations
+[14:47:47] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 18ms
+[14:47:47] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 19ms
+[14:47:47] [INFO] Request Started | GET /api/Events/locations
+[14:47:47] [INFO] Request Started | GET /api/Events/categories
+[14:47:47] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 16ms
+[14:47:47] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 14ms
+[14:47:47] [INFO] Request Started | GET /api/Events/categories
+[14:47:47] [INFO] Request Started | GET /api/Events/targetAudience
+[14:47:47] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 12ms
+[14:47:47] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 14ms
+[14:47:47] [INFO] Request Started | GET /api/Events/targetAudience
+[14:47:47] [INFO] Request Started | GET /api/Events/employees
+[14:47:47] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 14ms
+[14:47:47] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 35ms
+[14:47:47] [INFO] Request Started | GET /api/Events/employees
+[14:47:47] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 15ms
+[15:13:43] [INFO] Request Started | GET /api/Events
+[15:13:43] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 171ms
+[15:13:43] [INFO] Request Started | GET /api/Events
+[15:13:43] [INFO] Request Started | GET /api/Events/locations
+[15:13:43] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 87ms
+[15:13:43] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 79ms
+[15:13:43] [INFO] Request Started | GET /api/Events/locations
+[15:13:43] [INFO] Request Started | GET /api/Events/categories
+[15:13:43] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 39ms
+[15:13:43] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 42ms
+[15:13:43] [INFO] Request Started | GET /api/Events/categories
+[15:13:43] [INFO] Request Started | GET /api/Events/targetAudience
+[15:13:43] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 20ms
+[15:13:43] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 24ms
+[15:13:43] [INFO] Request Started | GET /api/Events/targetAudience
+[15:13:43] [INFO] Request Started | GET /api/Events/employees
+[15:13:43] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 22ms
+[15:13:43] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 24ms
+[15:13:43] [INFO] Request Started | GET /api/Events/employees
+[15:13:43] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 18ms
+[15:15:24] [INFO] Request Started | POST /api/Auth/register
+[15:15:24] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 284ms
+[15:15:53] [INFO] Request Started | POST /api/Auth/register
+[15:15:53] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 222ms
+[15:16:02] [INFO] Request Started | POST /api/Auth/register
+[15:16:02] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 218ms
+[15:16:36] [INFO] Request Started | POST /api/Auth/register
+[15:16:36] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 258ms
+[15:23:10] [INFO] Request Started | POST /api/Auth/register
+[15:23:10] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 323ms
+[15:23:29] [INFO] Request Started | POST /api/Auth/register
+[15:23:29] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 188ms
+[15:23:51] [INFO] Request Started | POST /api/Auth/register
+[15:23:51] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 211ms
+[15:26:03] [INFO] Request Started | POST /api/Auth/register
+[15:26:03] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 232ms
+[15:27:17] [INFO] Request Started | POST /api/Auth/register
+[15:27:17] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 243ms
+[15:38:27] [INFO] Request Started | GET /swagger/index.html
+[15:38:27] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 109ms
+[15:38:27] [INFO] Request Started | GET /swagger/v1/swagger.json
+[15:38:27] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 66ms
+[15:38:54] [INFO] Request Started | POST /api/Auth/register
+[15:38:55] [INFO] משתמש חדש נרשם: nao472@gmail.com (ID: 5)
+[15:38:55] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 956ms
+[15:39:19] [INFO] Request Started | GET /api/Events
+[15:39:19] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 217ms
+[15:39:19] [INFO] Request Started | GET /api/Events
+[15:39:19] [INFO] Request Started | GET /api/Events/locations
+[15:39:19] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 55ms
+[15:39:19] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 75ms
+[15:39:19] [INFO] Request Started | GET /api/Events/locations
+[15:39:19] [INFO] Request Started | GET /api/Events/categories
+[15:39:19] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 33ms
+[15:39:19] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 68ms
+[15:39:19] [INFO] Request Started | GET /api/Events/categories
+[15:39:19] [INFO] Request Started | GET /api/Events/targetAudience
+[15:39:19] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 29ms
+[15:39:19] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 43ms
+[15:39:19] [INFO] Request Started | GET /api/Events/targetAudience
+[15:39:19] [INFO] Request Started | GET /api/Events/employees
+[15:39:19] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 32ms
+[15:39:20] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 59ms
+[15:39:20] [INFO] Request Started | GET /api/Events/employees
+[15:39:20] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 18ms

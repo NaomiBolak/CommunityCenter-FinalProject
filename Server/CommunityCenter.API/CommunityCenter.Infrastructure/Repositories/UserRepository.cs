@@ -1,10 +1,10 @@
-﻿using CommunityCenter.Application.Interfaces;
-using CommunityCenter.Domain.Entities;
+﻿using CommunityCenter.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using CommunityCenter.Application.Interfaces;
 
 namespace CommunityCenter.Infrastructure.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository: IUserRepository
     {
         private readonly DataContext _context;
 
@@ -17,6 +17,12 @@ namespace CommunityCenter.Infrastructure.Repositories
         {
             return await _context.Subscribers
                 .FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<Subscriber?> GetByIdentityCardAsync(string identityCard)
+        {
+            return await _context.Subscribers
+                .FirstOrDefaultAsync(u => u.IdentityCard == identityCard);
         }
 
         public async Task AddAsync(Subscriber user)

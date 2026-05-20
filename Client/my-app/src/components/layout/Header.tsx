@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { logout } from '../../store/slices/authSlice';
 import { ROUTES } from '../../utils/constants';
 
+
 const Header: React.FC = () => {
   const { isAuthenticated, isAdmin } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();

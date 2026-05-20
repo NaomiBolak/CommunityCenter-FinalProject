@@ -1,5 +1,6 @@
 ﻿using CommunityCenter.Application.DTOs.Auth;
 using CommunityCenter.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommunityCenter.API.Controllers
@@ -28,5 +29,7 @@ namespace CommunityCenter.API.Controllers
             var result = await _authService.Login(dto);
             return Ok(result);
         }
+
+     
     }
 }
