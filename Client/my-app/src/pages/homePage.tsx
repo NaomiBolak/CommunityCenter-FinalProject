@@ -1,9 +1,14 @@
 import React from 'react';
-const HomePage: React.FC = () => <div>
-    <h1>מנהל קהילתי רמת שלמה</h1>
-    <h2>ברוכים הבאים</h2>
-    <p>זהו אתר הבית של מנהל קהילתי רמת שלמה. כאן תוכלו למצוא מידע על הפעילויות, החוגים, האירועים והחדשות הקשורים לקהילה שלנו.</p>
+import NewsSection from '../components/home/NewsSection'; // תוודאי שהנתיב נכון לפי התיקיות שלך
 
-    
-    </div>;
-export default HomePage;
+const homePage = () => {
+  return (
+    <div className="news-page">
+      <h1>חדשות המרכז הקהילתי</h1>
+      <hr />
+      <NewsSection />
+    </div>
+  );
+};
+
+export default homePage;
