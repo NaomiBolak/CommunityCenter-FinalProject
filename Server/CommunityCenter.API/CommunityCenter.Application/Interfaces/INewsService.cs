@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityCenter.Application.DTOs;
 
 namespace CommunityCenter.Application.Interfaces
 {
-    internal interface INewsService
+    public interface INewsService
     {
+        Task<IEnumerable<NewsDto>> GetAllNewsAsync();
+        Task CreateNewsAsync(NewsDto newsDto);
     }
 }
