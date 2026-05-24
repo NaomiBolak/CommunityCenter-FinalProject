@@ -9,53 +9,39 @@ const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
+    setError('');
     try {
       const { data } = await api.post('/Auth/login', { email, password });
-
-     
       localStorage.setItem('token', data.token);
-
-    dispatch(loginSuccess({
-     subscriber: data.user,
-     isAdmin: data.user.role?.toLowerCase() === "admin"
-   }));
-
+      dispatch(loginSuccess({
+        subscriber: data.user,
+        isAdmin: data.user.role?.toLowerCase() === 'admin'
+      }));
       navigate('/');
     } catch (err) {
       const axiosError = err as AxiosError;
       setError((axiosError.response?.data as any)?.detail || 'שגיאה בהתחברות');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <h2>התחברות</h2>
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
+      {error && <p style={{ color: '#c62828', backgroundColor: '#ffebee', padding: '8px', borderRadius: '4px' }}>{error}</p>}
       <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="אימייל"
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-
-        <input
-          type="password"
-          placeholder="סיסמה"
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-
-        <button type="submit">כניסה</button>
+        <input type="email" placeholder="אימייל" onChange={e => setEmail(e.target.value)} required autoComplete="off" />
+        <input type="password" placeholder="סיסמה" onChange={e => setPassword(e.target.value)} required autoComplete="new-password" />
+        <button type="submit" disabled={loading}>{loading ? 'מתחבר...' : 'כניסה'}</button>
       </form>
     </div>
   );

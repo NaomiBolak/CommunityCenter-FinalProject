@@ -22,6 +22,7 @@ const RegisterPage: React.FC = () => {
   });
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,49 +31,39 @@ const RegisterPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     const validationError = validateRegisterForm(form);
     if (validationError) {
       setError(validationError);
       return;
     }
-
+    setLoading(true);
+    setError('');
     try {
-      // התיקון: יוצרים אובייקט חדש, ומעתיקים את ה-email ל-username בשביל ה-Identity ב-C#
-      const registrationData = {
-        ...form,
-        username: form.email 
-      };
-
-      // שולחים לשרת את האובייקט המלא שכולל את ה-username הפנימי
-      const { data } = await api.post('/Auth/register', registrationData);
-
+      const { data } = await api.post('/Auth/register', { ...form, username: form.email });
       dispatch(registerSuccess({ subscriber: data.user, token: data.token }));
-
       navigate('/');
     } catch (err) {
       const axiosError = err as AxiosError;
       setError((axiosError.response?.data as any)?.detail || 'שגיאה בהרשמה');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div>
       <h1>הרשמה</h1>
-
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      <form onSubmit={handleSubmit}>
-        <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required />
-        <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required />
-        <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required />
-        <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required />
-        <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required />
-        <input name="phone" placeholder="טלפון" onChange={handleChange} required />
-        <input name="address" placeholder="כתובת" onChange={handleChange} />
-        <input name="birthDate" type="date" onChange={handleChange} required />
-
-        <button type="submit">הרשמה</button>
+      {error && <p style={{ color: '#c62828', backgroundColor: '#ffebee', padding: '8px', borderRadius: '4px' }}>{error}</p>}
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required autoComplete="off" />
+        <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required autoComplete="off" />
+        <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required autoComplete="off" />
+        <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required autoComplete="off" />
+        <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required autoComplete="new-password" />
+        <input name="phone" placeholder="טלפון" onChange={handleChange} required autoComplete="off" />
+        <input name="address" placeholder="כתובת" onChange={handleChange} autoComplete="off" />
+        <input name="birthDate" type="date" onChange={handleChange} required autoComplete="off" />
+        <button type="submit" disabled={loading}>{loading ? 'נרשם...' : 'הרשמה'}</button>
       </form>
     </div>
   );

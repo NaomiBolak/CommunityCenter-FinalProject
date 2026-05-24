@@ -1,17 +1,9 @@
-import axios from 'axios';
+import api from './api';
 
-// כתובת ה-API שלך (תוודאי שהיא תואמת לכתובת של השרת שלך)
-const API_URL = 'http://localhost:5000/api/news'; 
+const BASE = '/News';
 
 export const newsService = {
-  // פונקציה למשיכת כל החדשות
-  getAllNews: async () => {
-    try {
-      const response = await axios.get(API_URL);
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching news:", error);
-      throw error;
-    }
-  }
+  getAllNews: () => api.get(BASE),
+  createNews: (data: any) => api.post(BASE, data),
+  deleteNews: (id: number) => api.delete(`${BASE}/${id}`),
 };

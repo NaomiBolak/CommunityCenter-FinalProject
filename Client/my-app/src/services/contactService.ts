@@ -1,16 +1,10 @@
-import axios from 'axios';
+import api from './api';
 
-const API_URL = 'http://localhost:5000/api/contact'; 
+const BASE = '/Contact';
 
 export const contactService = {
-  // פונקציה לשליחת טופס צור קשר
-  sendContactMessage: async (formData: { name: string; email: string; message: string }) => {
-    try {
-      const response = await axios.post(API_URL, formData);
-      return response.data;
-    } catch (error) {
-      console.error("Error sending contact message:", error);
-      throw error;
-    }
-  }
+  sendContactMessage: (data: { name: string; email: string; phone: string; subject: string; message: string }) =>
+    api.post(BASE, data),
+  getAllMessages: () => api.get(BASE),
+  resolveMessage: (id: number) => api.patch(`${BASE}/${id}`),
 };

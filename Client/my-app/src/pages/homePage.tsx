@@ -6,7 +6,7 @@ const homePage = () => {
     <div className="news-page">
       <h1>חדשות המרכז הקהילתי</h1>
       <hr />
-      <NewsSection />
+      <NewsSection limit={3} />
     </div>
   );
 };

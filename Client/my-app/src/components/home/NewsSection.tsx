@@ -1,33 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { newsService } from '../../services/newsService'; // תוודאי שהנתיב נכון
+import { newsService } from '../../services/newsService';
+import { NewsItem } from '../../store/slices/newsSlice';
 
-const NewsSection = () => {
-  const [news, setNews] = useState<any[]>([]); // כאן נשמור את החדשות
+const NewsSection = ({ limit }: { limit?: number }) => {
+  const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  // משיכת החדשות ברגע שהקומפוננטה עולה
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const data = await newsService.getAllNews();
-        setNews(data);
-      } catch (error) {
-        console.error("Failed to load news", error);
+        const response = await newsService.getAllNews();
+        const all = response.data || response;
+        setNews(limit ? all.slice(0, limit) : all);
+      } catch {
+        setError('שגיאה בטעינת החדשות');
       } finally {
         setLoading(false);
       }
     };
-
     fetchNews();
-  }, []);
+  }, [limit]);
 
   if (loading) return <div>טוען חדשות...</div>;
+  if (error) return <div style={{ color: '#c62828' }}>{error}</div>;
 
   return (
     <div className="news-section">
       <h2>חדשות אחרונות</h2>
       <ul>
-        {news.map((item: any) => (
+        {news.map((item: NewsItem) => (
           <li key={item.id}>
             <h3>{item.title}</h3>
             <p>{item.content}</p>

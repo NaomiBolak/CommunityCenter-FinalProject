@@ -27,6 +27,10 @@ interface LocationItem {
 const EventCard = () => {
     const [events, setEvents] = useState<EventItem[]>([]);
     const [locations, setLocations] = useState<LocationItem[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [formError, setFormError] = useState('');
+    const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
    const user = useSelector((state: any) => state.auth?.user)
     || JSON.parse(localStorage.getItem('user') || 'null');
 
@@ -59,36 +63,24 @@ const [newAudienceName, setNewAudienceName] = useState("");
 
 const fetchData = async () => {
     try {
-        console.log("מתחיל טעינת נתונים...");
-
-        // 1. אירועים
         const eventResponse = await eventService.getEvents();
         setEvents(eventResponse.data || eventResponse);
 
-        // 2. מיקומים
         const locResponse = await eventService.getLocations();
         setLocations(locResponse.data || locResponse);
 
-        // 3. קטגוריות
         const catResponse = await eventService.getCategories();
-        const catData = catResponse.data || catResponse;
-        console.log("קטגוריות שהגיעו:", catData);
-        setCategories(catData); // <--- לוודא שזה הולך ל-Categories!
+        setCategories(catResponse.data || catResponse);
 
-        // 4. קהל יעד
         const audResponse = await eventService.gettargetadience();
-        const audData = audResponse.data || audResponse;
-        console.log("קהל יעד שהגיע:", audData);
-        setAudiences(audData); // <--- לוודא שזה הולך ל-Audiences!
+        setAudiences(audResponse.data || audResponse);
 
-        // 5. עובדים
         const empResponse = await eventService.getEmployees();
-        const empData = empResponse.data || empResponse;
-        console.log("עובדים שהגיעו:", empData);
-        setEmployees(empData);
-
+        setEmployees(empResponse.data || empResponse);
     } catch (error) {
-        console.error("שגיאה בטעינת נתונים:", error);
+        setFormError("שגיאה בטעינת הנתונים");
+    } finally {
+        setLoading(false);
     }
 };
     useEffect(() => {
@@ -113,13 +105,13 @@ const getTargetAudienceName = (id: any) => {
     return `לא נמצא (ID: ${targetId})`; 
 };
     const handleDelete = async (id: number) => {
-        if (window.confirm("האם את בטוחה שברצונך למחוק אירוע זה?")) {
-            try {
-                await eventService.removeEvent(id);
-                setEvents(prev => prev.filter(ev => ev.id !== id));
-            } catch (error) {
-                console.error("שגיאה במחיקה:", error);
-            }
+        try {
+            await eventService.removeEvent(id);
+            setEvents(prev => prev.filter(ev => ev.id !== id));
+            setConfirmDeleteId(null);
+            setSuccessMessage("האירוע נמחק בהצלחה");
+        } catch (error) {
+            setFormError("שגיאה במחיקה");
         }
     };
 
@@ -130,25 +122,16 @@ const handleSaveUpdate = async () => {
             const response = await eventService.addEvent(editingEvent);
             const createdEvent = response.data || response;
             setEvents(prev => [...prev, createdEvent]);
-            alert("האירוע נוסף בהצלחה!");
+            setSuccessMessage("האירוע נוסף בהצלחה!");
         } else {
             await eventService.updateEvent(editingEvent.id, editingEvent);
             setEvents(prev => prev.map(ev => ev.id === editingEvent.id ? editingEvent : ev));
-            alert("הנתונים נשמרו בהצלחה!");
+            setSuccessMessage("הנתונים נשמרו בהצלחה!");
         }
         setEditingEvent(null);
     } catch (error: any) {
-        // כאן השינוי החשוב!
-        console.error("פרטי השגיאה מהשרת:", error.response?.data || error.message);
-        
-        // בודק אם השרת שלח פירוט על שדות חסרים
         const serverError = error.response?.data?.errors;
-        if (serverError) {
-            console.log("השדות שהשרת עדיין דורש:", serverError);
-            alert("השרת טוען שחסרים נתונים. בדקי את ה-Console (F12)");
-        } else {
-            alert("שגיאה בשמירה: " + (error.response?.data || "משהו השתבש"));
-        }
+        setFormError(serverError ? "חסרים נתונים, אנא מלאי את כל השדות" : "שגיאה בשמירה, נסי שוב");
     }
 };
     const handleAddNewLocation = async () => {
@@ -177,44 +160,25 @@ const handleSaveUpdate = async () => {
 };
 
 const handleAddNewEmployee = async () => {
-    // בדיקה בסיסית ששדות חובה מלאים
     if (!newEmpData.FirstName || !newEmpData.LastName) {
-        alert("חובה למלא שם פרטי ומשפחה");
+        setFormError("חובה למלא שם פרטי ומשפחה");
         return;
     }
-
     try {
-        // כאן אנחנו בונים את האובייקט הסופי שנשלח לשרת
-        // אנחנו מוודאים שה-CategoryId מעודכן ומוסיפים Category: null כדי לעבור את הולידציה
         const employeeToSave = {
             ...newEmpData,
             CategoryId: editingEvent?.categoryId || newEmpData.CategoryId || 1,
-            Category: null // זה השורה שתפתור את השגיאה שראית ב-Console!
+            Category: null
         };
-
-        console.log("שולח עובד לשרת:", employeeToSave);
-
         const response = await eventService.addemployee(employeeToSave);
         const created = response.data || response;
-        
         setEmployees(prev => [...prev, created]);
-        
-        // בחירה אוטומטית של העובד החדש באירוע
         setEditingEvent(prev => prev ? { ...prev, employeeId: created.id } : null);
-        
-        // איפוס השדות לפי המבנה שלך
-        setNewEmpData({ FirstName: "", LastName: "", Description: "", Phone: "", Role: "" ,CategoryId: 0});
+        setNewEmpData({ FirstName: "", LastName: "", Description: "", Phone: "", Role: "", CategoryId: 0 });
         setIsAddingEmployee(false);
-        alert("עובד נוסף בהצלחה!");
-
+        setSuccessMessage("עובד נוסף בהצלחה!");
     } catch (e: any) {
-        // הדפסה מפורטת כדי לראות אם יש עוד שדה שחסר
-        console.error("שגיאה בהוספת עובד:", e.response?.data || e);
-        const serverErrors = e.response?.data?.errors;
-        if (serverErrors) {
-            console.log("פירוט שגיאות מהשרת:", serverErrors);
-        }
-        alert("ההוספה נכשלה. בדקי את ה-Console לפרטים נוספים.");
+        setFormError("ההוספה נכשלה, נסי שוב");
     }
 };
 
@@ -232,16 +196,16 @@ const handleAddNewAudience = async () => {
     
 
     const changemaxPlaces = async (event: EventItem, newMax: number) => {
-        if (newMax < 0) { alert("מספר מקומות לא יכול להיות שלילי!"); return; }
+        if (newMax < 0) { setFormError("מספר מקומות לא יכול להיות שלילי!"); return; }
         try {
             const reg = await eventService.howmanyRegisterstoEvent(event.id);
             const registeredCount = reg.data || reg;
             if (newMax < registeredCount) {
-                alert(`לא ניתן להקטין ל-${newMax} כי יש כבר ${registeredCount} רשומים!`);
+                setFormError(`לא ניתן להקטין ל-${newMax} כי יש כבר ${registeredCount} רשומים!`);
                 return;
             }
             setEditingEvent({ ...event, maxPlaces: newMax });
-        } catch (error) { console.error(error); }
+        } catch (error) { setFormError("שגיאה בטעינת נתונים"); }
     };
 
 const handleAddNewEvent = () => {
@@ -262,12 +226,33 @@ const handleAddNewEvent = () => {
             currentRegistrations: 0
         } as any);
     };
-   if (!events) {
-    return <div style={{ padding: '20px', textAlign: 'center' }}>טוען נתונים...</div>;
-}
+   if (loading) return <div style={{ padding: '20px', textAlign: 'center' }}>טוען נתונים...</div>;
     return (
         <div style={{ padding: '20px' }}>
             <h1>האירועים הקרובים</h1>
+
+            {successMessage && (
+                <div style={{ backgroundColor: '#e8f5e9', color: '#2e7d32', padding: '10px', borderRadius: '6px', marginBottom: '10px' }}>
+                    {successMessage}
+                    <button onClick={() => setSuccessMessage('')} style={{ float: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>✕</button>
+                </div>
+            )}
+            {formError && (
+                <div style={{ backgroundColor: '#ffebee', color: '#c62828', padding: '10px', borderRadius: '6px', marginBottom: '10px' }}>
+                    {formError}
+                    <button onClick={() => setFormError('')} style={{ float: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>✕</button>
+                </div>
+            )}
+
+            {confirmDeleteId !== null && (
+                <div style={modalStyle}>
+                    <h3>האם למחוק אירוע זה?</h3>
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                        <button onClick={() => handleDelete(confirmDeleteId)} style={{ ...btnStyle, backgroundColor: '#f44336', flex: 1 }}>מחק בודאי</button>
+                        <button onClick={() => setConfirmDeleteId(null)} style={{ ...btnStyle, backgroundColor: '#757575', flex: 1 }}>ביטול</button>
+                    </div>
+                </div>
+            )}
             
             {userRole === 'admin' && (
                 <button 
@@ -387,8 +372,9 @@ const handleAddNewEvent = () => {
     </div>
 )}
         <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+            {formError && <p style={{ color: '#c62828', fontSize: '13px', marginBottom: '8px' }}>{formError}</p>}
             <button onClick={handleSaveUpdate} style={{ ...btnStyle, backgroundColor: '#4CAF50' }}>שמור ✅</button>
-            <button onClick={() => { setEditingEvent(null); setIsAddingLocation(false); }} style={{ ...btnStyle, backgroundColor: '#757575' }}>ביטול ❌</button>
+            <button onClick={() => { setEditingEvent(null); setIsAddingLocation(false); setFormError(''); }} style={{ ...btnStyle, backgroundColor: '#757575' }}>ביטול ❌</button>
         </div>
     </div>
 )}
@@ -414,7 +400,7 @@ const handleAddNewEvent = () => {
                             {userRole === 'admin' && (
                                 <div style={{ display: 'flex', gap: '10px' }}>
                                     <button onClick={() => setEditingEvent(ev)} style={{ ...btnStyle, backgroundColor: '#2196F3', flex: 1 }}>עדכון ✏️</button>
-                                    <button onClick={() => handleDelete(ev.id)} style={{ ...btnStyle, backgroundColor: '#f44336', flex: 1 }}>מחיקה 🗑️</button>
+                                    <button onClick={() => setConfirmDeleteId(ev.id)} style={{ ...btnStyle, backgroundColor: '#f44336', flex: 1 }}>מחיקה 🗑️</button>
                                 </div>
                             )}
                         </div>

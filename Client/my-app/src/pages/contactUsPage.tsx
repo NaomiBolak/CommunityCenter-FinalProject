@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactForm from '../components/common/ContactForm'; // תעדכני את הנתיב לפי המיקום של הקובץ
+import ContactForm from '../components/contact/ContactForm';
 
 const ContactUsPage = () => {
   return (
