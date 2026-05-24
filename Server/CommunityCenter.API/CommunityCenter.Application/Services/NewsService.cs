@@ -7,15 +7,18 @@ namespace CommunityCenter.Application.Services
     public class NewsService : INewsService
     {
         private readonly INewsRepository _newsRepository;
+        private readonly ILoggerService _logger;
 
-        public NewsService(INewsRepository newsRepository)
+        public NewsService(INewsRepository newsRepository,ILoggerService logger)
         {
             _newsRepository = newsRepository;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<NewsDto>> GetAllNewsAsync()
         {
             var newsList = await _newsRepository.GetAllAsync();
+           
             return newsList.Select(n => new NewsDto
             {
                 Id = n.Id,
@@ -34,6 +37,7 @@ namespace CommunityCenter.Application.Services
                 DatePublished = DateTime.Now
             };
             await _newsRepository.AddAsync(newsEntity);
+            await _logger.Info($"חדשות חדשות נוצרו: {newsDto.Title}");
         }
     }
 }

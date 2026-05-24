@@ -31,14 +31,14 @@ namespace CommunityCenter.Application.Services
             var existingUser = await _userRepository.GetByEmailAsync(dto.Email);
             if (existingUser != null)
             {
-                _logger.Warning($"ניסיון רישום עם אימייל קיים: {dto.Email}");
+                await _logger.Warning($"ניסיון רישום עם אימייל קיים: {dto.Email}");
                 throw new AppException("אימייל כבר קיים", 400);
             }
 
             var existingById = await _userRepository.GetByIdentityCardAsync(dto.IdentityCard);
             if (existingById != null)
             {
-                _logger.Warning($"ניסיון רישום עם תעודת זהות קיימת: {dto.IdentityCard}");
+               await _logger.Warning($"ניסיון רישום עם תעודת זהות קיימת: {dto.IdentityCard}");
                 throw new AppException("תעודת זהות כבר קיימת", 400);
             }
 
@@ -58,7 +58,7 @@ namespace CommunityCenter.Application.Services
             };
 
             await _userRepository.AddAsync(user);
-            _logger.Info($"משתמש חדש נרשם: {user.Email} (ID: {user.Id})");
+            await _logger.Info($"משתמש חדש נרשם: {user.Email} (ID: {user.Id})");
 
             return new
             {
@@ -81,7 +81,7 @@ namespace CommunityCenter.Application.Services
                 throw new AppException("המשתמש לא פעיל", 400);
 
             var token = _tokenGenerator.GenerateToken(user);
-            _logger.Info($"משתמש התחבר: {user.Email} (ID: {user.Id})");
+           await _logger.Info($"משתמש התחבר: {user.Email} (ID: {user.Id})");
 
             return new
             {

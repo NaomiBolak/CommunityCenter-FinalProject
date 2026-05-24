@@ -23,7 +23,7 @@ namespace CommunityCenter.Application.Services
         public async Task<Event> AddEvent(Event ev)
         {
             await _eventRepository.AddEvent(ev);
-            _logger.Info($"אירוע חדש נוסף: {ev.Description} (ID: {ev.Id})");
+             await _logger.Info($"אירוע חדש נוסף: {ev.Description} (ID: {ev.Id})");
 
             return ev;
 
@@ -33,7 +33,7 @@ namespace CommunityCenter.Application.Services
             var sucsess = await _eventRepository.GetEventById(id);
             if (sucsess != null)
             {
-                _logger.Info($"אירוע נמחק: {sucsess.Description} (ID: {sucsess.Id})");
+               await _logger.Info($"אירוע נמחק: {sucsess.Description} (ID: {sucsess.Id})");
                 await _eventRepository.RemoveEvent(id);
                 return true;
             }
@@ -111,13 +111,13 @@ namespace CommunityCenter.Application.Services
 
         public async Task<bool> RemoveEmployee(int empid)
         {
-            _logger.Info($"עובד נמחק: (ID: {empid})");
+           await _logger.Info($"עובד נמחק: (ID: {empid})");
             return await _eventRepository.RemoveEmployee(empid);
         }
 
         public async Task<Category> AddCategory(Category cat)
         {
-            _logger.Info($"קטגוריה חדשה נוספה: {cat.Description} (ID: {cat.Id})");
+           await _logger.Info($"קטגוריה חדשה נוספה: {cat.Description} (ID: {cat.Id})");
             return await _eventRepository.AddCategory(cat);
         }
 

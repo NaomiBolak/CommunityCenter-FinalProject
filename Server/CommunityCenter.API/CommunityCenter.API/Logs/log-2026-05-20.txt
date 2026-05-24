@@ -1,0 +1,414 @@
+[15:51:19] [INFO] Request Started | GET /swagger/index.html
+[15:51:20] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 254ms
+[15:51:20] [INFO] Request Started | GET /swagger/v1/swagger.json
+[15:51:20] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 79ms
+[19:20:12] [INFO] Request Started | GET /swagger/index.html
+[19:20:13] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 188ms
+[19:20:13] [INFO] Request Started | GET /swagger/v1/swagger.json
+[19:20:13] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 82ms
+[19:20:43] [INFO] Request Started | GET /swagger/index.html
+[19:20:43] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 198ms
+[19:20:43] [INFO] Request Started | GET /swagger/v1/swagger.json
+[19:20:43] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 105ms
+[19:20:49] [INFO] Request Started | GET /api/News
+[19:20:52] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 3681ms
+[19:20:52] [INFO] Request Started | GET /api/News
+[19:20:52] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 126ms
+[19:24:17] [INFO] Request Started | GET /swagger/index.html
+[19:24:17] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 110ms
+[19:24:17] [INFO] Request Started | GET /swagger/v1/swagger.json
+[19:24:17] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 75ms
+[19:24:26] [INFO] Request Started | GET /api/News
+[19:24:27] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 355ms
+[19:24:27] [INFO] Request Started | GET /api/News
+[19:24:27] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 137ms
+[19:24:35] [INFO] Request Started | GET /api/Events
+[19:24:35] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 111ms
+[19:24:35] [INFO] Request Started | GET /api/Events
+[19:24:35] [INFO] Request Started | GET /api/Events/locations
+[19:24:35] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 39ms
+[19:24:35] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 70ms
+[19:24:35] [INFO] Request Started | GET /api/Events/locations
+[19:24:35] [INFO] Request Started | GET /api/Events/categories
+[19:24:35] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 30ms
+[19:24:36] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 70ms
+[19:24:36] [INFO] Request Started | GET /api/Events/categories
+[19:24:36] [INFO] Request Started | GET /api/Events/targetAudience
+[19:24:36] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 29ms
+[19:24:36] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 71ms
+[19:24:36] [INFO] Request Started | GET /api/Events/targetAudience
+[19:24:36] [INFO] Request Started | GET /api/Events/employees
+[19:24:36] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 35ms
+[19:24:36] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 75ms
+[19:24:36] [INFO] Request Started | GET /api/Events/employees
+[19:24:36] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 23ms
+[19:24:44] [INFO] Request Started | GET /api/News
+[19:24:44] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 18ms
+[19:24:44] [INFO] Request Started | GET /api/News
+[19:24:44] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 12ms
+[19:24:56] [INFO] Request Started | POST /api/Auth/login
+[19:24:56] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[19:24:56] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 623ms
+[19:24:56] [INFO] Request Started | GET /api/News
+[19:24:57] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 85ms
+[19:24:57] [INFO] Request Started | GET /api/News
+[19:24:57] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 19ms
+[19:25:04] [INFO] Request Started | GET /api/News
+[19:25:05] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 36ms
+[19:25:05] [INFO] Request Started | GET /api/News
+[19:25:05] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 36ms
+[19:28:28] [INFO] Request Started | GET /api/News
+[19:28:28] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 22ms
+[19:28:28] [INFO] Request Started | GET /api/News
+[19:28:28] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 25ms
+[19:29:53] [INFO] Request Started | GET /api/News
+[19:29:53] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 44ms
+[19:30:16] [INFO] Request Started | GET /api/Contact
+[19:30:16] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 70ms
+[19:30:16] [INFO] Request Started | GET /api/Contact
+[19:30:16] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 25ms
+[19:30:18] [INFO] Request Started | GET /api/News
+[19:30:18] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 17ms
+[19:30:18] [INFO] Request Started | GET /api/News
+[19:30:18] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 22ms
+[19:31:01] [INFO] Request Started | GET /api/Contact
+[19:31:01] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 32ms
+[19:31:01] [INFO] Request Started | GET /api/Contact
+[19:31:01] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 26ms
+[19:31:04] [INFO] Request Started | GET /api/News
+[19:31:04] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 61ms
+[19:31:04] [INFO] Request Started | GET /api/News
+[19:31:04] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 33ms
+[19:31:10] [INFO] Request Started | GET /api/News
+[19:31:10] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 98ms
+[19:31:10] [INFO] Request Started | GET /api/News
+[19:31:10] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 51ms
+[19:32:34] [INFO] Request Started | POST /api/Auth/login
+[19:32:34] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[19:32:34] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 350ms
+[19:32:34] [INFO] Request Started | GET /api/News
+[19:32:34] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 27ms
+[19:32:35] [INFO] Request Started | GET /api/News
+[19:32:35] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 29ms
+[19:32:37] [INFO] Request Started | GET /api/News
+[19:32:37] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 22ms
+[19:32:37] [INFO] Request Started | GET /api/News
+[19:32:37] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 27ms
+[19:32:39] [INFO] Request Started | GET /api/Events
+[19:32:39] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 10ms
+[19:32:39] [INFO] Request Started | GET /api/Events
+[19:32:39] [INFO] Request Started | GET /api/Events/locations
+[19:32:39] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 11ms
+[19:32:39] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 14ms
+[19:32:39] [INFO] Request Started | GET /api/Events/locations
+[19:32:39] [INFO] Request Started | GET /api/Events/categories
+[19:32:39] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 20ms
+[19:32:39] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 47ms
+[19:32:39] [INFO] Request Started | GET /api/Events/categories
+[19:32:39] [INFO] Request Started | GET /api/Events/targetAudience
+[19:32:39] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 29ms
+[19:32:39] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 35ms
+[19:32:39] [INFO] Request Started | GET /api/Events/targetAudience
+[19:32:39] [INFO] Request Started | GET /api/Events/employees
+[19:32:39] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 24ms
+[19:32:39] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 23ms
+[19:32:39] [INFO] Request Started | GET /api/Events/employees
+[19:32:39] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 14ms
+[19:32:44] [INFO] Request Started | GET /api/News
+[19:32:44] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 21ms
+[19:32:44] [INFO] Request Started | GET /api/News
+[19:32:44] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 17ms
+[19:32:46] [INFO] Request Started | GET /api/Contact
+[19:32:46] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 22ms
+[19:32:46] [INFO] Request Started | GET /api/Contact
+[19:32:46] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 20ms
+[19:32:48] [INFO] Request Started | GET /api/News
+[19:32:48] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 23ms
+[19:32:48] [INFO] Request Started | GET /api/News
+[19:32:48] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 26ms
+[19:32:49] [INFO] Request Started | GET /api/Events
+[19:32:49] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 23ms
+[19:32:49] [INFO] Request Started | GET /api/Events
+[19:32:49] [INFO] Request Started | GET /api/Events/locations
+[19:32:49] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 33ms
+[19:32:49] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 35ms
+[19:32:49] [INFO] Request Started | GET /api/Events/locations
+[19:32:49] [INFO] Request Started | GET /api/Events/categories
+[19:32:49] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 31ms
+[19:32:49] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 31ms
+[19:32:49] [INFO] Request Started | GET /api/Events/categories
+[19:32:49] [INFO] Request Started | GET /api/Events/targetAudience
+[19:32:49] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 36ms
+[19:32:49] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 35ms
+[19:32:49] [INFO] Request Started | GET /api/Events/targetAudience
+[19:32:49] [INFO] Request Started | GET /api/Events/employees
+[19:32:49] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 21ms
+[19:32:49] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 22ms
+[19:32:49] [INFO] Request Started | GET /api/Events/employees
+[19:32:49] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 16ms
+[19:32:53] [INFO] Request Started | GET /api/News
+[19:32:53] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 21ms
+[19:32:53] [INFO] Request Started | GET /api/News
+[19:32:53] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[19:34:01] [INFO] Request Started | GET /api/News
+[19:34:01] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 35ms
+[19:34:01] [INFO] Request Started | GET /api/News
+[19:34:01] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 26ms
+[19:36:31] [INFO] Request Started | POST /api/Auth/login
+[19:36:31] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 501ms
+[19:36:53] [INFO] Request Started | POST /api/Auth/login
+[19:36:53] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 325ms
+[19:37:05] [INFO] Request Started | POST /api/Auth/login
+[19:37:05] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 331ms
+[19:37:11] [INFO] Request Started | POST /api/Auth/login
+[19:37:11] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 406ms
+[21:55:36] [INFO] Request Started | GET /swagger/index.html
+[21:55:36] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 272ms
+[21:55:36] [INFO] Request Started | GET /swagger/v1/swagger.json
+[21:55:36] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 77ms
+[21:56:07] [INFO] Request Started | GET /api/News
+[21:57:06] [INFO] Request Started | GET /swagger/index.html
+[21:57:06] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 177ms
+[21:57:06] [INFO] Request Started | GET /swagger/v1/swagger.json
+[21:57:07] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 88ms
+[21:57:56] [INFO] Request Started | GET /api/News
+[21:57:57] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 443ms
+[21:57:57] [INFO] Request Started | GET /api/News
+[21:57:57] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 192ms
+[21:58:03] [INFO] Request Started | GET /api/Events
+[21:58:03] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 105ms
+[21:58:03] [INFO] Request Started | GET /api/Events
+[21:58:03] [INFO] Request Started | GET /api/Events/locations
+[21:58:03] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 29ms
+[21:58:03] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 62ms
+[21:58:03] [INFO] Request Started | GET /api/Events/locations
+[21:58:03] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 215ms
+[21:58:04] [INFO] Request Started | GET /api/Events/categories
+[21:58:04] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 62ms
+[21:58:04] [INFO] Request Started | GET /api/Events/targetAudience
+[21:58:04] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 62ms
+[21:58:04] [INFO] Request Started | GET /api/Events/employees
+[21:58:04] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 26ms
+[21:58:24] [INFO] Request Started | GET /api/News
+[21:58:24] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 33ms
+[21:58:24] [INFO] Request Started | GET /api/News
+[21:58:24] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 50ms
+[21:59:01] [INFO] Request Started | POST /api/Contact
+[22:01:58] [INFO] Request Started | GET /swagger/index.html
+[22:01:58] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 150ms
+[22:01:58] [INFO] Request Started | GET /swagger/v1/swagger.json
+[22:01:59] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 107ms
+[22:02:12] [INFO] Request Started | GET /api/News
+[22:02:12] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 316ms
+[22:02:12] [INFO] Request Started | GET /api/News
+[22:02:12] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 173ms
+[22:02:33] [INFO] Request Started | POST /api/Contact
+[22:02:33] [INFO] הודעה חדשה נשלחה על ידי 
+[22:02:33] [INFO] Request Finished | POST /api/Contact | Status: 200 | Time: 467ms
+[22:02:44] [INFO] Request Started | POST /api/Auth/login
+[22:02:45] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[22:02:45] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 675ms
+[22:02:45] [INFO] Request Started | GET /api/News
+[22:02:45] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 103ms
+[22:02:45] [INFO] Request Started | GET /api/News
+[22:02:45] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 22ms
+[22:02:48] [INFO] Request Started | GET /api/News
+[22:02:48] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 27ms
+[22:02:48] [INFO] Request Started | GET /api/News
+[22:02:48] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 25ms
+[22:02:52] [INFO] Request Started | GET /api/Contact
+[22:02:52] [INFO] נמשכו 2 הודעות מהמאגר
+[22:02:52] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 74ms
+[22:02:52] [INFO] Request Started | GET /api/Contact
+[22:02:52] [INFO] נמשכו 2 הודעות מהמאגר
+[22:02:52] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 29ms
+[22:03:00] [INFO] Request Started | PATCH /api/Contact/1/resolve
+[22:03:00] [INFO] Request Finished | PATCH /api/Contact/1/resolve | Status: 404 | Time: 5ms
+[22:03:18] [INFO] Request Started | GET /api/News
+[22:03:18] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 27ms
+[22:03:18] [INFO] Request Started | GET /api/News
+[22:03:18] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 29ms
+[22:03:24] [INFO] Request Started | GET /api/Events
+[22:03:24] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 98ms
+[22:03:24] [INFO] Request Started | GET /api/Events
+[22:03:24] [INFO] Request Started | GET /api/Events/locations
+[22:03:25] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 442ms
+[22:03:25] [INFO] Request Started | GET /api/Events/categories
+[22:03:25] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 46ms
+[22:03:25] [INFO] Request Started | GET /api/Events/targetAudience
+[22:03:25] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 79ms
+[22:03:25] [INFO] Request Started | GET /api/Events/employees
+[22:03:25] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 41ms
+[22:03:41] [INFO] Request Started | GET /api/Contact/1/resolve
+[22:03:41] [INFO] Request Finished | GET /api/Contact/1/resolve | Status: 404 | Time: 7ms
+[22:03:44] [INFO] Request Started | GET /api/Contact/1/resolve
+[22:03:44] [INFO] Request Finished | GET /api/Contact/1/resolve | Status: 404 | Time: 4ms
+[22:07:21] [INFO] Request Started | GET /swagger/index.html
+[22:07:21] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 91ms
+[22:07:21] [INFO] Request Started | GET /swagger/v1/swagger.json
+[22:07:21] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 76ms
+[22:08:13] [INFO] Request Started | GET /api/News
+[22:08:14] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 517ms
+[22:08:21] [INFO] Request Started | GET /api/News
+[22:08:21] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 71ms
+[22:08:21] [INFO] Request Started | GET /api/News
+[22:08:21] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 13ms
+[22:08:31] [INFO] Request Started | GET /api/News
+[22:08:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 23ms
+[22:08:31] [INFO] Request Started | GET /api/News
+[22:08:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 50ms
+[22:09:51] [INFO] Request Started | GET /swagger/index.html
+[22:09:51] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 206ms
+[22:09:51] [INFO] Request Started | GET /swagger/v1/swagger.json
+[22:09:51] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 71ms
+[22:10:01] [INFO] Request Started | GET /api/News
+[22:10:01] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 455ms
+[22:10:01] [INFO] Request Started | GET /api/News
+[22:10:01] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 173ms
+[22:13:29] [INFO] Request Started | GET /api/News
+[22:13:29] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 41ms
+[22:13:29] [INFO] Request Started | GET /api/News
+[22:13:29] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 36ms
+[22:20:14] [INFO] Request Started | GET /api/News
+[22:20:15] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 224ms
+[22:20:15] [INFO] Request Started | GET /api/News
+[22:20:15] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[22:21:20] [INFO] Request Started | POST /api/Auth/login
+[22:21:20] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[22:21:20] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 737ms
+[22:21:20] [INFO] Request Started | GET /api/News
+[22:21:20] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[22:21:20] [INFO] Request Started | GET /api/News
+[22:21:20] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 43ms
+[22:21:30] [INFO] Request Started | GET /api/Events
+[22:21:30] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 68ms
+[22:21:30] [INFO] Request Started | GET /api/Events
+[22:21:30] [INFO] Request Started | GET /api/Events/locations
+[22:21:30] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 373ms
+[22:21:30] [INFO] Request Started | GET /api/Events/categories
+[22:21:30] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 40ms
+[22:21:30] [INFO] Request Started | GET /api/Events/targetAudience
+[22:21:30] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 64ms
+[22:21:31] [INFO] Request Started | GET /api/Events/employees
+[22:21:31] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 48ms
+[22:22:44] [INFO] Request Started | GET /api/Events
+[22:22:44] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 18ms
+[22:22:44] [INFO] Request Started | GET /api/Events
+[22:22:44] [INFO] Request Started | GET /api/Events/locations
+[22:22:44] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 28ms
+[22:22:44] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 31ms
+[22:22:44] [INFO] Request Started | GET /api/Events/locations
+[22:22:44] [INFO] Request Started | GET /api/Events/categories
+[22:22:44] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 33ms
+[22:22:44] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 22ms
+[22:22:44] [INFO] Request Started | GET /api/Events/categories
+[22:22:44] [INFO] Request Started | GET /api/Events/targetAudience
+[22:22:44] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 17ms
+[22:22:44] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 20ms
+[22:22:44] [INFO] Request Started | GET /api/Events/targetAudience
+[22:22:44] [INFO] Request Started | GET /api/Events/employees
+[22:22:44] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 18ms
+[22:22:44] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 19ms
+[22:22:44] [INFO] Request Started | GET /api/Events/employees
+[22:22:44] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 13ms
+[22:22:50] [INFO] Request Started | GET /api/News
+[22:22:50] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 31ms
+[22:22:50] [INFO] Request Started | GET /api/News
+[22:22:50] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 31ms
+[22:22:56] [INFO] Request Started | GET /api/Events
+[22:22:56] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 30ms
+[22:22:56] [INFO] Request Started | GET /api/Events
+[22:22:56] [INFO] Request Started | GET /api/Events/locations
+[22:22:56] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 41ms
+[22:22:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 43ms
+[22:22:56] [INFO] Request Started | GET /api/Events/locations
+[22:22:56] [INFO] Request Started | GET /api/Events/categories
+[22:22:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 26ms
+[22:22:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 37ms
+[22:22:56] [INFO] Request Started | GET /api/Events/categories
+[22:22:56] [INFO] Request Started | GET /api/Events/targetAudience
+[22:22:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 27ms
+[22:22:56] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 23ms
+[22:22:56] [INFO] Request Started | GET /api/Events/targetAudience
+[22:22:56] [INFO] Request Started | GET /api/Events/employees
+[22:22:56] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 30ms
+[22:22:56] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 34ms
+[22:22:56] [INFO] Request Started | GET /api/Events/employees
+[22:22:56] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 21ms
+[22:23:04] [INFO] Request Started | GET /api/News
+[22:23:04] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[22:23:04] [INFO] Request Started | GET /api/News
+[22:23:04] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 23ms
+[22:23:09] [INFO] Request Started | GET /api/News
+[22:23:09] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 23ms
+[22:23:09] [INFO] Request Started | GET /api/News
+[22:23:09] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 28ms
+[22:23:48] [INFO] Request Started | POST /api/News
+[22:25:23] [INFO] Request Started | GET /swagger/index.html
+[22:25:23] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 206ms
+[22:25:24] [INFO] Request Started | GET /swagger/v1/swagger.json
+[22:25:24] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 80ms
+[22:25:30] [INFO] Request Started | GET /api/News
+[22:25:30] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 543ms
+[22:25:30] [INFO] Request Started | GET /api/News
+[22:25:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 89ms
+[22:25:31] [INFO] Request Started | GET /api/News
+[22:25:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 21ms
+[22:25:31] [INFO] Request Started | GET /api/News
+[22:25:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 26ms
+[22:25:43] [INFO] Request Started | GET /api/Events
+[22:25:43] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 133ms
+[22:25:43] [INFO] Request Started | GET /api/Events
+[22:25:43] [INFO] Request Started | GET /api/Events/locations
+[22:25:43] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 380ms
+[22:25:43] [INFO] Request Started | GET /api/Events/categories
+[22:25:43] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 39ms
+[22:25:43] [INFO] Request Started | GET /api/Events/targetAudience
+[22:25:43] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 50ms
+[22:25:43] [INFO] Request Started | GET /api/Events/employees
+[22:25:44] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 64ms
+[22:25:55] [INFO] Request Started | GET /api/Events
+[22:25:55] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 19ms
+[22:25:55] [INFO] Request Started | GET /api/Events
+[22:25:55] [INFO] Request Started | GET /api/Events/locations
+[22:25:55] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 24ms
+[22:25:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 25ms
+[22:25:56] [INFO] Request Started | GET /api/Events/locations
+[22:25:56] [INFO] Request Started | GET /api/Events/categories
+[22:25:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 24ms
+[22:25:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 28ms
+[22:25:56] [INFO] Request Started | GET /api/Events/categories
+[22:25:56] [INFO] Request Started | GET /api/Events/targetAudience
+[22:25:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 22ms
+[22:25:56] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 38ms
+[22:25:56] [INFO] Request Started | GET /api/Events/targetAudience
+[22:25:56] [INFO] Request Started | GET /api/Events/employees
+[22:25:56] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 21ms
+[22:25:56] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 22ms
+[22:25:56] [INFO] Request Started | GET /api/Events/employees
+[22:25:56] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 17ms
+[22:26:07] [INFO] Request Started | GET /api/News
+[22:26:07] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 35ms
+[22:26:07] [INFO] Request Started | GET /api/News
+[22:26:07] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 27ms
+[22:26:10] [INFO] Request Started | GET /api/News
+[22:26:10] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 33ms
+[22:26:10] [INFO] Request Started | GET /api/News
+[22:26:10] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 30ms
+[22:26:13] [INFO] Request Started | GET /api/Contact
+[22:26:13] [INFO] נמשכו 2 הודעות מהמאגר
+[22:26:13] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 89ms
+[22:26:13] [INFO] Request Started | GET /api/Contact
+[22:26:13] [INFO] נמשכו 2 הודעות מהמאגר
+[22:26:13] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 39ms
+[22:26:18] [INFO] Request Started | PATCH /api/Contact/1
+[22:26:18] [INFO] הודעה עם ID 1 סומנה כטופלה
+[22:26:18] [INFO] Request Finished | PATCH /api/Contact/1 | Status: 200 | Time: 346ms
+[22:26:31] [INFO] Request Started | GET /api/News
+[22:26:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[22:26:31] [INFO] Request Started | GET /api/News
+[22:26:31] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 24ms
+[22:26:35] [INFO] Request Started | GET /api/News
+[22:26:35] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 13ms
+[22:26:35] [INFO] Request Started | GET /api/News
+[22:26:35] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 13ms

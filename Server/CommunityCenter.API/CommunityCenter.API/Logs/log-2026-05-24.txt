@@ -1,0 +1,13 @@
+[14:51:19] [INFO] Request Started | GET /swagger/index.html
+[14:51:19] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 231ms
+[14:51:19] [INFO] Request Started | GET /swagger/v1/swagger.json
+[14:51:19] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 185ms
+[14:51:45] [INFO] Request Started | GET /api/Profile
+[14:51:50] [INFO] Request Finished | GET /api/Profile | Status: 401 | Time: 4588ms
+[14:52:54] [INFO] Request Started | POST /api/Auth/login
+[14:52:56] [INFO] משתמש התחבר: admin@test.com (ID: 2)
+[14:52:56] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 1679ms
+[14:53:34] [INFO] Request Started | GET /api/Profile
+[14:53:34] [INFO] Request Finished | GET /api/Profile | Status: 401 | Time: 83ms
+[14:54:11] [INFO] Request Started | GET /api/Profile
+[14:54:12] [INFO] Request Finished | GET /api/Profile | Status: 200 | Time: 1317ms

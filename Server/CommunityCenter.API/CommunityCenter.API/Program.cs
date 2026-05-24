@@ -1,5 +1,6 @@
-﻿
+﻿using CommunityCenter.API.Middleware;
 using CommunityCenter.API.Middlewares.Handlers;
+using CommunityCenter.API.Services;
 using CommunityCenter.Application.Interfaces;
 using CommunityCenter.Application.Services;
 using CommunityCenter.Infrastructure;
@@ -8,35 +9,25 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using CommunityCenter.API.Services;
-using CommunityCenter.API.Middleware;
-using CommunityCenter.Application.Interfaces;
-
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<IEventRepository, EventRepository>();
-builder.Services.AddScoped<IEventService, EventService>();
 
 #region 1. Services Configuration (DI)
 
 // Database
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Dependency Injection
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<INewsRepository, NewsRepository>();
-builder.Services.AddScoped<INewsService, NewsService>();
-builder.Services.AddScoped<IContactRepository, ContactRepository>();
-builder.Services.AddScoped<IContactService, ContactService>();
+// Controllers + JSON
+builder.Services.AddControllers()
+    .AddJsonOptions(x =>
+        x.JsonSerializerOptions.ReferenceHandler =
+            System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
-builder.Services.AddScoped<JwtTokenGenerator>();
-
-builder.Services.AddScoped<IEventRepository, EventRepository>();
-builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Swagger + JWT
 builder.Services.AddSwaggerGen(c =>
 {
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -60,27 +51,64 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            Array.Empty<string>()
         }
     });
 });
 
-// CORS
+#endregion
+
+#region 2. Dependency Injection
+
+// Auth
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<JwtTokenGenerator>();
+
+// Events
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+builder.Services.AddScoped<IEventService, EventService>();
+
+// News
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
+builder.Services.AddScoped<INewsService, NewsService>();
+
+// Contact
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<IContactService, ContactService>();
+
+// Profile
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+
+// Logger
+builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
+
+#endregion
+
+#region 3. CORS
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
-        policy.WithOrigins("http://localhost:3001")
+        policy.WithOrigins(
+                "http://localhost:3000",
+                "http://localhost:3001")
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
-builder.Services.AddControllers().AddJsonOptions(x =>
-   x.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles);
 
-// Exception Handling
+#endregion
+
+#region 4. Exception Handling
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
-// JWT Authentication
+#endregion
+
+#region 5. JWT Authentication
+
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = jwtSettings["Key"];
 
@@ -91,21 +119,29 @@ if (string.IsNullOrEmpty(key) || key.Length < 32)
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme =
+        JwtBearerDefaults.AuthenticationScheme;
+
+    options.DefaultChallengeScheme =
+        JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(options =>
 {
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtSettings["Issuer"],
-        ValidAudience = jwtSettings["Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key))
-    };
+    options.TokenValidationParameters =
+        new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidIssuer = jwtSettings["Issuer"],
+            ValidAudience = jwtSettings["Audience"],
+
+            IssuerSigningKey =
+                new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(key))
+        };
 });
 
 builder.Services.AddAuthorization();
@@ -114,18 +150,24 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+#region 6. Seed Database
+
 using (var scope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider.GetRequiredService<DataContext>();
+    var context =
+        scope.ServiceProvider.GetRequiredService<DataContext>();
+
     DbSeeder.Seed(context);
 }
 
-#region 2. Middleware Pipeline
+#endregion
 
-// טיפול בשגיאות צריך להיות ראשון
+#region 7. Middleware Pipeline
+
+// Global Exception Handler
 app.UseExceptionHandler();
-// CORS חייב לבוא לפני Authentication
-app.UseCors("AllowReactApp");
+
+// Logging Middleware
 app.UseMiddleware<LoggingMiddleware>();
 
 if (app.Environment.IsDevelopment())
@@ -136,12 +178,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// CORS
+app.UseCors("AllowReactApp");
 
-
-// אימות ואז הרשאות
+// Authentication + Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Controllers
 app.MapControllers();
 
 #endregion
