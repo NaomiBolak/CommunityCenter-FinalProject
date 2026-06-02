@@ -1,12 +1,11 @@
 import React from 'react';
 import EventCard from '../components/events/EventCard';
-const ActivitiesPage = () => {
-    return (
-        <div>
-            <h2>הפעילויות שלנו</h2>
-            <EventCard /> {/* הוספתי את ה-EventCard כאן כדי להציג את רשימת האירועים */ }
-        </div>
-    );
-};
+
+const ActivitiesPage: React.FC = () => (
+  <div className="container">
+    <h1 className="page-title">אירועים ופעילויות</h1>
+    <EventCard />
+  </div>
+);
 
 export default ActivitiesPage;

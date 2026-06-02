@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import api from '../services/api';
 import { registerSuccess } from '../store/slices/authSlice';
 import { validateRegisterForm } from '../utils/validation';
+import { ROUTES } from '../utils/constants';
+import { COMMUNITY_LOGO, SITE_NAME } from '../utils/branding';
 
 const RegisterPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -51,20 +53,29 @@ const RegisterPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>הרשמה</h1>
-      {error && <p style={{ color: '#c62828', backgroundColor: '#ffebee', padding: '8px', borderRadius: '4px' }}>{error}</p>}
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required autoComplete="off" />
-        <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required autoComplete="off" />
-        <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required autoComplete="off" />
-        <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required autoComplete="off" />
-        <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required autoComplete="new-password" />
-        <input name="phone" placeholder="טלפון" onChange={handleChange} required autoComplete="off" />
-        <input name="address" placeholder="כתובת" onChange={handleChange} autoComplete="off" />
-        <input name="birthDate" type="date" onChange={handleChange} required autoComplete="off" />
-        <button type="submit" disabled={loading}>{loading ? 'נרשם...' : 'הרשמה'}</button>
-      </form>
+    <div className="auth-page">
+      <div className="auth-card auth-card-wide">
+        <img src={COMMUNITY_LOGO} alt="" className="auth-logo" aria-hidden />
+        <h2>הרשמה לקהילה</h2>
+        <p className="auth-subtitle">הצטרפו ל{SITE_NAME}</p>
+        {error && <p className="alert-error">{error}</p>}
+        <form className="auth-form" onSubmit={handleSubmit} autoComplete="off">
+          <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required autoComplete="off" />
+          <div className="auth-row">
+            <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required autoComplete="off" />
+            <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required autoComplete="off" />
+          </div>
+          <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required autoComplete="off" />
+          <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required autoComplete="new-password" />
+          <input name="phone" placeholder="טלפון" onChange={handleChange} required autoComplete="off" />
+          <input name="address" placeholder="כתובת" onChange={handleChange} autoComplete="off" />
+          <input name="birthDate" type="date" onChange={handleChange} required autoComplete="off" />
+          <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'נרשם...' : 'הרשמה'}</button>
+        </form>
+        <p className="auth-footer-link">
+          כבר רשומים? <Link to={ROUTES.LOGIN}>התחברות</Link>
+        </p>
+      </div>
     </div>
   );
 };

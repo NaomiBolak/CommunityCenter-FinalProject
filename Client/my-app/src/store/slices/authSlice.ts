@@ -17,11 +17,14 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    loginSuccess: (state, action: PayloadAction<{ subscriber: Subscriber; isAdmin: boolean }>) => {
+    loginSuccess: (state, action: PayloadAction<{ subscriber: Subscriber; isAdmin: boolean; token?: string }>) => {
       state.user = action.payload.subscriber;
       state.isAuthenticated = true;
       state.isAdmin = action.payload.isAdmin;
 
+      if (action.payload.token) {
+        localStorage.setItem('token', action.payload.token);
+      }
       localStorage.setItem('user', JSON.stringify(action.payload));
     },
 
@@ -47,10 +50,15 @@ const authSlice = createSlice({
       const data = localStorage.getItem('user');
       if (!data) return;
 
-      const parsed = JSON.parse(data);
-      state.user = parsed.subscriber;
-      state.isAdmin = parsed.isAdmin;
-      state.isAuthenticated = true;
+      try {
+        const parsed = JSON.parse(data);
+        state.user = parsed.subscriber;
+        state.isAdmin = parsed.isAdmin;
+        state.isAuthenticated = true;
+      } catch {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+      }
     },
   },
 });

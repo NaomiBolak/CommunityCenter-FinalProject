@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import axios from 'axios';
+import api from '../../services/api';
 
 // הגדרת המבנה של חדשה אחת בודדת
 export interface NewsItem {
@@ -7,6 +7,7 @@ export interface NewsItem {
     title: string;
     content: string;
     datePublished: string;
+    imagePath?: string;
 }
 
 // הגדרת המבנה של ה-State
@@ -27,7 +28,7 @@ export const fetchNews = createAsyncThunk<NewsItem[], void, { rejectValue: strin
     'news/fetchNews', 
     async (_, thunkAPI) => {
         try {
-            const response = await axios.get<NewsItem[]>('http://localhost:5000/api/news');
+            const response = await api.get<NewsItem[]>('/News');
             return response.data;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.message || 'שגיאה בטעינת החדשות');

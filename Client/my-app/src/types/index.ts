@@ -9,6 +9,7 @@ export interface Subscriber {
   birthDate: string;
   joinDate: string;
   isActive: boolean;
+  role?: string;
 }
 
 export interface Event {
@@ -75,10 +76,14 @@ export interface ClassRegistration {
 }
 
 export interface EventRegistration {
-  id: number;
+  registrationId: number;
   eventId: number;
-  userId: string;
-  quantity: number;
+  eventDescription: string;
+  eventDate: string;
+  placesCount: number;
+  totalPrice: number;
+  registrationDate: string;
+  isPaid: boolean;
 }
 
 export interface ContactMessage {

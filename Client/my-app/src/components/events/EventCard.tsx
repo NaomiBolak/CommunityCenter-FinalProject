@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import eventService from "../../services/eventService";
-import { useSelector } from 'react-redux';
-
-type UserRole = 'admin' | 'user';
+import { useAppSelector } from '../../store/hooks';
+import PaymentForm from './PaymentForm';
+import EventRegistrantsList from '../admin/EventRegistrantsList';
+import { PaymentData } from '../../types';
+import { ROUTES } from '../../utils/constants';
 
 interface EventItem {
     id: number;
@@ -31,13 +34,13 @@ const EventCard = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [formError, setFormError] = useState('');
     const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
-   const user = useSelector((state: any) => state.auth?.user)
-    || JSON.parse(localStorage.getItem('user') || 'null');
-
-  const userRole =
-    user?.role?.toLowerCase() === 'admin'
-        ? 'admin'
-        : 'user';
+    const { isAdmin, isAuthenticated } = useAppSelector(state => state.auth);
+    const userRole = isAdmin ? 'admin' : 'user';
+    const navigate = useNavigate();
+    const [soldCounts, setSoldCounts] = useState<Record<number, number>>({});
+    const [purchasingEvent, setPurchasingEvent] = useState<EventItem | null>(null);
+    const [paymentLoading, setPaymentLoading] = useState(false);
+    const [viewRegistrantsEvent, setViewRegistrantsEvent] = useState<EventItem | null>(null);
     const [editingEvent, setEditingEvent] = useState<EventItem | null>(null);
     const [isAddingLocation, setIsAddingLocation] = useState(false);
     const [newLocationName, setNewLocationName] = useState("");
@@ -64,21 +67,48 @@ const [newAudienceName, setNewAudienceName] = useState("");
 const fetchData = async () => {
     try {
         const eventResponse = await eventService.getEvents();
-        setEvents(eventResponse.data || eventResponse);
+        const eventsList = eventResponse.data || eventResponse;
+        setEvents(eventsList);
 
-        const locResponse = await eventService.getLocations();
-        setLocations(locResponse.data || locResponse);
+        const [locResult, catResult, audResult, empResult] = await Promise.allSettled([
+            eventService.getLocations(),
+            eventService.getCategories(),
+            eventService.gettargetadience(),
+            eventService.getEmployees(),
+        ]);
 
-        const catResponse = await eventService.getCategories();
-        setCategories(catResponse.data || catResponse);
+        if (locResult.status === 'fulfilled') {
+            setLocations(locResult.value.data || locResult.value);
+        }
+        if (catResult.status === 'fulfilled') {
+            setCategories(catResult.value.data || catResult.value);
+        }
+        if (audResult.status === 'fulfilled') {
+            setAudiences(audResult.value.data || audResult.value);
+        }
+        if (empResult.status === 'fulfilled') {
+            setEmployees(empResult.value.data || empResult.value);
+        }
 
-        const audResponse = await eventService.gettargetadience();
-        setAudiences(audResponse.data || audResponse);
+        const metadataFailed = [locResult, catResult, audResult, empResult].some(r => r.status === 'rejected');
+        if (metadataFailed) {
+            setFormError('חלק מהנתונים לא נטענו — ודאי שהשרת רץ על פורט 5051 ורענני את הדף.');
+        }
 
-        const empResponse = await eventService.getEmployees();
-        setEmployees(empResponse.data || empResponse);
+        const counts: Record<number, number> = {};
+        await Promise.all(
+          (eventsList as EventItem[]).map(async (ev: EventItem) => {
+            try {
+              const countRes = await eventService.howmanyRegisterstoEvent(ev.id);
+              counts[ev.id] = countRes.data ?? countRes;
+            } catch {
+              counts[ev.id] = 0;
+            }
+          })
+        );
+        setSoldCounts(counts);
     } catch (error) {
-        setFormError("שגיאה בטעינת הנתונים");
+        setFormError("שגיאה בטעינת הנתונים — ודאי שהשרת (API) רץ על http://localhost:5051");
     } finally {
         setLoading(false);
     }
@@ -221,11 +251,49 @@ const handleAddNewEvent = () => {
             endTime: "10:00:00",   
             categoryId: 1,      
             targetAudienceId: 1, 
-            employeeId: 2, 
-            employeeId1: 2,        
+            employeeId: 2,
             currentRegistrations: 0
         } as any);
     };
+
+    const getRemainingPlaces = (ev: EventItem) => {
+        const sold = soldCounts[ev.id] ?? 0;
+        return Math.max(0, ev.maxPlaces - sold);
+    };
+
+    const handleStartPurchase = (ev: EventItem) => {
+        if (!isAuthenticated) {
+            navigate(ROUTES.LOGIN);
+            return;
+        }
+        setPurchasingEvent(ev);
+    };
+
+    const handlePurchase = async (quantity: number, payment: PaymentData) => {
+        if (!purchasingEvent) return;
+        setPaymentLoading(true);
+        try {
+            await eventService.registerToEvent({
+                eventId: purchasingEvent.id,
+                quantity,
+                cardNumber: payment.cardNumber,
+                cardHolder: payment.cardHolder,
+                expiryDate: payment.expiryDate,
+                cvv: payment.cvv,
+            });
+            setSoldCounts(prev => ({
+                ...prev,
+                [purchasingEvent.id]: (prev[purchasingEvent.id] ?? 0) + quantity,
+            }));
+            setSuccessMessage(`נרכשו ${quantity} כרטיסים בהצלחה!`);
+            setPurchasingEvent(null);
+        } catch (err) {
+            throw err;
+        } finally {
+            setPaymentLoading(false);
+        }
+    };
+
    if (loading) return <div style={{ padding: '20px', textAlign: 'center' }}>טוען נתונים...</div>;
     return (
         <div style={{ padding: '20px' }}>
@@ -380,6 +448,28 @@ const handleAddNewEvent = () => {
 )}
             {editingEvent && <div style={overlayStyle} onClick={() => setEditingEvent(null)} />}
 
+            {purchasingEvent && (
+                <div style={modalStyle}>
+                    <PaymentForm
+                        eventDescription={purchasingEvent.description}
+                        unitPrice={purchasingEvent.unitPrice}
+                        maxQuantity={getRemainingPlaces(purchasingEvent)}
+                        onSubmit={handlePurchase}
+                        onCancel={() => setPurchasingEvent(null)}
+                        loading={paymentLoading}
+                    />
+                </div>
+            )}
+            {purchasingEvent && <div style={overlayStyle} onClick={() => setPurchasingEvent(null)} />}
+
+            {viewRegistrantsEvent && (
+                <div style={{ ...modalStyle, width: '600px' }}>
+                    <EventRegistrantsList eventId={viewRegistrantsEvent.id} eventName={viewRegistrantsEvent.description} />
+                    <button onClick={() => setViewRegistrantsEvent(null)} style={{ ...btnStyle, backgroundColor: '#757575', marginTop: '12px' }}>סגור</button>
+                </div>
+            )}
+            {viewRegistrantsEvent && <div style={overlayStyle} onClick={() => setViewRegistrantsEvent(null)} />}
+
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
                 {events.map(ev => (
                     <div key={ev.id} style={cardStyle}>
@@ -396,12 +486,31 @@ const handleAddNewEvent = () => {
                             <p><strong>מיקום:</strong> {getLocationName(ev.locationId)}</p>
                             <p><strong>תאריך:</strong> {new Date(ev.date).toLocaleDateString('he-IL')}</p>
                             <p><strong>מיועד ל:</strong> {getTargetAudienceName(ev.targetAudienceId||3)}</p>
+                            <p><strong>מקומות פנויים:</strong> {getRemainingPlaces(ev)} / {ev.maxPlaces}</p>
 
                             {userRole === 'admin' && (
-                                <div style={{ display: 'flex', gap: '10px' }}>
-                                    <button onClick={() => setEditingEvent(ev)} style={{ ...btnStyle, backgroundColor: '#2196F3', flex: 1 }}>עדכון ✏️</button>
-                                    <button onClick={() => setConfirmDeleteId(ev.id)} style={{ ...btnStyle, backgroundColor: '#f44336', flex: 1 }}>מחיקה 🗑️</button>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                        <button onClick={() => setEditingEvent(ev)} style={{ ...btnStyle, backgroundColor: '#2196F3', flex: 1 }}>עדכון ✏️</button>
+                                        <button onClick={() => setConfirmDeleteId(ev.id)} style={{ ...btnStyle, backgroundColor: '#f44336', flex: 1 }}>מחיקה 🗑️</button>
+                                    </div>
+                                    <button onClick={() => setViewRegistrantsEvent(ev)} style={{ ...btnStyle, backgroundColor: '#ff9800' }}>דוח נרשמים 📋</button>
                                 </div>
+                            )}
+
+                            {userRole !== 'admin' && (
+                                <button
+                                    onClick={() => handleStartPurchase(ev)}
+                                    disabled={getRemainingPlaces(ev) === 0}
+                                    style={{
+                                        ...btnStyle,
+                                        backgroundColor: getRemainingPlaces(ev) > 0 ? '#4CAF50' : '#bdbdbd',
+                                        width: '100%',
+                                        marginTop: '8px'
+                                    }}
+                                >
+                                    {getRemainingPlaces(ev) > 0 ? '🎟️ רכישת כרטיסים' : 'אזלו הכרטיסים'}
+                                </button>
                             )}
                         </div>
                     </div>

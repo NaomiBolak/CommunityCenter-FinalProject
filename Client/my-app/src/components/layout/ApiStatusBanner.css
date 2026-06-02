@@ -1,0 +1,19 @@
+.api-status-banner {
+  background: #c62828;
+  color: #fff;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  direction: rtl;
+}
+
+.api-status-retry {
+  background: #fff;
+  color: #c62828;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}

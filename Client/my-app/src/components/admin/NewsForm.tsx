@@ -7,7 +7,7 @@ const NewsForm: React.FC = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [saving, setSaving] = useState(false);
-  const [form, setForm] = useState({ title: '', content: '', imageUrl: '' });
+  const [form, setForm] = useState({ title: '', content: '', imagePath: '' });
 
   useEffect(() => {
     const fetch = async () => {
@@ -34,7 +34,7 @@ const NewsForm: React.FC = () => {
     try {
       const response = await newsService.createNews(form);
       setNewsList(prev => [...prev, response.data || response]);
-      setForm({ title: '', content: '', imageUrl: '' });
+      setForm({ title: '', content: '', imagePath: '' });
       setSuccess('החדשה נוספה בהצלחה!');
     } catch {
       setError('שגיאה בהוספת החדשה');
@@ -76,7 +76,7 @@ const NewsForm: React.FC = () => {
         <h3>הוספת חדשה</h3>
         <input name="title" placeholder="כותרת" value={form.title} onChange={handleChange} required style={inputStyle} />
         <textarea name="content" placeholder="תוכן" value={form.content} onChange={handleChange} required style={inputStyle} />
-        <input name="imageUrl" placeholder="קישור לתמונה (אופציונלי)" value={form.imageUrl} onChange={handleChange} style={inputStyle} />
+        <input name="imagePath" placeholder="קישור לתמונה (אופציונלי)" value={form.imagePath} onChange={handleChange} style={inputStyle} />
         <button type="submit" disabled={saving} style={btnStyle}>{saving ? 'שומר...' : 'הוסף חדשה ➕'}</button>
       </form>
 

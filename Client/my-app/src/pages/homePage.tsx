@@ -1,14 +1,17 @@
 import React from 'react';
-import NewsSection from '../components/home/NewsSection'; // תוודאי שהנתיב נכון לפי התיקיות שלך
+import Banner from '../components/home/Banner';
+import QuickLinks from '../components/home/QuickLinks';
+import UpcomingEventsSection from '../components/home/UpcomingEventsSection';
+import NewsSection from '../components/home/NewsSection';
+import './homePage.css';
 
-const homePage = () => {
-  return (
-    <div className="news-page">
-      <h1>חדשות המרכז הקהילתי</h1>
-      <hr />
-      <NewsSection limit={3} />
-    </div>
-  );
-};
+const HomePage: React.FC = () => (
+  <div className="home-page">
+    <Banner />
+    <QuickLinks />
+    <UpcomingEventsSection limit={3} />
+    <NewsSection limit={3} title="מבזק חדשות" />
+  </div>
+);
 
-export default homePage;
+export default HomePage;

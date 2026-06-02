@@ -43,8 +43,22 @@ const eventService = {
     api.post(`${BASE}/targetAudience`, data),
 
   howmanyRegisterstoEvent: (id: number) =>
-    api.get(`${BASE}/registers/count/${id}`)
+    api.get(`${BASE}/registers/count/${id}`),
 
+  getUpcomingEvents: (count = 3) =>
+    api.get(`${BASE}/upcoming`, { params: { count } }),
+
+  registerToEvent: (data: {
+    eventId: number;
+    quantity: number;
+    cardNumber: string;
+    cardHolder: string;
+    expiryDate: string;
+    cvv: string;
+  }) => api.post(`${BASE}/register`, data),
+
+  getEventRegistrants: (eventId: number) =>
+    api.get(`${BASE}/${eventId}/registrants`),
 };
 
 export default eventService;

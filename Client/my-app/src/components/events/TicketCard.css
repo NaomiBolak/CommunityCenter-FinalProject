@@ -1,0 +1,9 @@
+.ticket-card { background: white; border: 2px dashed #1565c0; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+.ticket-header { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #e0e0e0; }
+.ticket-icon { font-size: 2rem; }
+.ticket-header h3 { margin: 0 0 4px; color: #1565c0; }
+.ticket-id { margin: 0; color: #888; font-size: 0.85rem; }
+.ticket-details p { margin: 6px 0; color: #444; }
+.ticket-status { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 20px; font-size: 0.9rem; }
+.ticket-status.paid { background: #e8f5e9; color: #2e7d32; }
+.ticket-status.pending { background: #fff3e0; color: #e65100; }

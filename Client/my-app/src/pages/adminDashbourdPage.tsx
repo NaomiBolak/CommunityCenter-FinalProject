@@ -2,38 +2,40 @@ import React, { useState } from 'react';
 import NewsForm from '../components/admin/NewsForm';
 import ContactsList from '../components/admin/ContactsList';
 import EventCard from '../components/events/EventCard';
+import './adminDashboard.css';
 
 type AdminTab = 'news' | 'contacts' | 'events';
 
 const AdminDashboardPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<AdminTab>('news');
+  const [activeTab, setActiveTab] = useState<AdminTab>('events');
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="admin-dashboard">
       <h1>לוח ניהול</h1>
+      <p className="admin-subtitle">ניהול אירועים, חדשות ופניות ציבור</p>
 
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+      <div className="admin-tabs">
         <button
           onClick={() => setActiveTab('events')}
-          style={{ ...tabStyle, backgroundColor: activeTab === 'events' ? '#1976d2' : '#e0e0e0', color: activeTab === 'events' ? 'white' : '#333' }}
+          className={activeTab === 'events' ? 'active' : ''}
         >
           🎟️ ניהול אירועים
         </button>
         <button
           onClick={() => setActiveTab('news')}
-          style={{ ...tabStyle, backgroundColor: activeTab === 'news' ? '#1976d2' : '#e0e0e0', color: activeTab === 'news' ? 'white' : '#333' }}
+          className={activeTab === 'news' ? 'active' : ''}
         >
           📰 ניהול חדשות
         </button>
         <button
           onClick={() => setActiveTab('contacts')}
-          style={{ ...tabStyle, backgroundColor: activeTab === 'contacts' ? '#1976d2' : '#e0e0e0', color: activeTab === 'contacts' ? 'white' : '#333' }}
+          className={activeTab === 'contacts' ? 'active' : ''}
         >
           📩 פניות צור קשר
         </button>
       </div>
 
-      <div>
+      <div className="admin-content">
         {activeTab === 'events' && <EventCard />}
         {activeTab === 'news' && <NewsForm />}
         {activeTab === 'contacts' && <ContactsList />}
@@ -41,7 +43,5 @@ const AdminDashboardPage: React.FC = () => {
     </div>
   );
 };
-
-const tabStyle: React.CSSProperties = { padding: '10px 20px', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '15px' };
 
 export default AdminDashboardPage;
