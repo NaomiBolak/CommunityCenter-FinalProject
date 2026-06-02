@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CommunityCenter.Application.DTOs;
 using CommunityCenter.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CommunityCenter.API.Controllers
@@ -26,6 +27,7 @@ namespace CommunityCenter.API.Controllers
         }
 
         // GET /api/contact - קבלת כל ההודעות (למנהל)
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ContactRequestDto>>> GetMessages()
         {
@@ -34,6 +36,7 @@ namespace CommunityCenter.API.Controllers
         }
 
         // PATCH /api/contact/{id} - סימון הודעה כטופלה (למנהל)
+        [Authorize(Roles = "Admin")]
         [HttpPatch("{id}")]
         public async Task<IActionResult> MarkAsHandled(int id)
         {

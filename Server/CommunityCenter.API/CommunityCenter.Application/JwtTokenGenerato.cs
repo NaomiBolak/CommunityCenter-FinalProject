@@ -19,8 +19,11 @@ namespace CommunityCenter.Application.Services
         {
             var jwtSettings = _config.GetSection("Jwt");
 
+            var jwtKey = jwtSettings["Key"] ?? throw new InvalidOperationException("JWT Key is not configured.");
+            var expireMinutes = jwtSettings["ExpireMinutes"] ?? "60";
+
             var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(jwtSettings["Key"])
+                Encoding.UTF8.GetBytes(jwtKey)
             );
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -36,7 +39,7 @@ namespace CommunityCenter.Application.Services
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(double.Parse(jwtSettings["ExpireMinutes"])),
+                expires: DateTime.Now.AddMinutes(double.Parse(expireMinutes)),
                 signingCredentials: creds
             );
 

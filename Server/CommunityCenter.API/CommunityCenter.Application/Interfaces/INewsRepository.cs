@@ -7,5 +7,6 @@ namespace CommunityCenter.Application.Interfaces
     {
         Task<IEnumerable<News>> GetAllAsync();
         Task AddAsync(News news);
+        Task<bool> DeleteAsync(int id);
     }
 }

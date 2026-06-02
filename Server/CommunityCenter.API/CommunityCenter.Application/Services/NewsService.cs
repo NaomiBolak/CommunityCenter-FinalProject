@@ -24,20 +24,41 @@ namespace CommunityCenter.Application.Services
                 Id = n.Id,
                 Title = n.Title,
                 Content = n.Content,
+                ImagePath = n.ImagePath,
                 DatePublished = n.DatePublished
             });
         }
 
-        public async Task CreateNewsAsync(NewsDto newsDto)
+        public async Task<NewsDto> CreateNewsAsync(NewsDto newsDto)
         {
             var newsEntity = new News
             {
                 Title = newsDto.Title,
                 Content = newsDto.Content,
+                ImagePath = newsDto.ImagePath ?? string.Empty,
                 DatePublished = DateTime.Now
             };
             await _newsRepository.AddAsync(newsEntity);
             await _logger.Info($"חדשות חדשות נוצרו: {newsDto.Title}");
+
+            return new NewsDto
+            {
+                Id = newsEntity.Id,
+                Title = newsEntity.Title,
+                Content = newsEntity.Content,
+                ImagePath = newsEntity.ImagePath,
+                DatePublished = newsEntity.DatePublished
+            };
+        }
+
+        public async Task<bool> DeleteNewsAsync(int id)
+        {
+            var deleted = await _newsRepository.DeleteAsync(id);
+            if (deleted)
+            {
+                await _logger.Info($"חדשות נמחקו: ID {id}");
+            }
+            return deleted;
         }
     }
 }

@@ -22,5 +22,15 @@ namespace CommunityCenter.Infrastructure.Repositories
             await _context.News.AddAsync(news);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> DeleteAsync(int id)
+        {
+            var news = await _context.News.FindAsync(id);
+            if (news == null) return false;
+
+            _context.News.Remove(news);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

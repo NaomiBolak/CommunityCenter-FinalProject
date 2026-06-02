@@ -5,6 +5,7 @@ namespace CommunityCenter.Application.Interfaces
     public interface INewsService
     {
         Task<IEnumerable<NewsDto>> GetAllNewsAsync();
-        Task CreateNewsAsync(NewsDto newsDto);
+        Task<NewsDto> CreateNewsAsync(NewsDto newsDto);
+        Task<bool> DeleteNewsAsync(int id);
     }
 }

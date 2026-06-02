@@ -24,27 +24,58 @@ namespace CommunityCenter.Application.Services
         {
             var messages = await _contactRepository.GetAllAsync();
             await _logger.Info($"נמשכו {messages.Count()} הודעות מהמאגר");
-            return messages.Select(m => new ContactRequestDto
+            return messages.Select(m =>
             {
-                Id = m.Id,
-                SenderName = m.SenderName,
-                Message = m.Message,
-                CreatedAt = m.CreatedAt,
-                IsHandled = m.IsHandled
+                var (subject, body) = SplitSubjectFromMessage(m.Message);
+                return new ContactRequestDto
+                {
+                    Id = m.Id,
+                    Name = m.SenderName,
+                    SenderName = m.SenderName,
+                    Email = m.Email,
+                    Phone = m.Phone,
+                    Subject = subject,
+                    Message = body,
+                    CreatedAt = m.CreatedAt,
+                    IsHandled = m.IsHandled
+                };
             });
         }
 
         public async Task SendMessageAsync(ContactRequestDto dto)
         {
+            var senderName = !string.IsNullOrWhiteSpace(dto.Name) ? dto.Name : dto.SenderName;
+            var messageBody = string.IsNullOrWhiteSpace(dto.Subject)
+                ? dto.Message
+                : $"[{dto.Subject}] {dto.Message}";
+
             var entity = new ContactRequest
             {
-                SenderName = dto.SenderName,
-                Message = dto.Message,
+                SenderName = senderName,
+                Email = dto.Email,
+                Phone = dto.Phone,
+                Message = messageBody,
                 CreatedAt = DateTime.Now,
                 IsHandled = false
             };
             await _contactRepository.AddAsync(entity);
-            await _logger.Info($"הודעה חדשה נשלחה על ידי {dto.SenderName}");
+            await _logger.Info($"הודעה חדשה נשלחה על ידי {senderName}");
+        }
+
+        private static (string Subject, string Body) SplitSubjectFromMessage(string message)
+        {
+            if (message.StartsWith('['))
+            {
+                var closingIndex = message.IndexOf(']');
+                if (closingIndex > 1)
+                {
+                    var subject = message.Substring(1, closingIndex - 1);
+                    var body = message.Substring(closingIndex + 1).TrimStart();
+                    return (subject, body);
+                }
+            }
+
+            return (string.Empty, message);
         }
 
         public async Task MarkAsHandledAsync(int id)

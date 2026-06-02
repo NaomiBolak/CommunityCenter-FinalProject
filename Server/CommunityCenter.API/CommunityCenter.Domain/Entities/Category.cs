@@ -9,6 +9,6 @@ namespace CommunityCenter.Domain.Entities
     public class Category // "תחומים" באקסל
     {
         public int Id { get; set; }
-        public string Description { get; set; } // למשל: ספורט, אמנות, מוזיקה
+        public string Description { get; set; } = string.Empty; // למשל: ספורט, אמנות, מוזיקה
     }
 }

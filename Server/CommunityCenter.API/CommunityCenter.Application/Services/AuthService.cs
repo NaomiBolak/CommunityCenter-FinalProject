@@ -60,10 +60,25 @@ namespace CommunityCenter.Application.Services
             await _userRepository.AddAsync(user);
             await _logger.Info($"משתמש חדש נרשם: {user.Email} (ID: {user.Id})");
 
+            var token = _tokenGenerator.GenerateToken(user);
+
             return new
             {
                 message = "נרשמת בהצלחה",
-                id = user.Id
+                token,
+                user = new
+                {
+                    user.Id,
+                    user.Email,
+                    user.FirstName,
+                    user.LastName,
+                    user.Phone,
+                    user.IdentityCard,
+                    user.BirthDate,
+                    user.JoinDate,
+                    user.IsActive,
+                    user.Role
+                }
             };
         }
 

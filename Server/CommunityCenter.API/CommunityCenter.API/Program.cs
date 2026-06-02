@@ -91,11 +91,22 @@ builder.Services.AddSingleton<ILoggerService, FileLoggerService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
-        policy.WithOrigins(
-                "http://localhost:3000",
-                "http://localhost:3001")
-              .AllowAnyHeader()
-              .AllowAnyMethod());
+    {
+        if (builder.Environment.IsDevelopment())
+        {
+            policy.SetIsOriginAllowed(_ => true)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+        else
+        {
+            policy.WithOrigins(
+                    "http://localhost:3000",
+                    "http://localhost:3001")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+    });
 });
 
 #endregion
@@ -157,12 +168,16 @@ using (var scope = app.Services.CreateScope())
     var context =
         scope.ServiceProvider.GetRequiredService<DataContext>();
 
+    context.Database.Migrate();
     DbSeeder.Seed(context);
 }
 
 #endregion
 
 #region 7. Middleware Pipeline
+
+// CORS first so preflight (OPTIONS) always gets headers
+app.UseCors("AllowReactApp");
 
 // Global Exception Handler
 app.UseExceptionHandler();
@@ -175,11 +190,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
-
-// CORS
-app.UseCors("AllowReactApp");
+else
+{
+    app.UseHttpsRedirection();
+}
 
 // Authentication + Authorization
 app.UseAuthentication();

@@ -41,7 +41,7 @@ namespace CommunityCenter.Infrastructure.Repositories
             return await _context.Events.ToListAsync();
         }
 
-        public async Task<Event> GetEventById(int id)
+        public async Task<Event?> GetEventById(int id)
         {
             return await _context.Events.FindAsync(id);
         }
@@ -99,7 +99,7 @@ namespace CommunityCenter.Infrastructure.Repositories
 
         public async Task<List<Location>> GettAllLocation()
         {
-            return await _context.Locations.ToListAsync();
+            return await _context.Locations.AsNoTracking().ToListAsync();
         }
 
         public async Task<Location> AddLocation(Location loc)
@@ -112,21 +112,38 @@ namespace CommunityCenter.Infrastructure.Repositories
         public async Task<int> HowManyRegistersToEvent(int eventid)
         {
            return await _context.EventRegistrations
-        .Where(r => r.EventId == eventid).CountAsync();
+                .Where(r => r.EventId == eventid)
+                .SumAsync(r => r.PlacesCount);
+        }
+
+        public async Task<RegistrationEvent> AddEventRegistrationAsync(RegistrationEvent registration)
+        {
+            await _context.EventRegistrations.AddAsync(registration);
+            await _context.SaveChangesAsync();
+            return registration;
+        }
+
+        public async Task<List<RegistrationEvent>> GetRegistrationsByEventIdAsync(int eventId)
+        {
+            return await _context.EventRegistrations
+                .Include(r => r.Subscriber)
+                .Where(r => r.EventId == eventId)
+                .OrderByDescending(r => r.RegistrationDate)
+                .ToListAsync();
         }
 
         public async Task<List<Employee>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            return await _context.Employees.AsNoTracking().ToListAsync();
         }
         public async Task<List<Category>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.AsNoTracking().ToListAsync();
         }
 
         public async Task<List<TargetAudience>> GetTargetAudiences()
         {
-            return await _context.TargetAudiences.ToListAsync();
+            return await _context.TargetAudiences.AsNoTracking().ToListAsync();
         }
         public async Task<Employee> AddEmployee(Employee emp)
         {

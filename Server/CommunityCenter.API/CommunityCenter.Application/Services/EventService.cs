@@ -1,11 +1,6 @@
-﻿using CommunityCenter.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityCenter.Application.DTOs;
+using CommunityCenter.Domain.Entities;
 using CommunityCenter.Application.Interfaces;
-using Microsoft.Extensions.Logging;
 using CommunityCenter.Application.Services;
 
 namespace CommunityCenter.Application.Services
@@ -46,7 +41,7 @@ namespace CommunityCenter.Application.Services
         }
 
 
-        public Task<Event> GetEventById(int id)
+        public Task<Event?> GetEventById(int id)
         {
             return _eventRepository.GetEventById(id);
         }
@@ -57,9 +52,66 @@ namespace CommunityCenter.Application.Services
         }
 
 
-        Task<bool> IEventService.GetEventById(int id)
+        public async Task<EventRegistrationResultDto> RegisterToEventAsync(int userId, EventRegistrationRequestDto dto)
         {
-            throw new NotImplementedException();
+            if (dto.Quantity < 1)
+                throw new Domain.Exceptions.AppException("יש לבחור לפחות כרטיס אחד", 400);
+
+            if (string.IsNullOrWhiteSpace(dto.CardNumber) || dto.CardNumber.Length < 4)
+                throw new Domain.Exceptions.AppException("פרטי תשלום לא תקינים", 400);
+
+            var ev = await _eventRepository.GetEventById(dto.EventId);
+            if (ev == null)
+                throw new Domain.Exceptions.AppException("האירוע לא נמצא", 404);
+
+            var sold = await _eventRepository.HowManyRegistersToEvent(dto.EventId);
+            var remaining = ev.MaxPlaces - sold;
+            if (dto.Quantity > remaining)
+                throw new Domain.Exceptions.AppException($"נותרו רק {remaining} מקומות פנויים", 400);
+
+            var registration = new RegistrationEvent
+            {
+                EventId = dto.EventId,
+                SubscriberId = userId,
+                PlacesCount = dto.Quantity,
+                RegistrationDate = DateTime.Now,
+                IsPaid = true
+            };
+
+            var saved = await _eventRepository.AddEventRegistrationAsync(registration);
+            ev.CurrentRegistrations = sold + dto.Quantity;
+            await _eventRepository.UpdateEvent(ev.Id, ev);
+
+            await _logger.Info($"משתמש {userId} נרשם לאירוע {dto.EventId} ({dto.Quantity} כרטיסים)");
+
+            return new EventRegistrationResultDto
+            {
+                RegistrationId = saved.Id,
+                EventId = ev.Id,
+                EventDescription = ev.Description,
+                EventDate = ev.Date,
+                PlacesCount = dto.Quantity,
+                TotalPrice = ev.UnitPrice * dto.Quantity,
+                RegistrationDate = saved.RegistrationDate,
+                IsPaid = saved.IsPaid,
+                RemainingPlaces = remaining - dto.Quantity
+            };
+        }
+
+        public async Task<List<EventRegistrantDto>> GetEventRegistrantsAsync(int eventId)
+        {
+            var registrations = await _eventRepository.GetRegistrationsByEventIdAsync(eventId);
+            return registrations.Select(r => new EventRegistrantDto
+            {
+                RegistrationId = r.Id,
+                SubscriberId = r.SubscriberId,
+                FullName = $"{r.Subscriber?.FirstName} {r.Subscriber?.LastName}".Trim(),
+                Email = r.Subscriber?.Email ?? string.Empty,
+                Phone = r.Subscriber?.Phone ?? string.Empty,
+                PlacesCount = r.PlacesCount,
+                RegistrationDate = r.RegistrationDate,
+                IsPaid = r.IsPaid
+            }).ToList();
         }
 
         public async Task<Event> UpdateEvent(int id, Event ev)

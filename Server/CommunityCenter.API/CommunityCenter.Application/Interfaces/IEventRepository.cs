@@ -10,7 +10,7 @@ namespace CommunityCenter.Application.Interfaces
     public interface IEventRepository
     {
         Task<List<Event>> GetAllEvents(); 
-        Task <Event> GetEventById(int id);
+        Task<Event?> GetEventById(int id);
         Task<Event> AddEvent(Event ev);
         Task<bool> RemoveEvent(int id);
         Task<List<Event>> GetXNextEvent(int x);
@@ -19,6 +19,8 @@ namespace CommunityCenter.Application.Interfaces
         Task<List<Location>> GettAllLocation();
         Task<Location> AddLocation(Location loc);
         Task<int> HowManyRegistersToEvent(int eventid);
+        Task<RegistrationEvent> AddEventRegistrationAsync(RegistrationEvent registration);
+        Task<List<RegistrationEvent>> GetRegistrationsByEventIdAsync(int eventId);
         Task<List<Employee>> GetEmployees();
         Task<List<Category>> GetCategories();
         Task<List<TargetAudience>> GetTargetAudiences();

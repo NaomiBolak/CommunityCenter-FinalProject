@@ -1,34 +1,30 @@
-﻿using CommunityCenter.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityCenter.Application.DTOs;
+using CommunityCenter.Domain.Entities;
 
 namespace CommunityCenter.Application.Interfaces
 {
     public interface IEventService
     {
-        public Task<List<Event>> GetAllEvents();
-        public Task<Event> AddEvent ( Event @event);
-        public Task<bool> RemoveEvent (int id);
-        public Task<bool> GetEventById(int  id);
-        public Task<List<Event>> GetXNextEvents(int X);
-        public Task<Event> UpdateEvent(int id, Event ev);
-        public Task<Location> GetLocation(int id);
-        public Task<List<Location>> GettAllLocation();
-        public Task<Location> AddLocation(Location loc);
-        public Task<int> HowManyRegistersToEvent(int eventid);
-        public Task<List<TargetAudience>> GetTargetAudiences();
-        public Task<List<Employee>> GetEmployees();
-        public Task<List<Category>> GetCategories();
-        public Task<Employee> AddEmployee(Employee emp);
-        public Task<bool> RemoveEmployee(int empid);
-        public Task<Category> AddCategory(Category cat);
-        public Task<TargetAudience> AddtargetAudience(TargetAudience tar);
-        public Task<bool> RemoveCategory(int catid);
-        public Task<bool> RemoveTargetAudience(int tarid);
-
-
+        Task<List<Event>> GetAllEvents();
+        Task<Event?> GetEventById(int id);
+        Task<Event> AddEvent(Event @event);
+        Task<bool> RemoveEvent(int id);
+        Task<List<Event>> GetXNextEvents(int x);
+        Task<Event> UpdateEvent(int id, Event ev);
+        Task<Location> GetLocation(int id);
+        Task<List<Location>> GettAllLocation();
+        Task<Location> AddLocation(Location loc);
+        Task<int> HowManyRegistersToEvent(int eventid);
+        Task<List<TargetAudience>> GetTargetAudiences();
+        Task<List<Employee>> GetEmployees();
+        Task<List<Category>> GetCategories();
+        Task<Employee> AddEmployee(Employee emp);
+        Task<bool> RemoveEmployee(int empid);
+        Task<Category> AddCategory(Category cat);
+        Task<TargetAudience> AddtargetAudience(TargetAudience tar);
+        Task<bool> RemoveCategory(int catid);
+        Task<bool> RemoveTargetAudience(int tarid);
+        Task<EventRegistrationResultDto> RegisterToEventAsync(int userId, EventRegistrationRequestDto dto);
+        Task<List<EventRegistrantDto>> GetEventRegistrantsAsync(int eventId);
     }
 }

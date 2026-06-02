@@ -17,7 +17,7 @@ namespace CommunityCenter.Infrastructure.Repositories
         {
             var user = await _context.Subscribers
                 .Include(u => u.EventRegistrations)
-                .Include(u => u.CourseRegistrations)
+                    .ThenInclude(r => r.Event)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
@@ -26,13 +26,26 @@ namespace CommunityCenter.Infrastructure.Repositories
             return new ProfileDto
             {
                 Id = user.Id,
+                IdentityCard = user.IdentityCard,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-
-                Events = user.EventRegistrations,
-
-                Courses = user.CourseRegistrations
+                Phone = user.Phone,
+                Address = user.Address,
+                BirthDate = user.BirthDate,
+                JoinDate = user.JoinDate,
+                Role = user.Role,
+                Events = user.EventRegistrations.Select(r => new EventTicketDto
+                {
+                    RegistrationId = r.Id,
+                    EventId = r.EventId,
+                    EventDescription = r.Event?.Description ?? string.Empty,
+                    EventDate = r.Event?.Date ?? r.RegistrationDate,
+                    PlacesCount = r.PlacesCount,
+                    TotalPrice = (r.Event?.UnitPrice ?? 0) * r.PlacesCount,
+                    RegistrationDate = r.RegistrationDate,
+                    IsPaid = r.IsPaid
+                }).ToList()
             };
         }
     }
