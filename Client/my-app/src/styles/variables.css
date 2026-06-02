@@ -1,41 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap');
+
 :root {
-  /* ירוק לוגו + אבן ירושלמית + טרקוטה חמה */
-  --color-primary: #19574d;
-  --color-primary-light: #2a7568;
-  --color-primary-dark: #0c332c;
-  --color-accent: #c4602f;
-  --color-accent-hover: #a85126;
+  --color-primary: #1a6b5e;
+  --color-primary-light: #22877a;
+  --color-primary-dark: #0d3d36;
+  --color-accent: #e07b3a;
+  --color-accent-hover: #c96a2a;
+  --color-accent-light: rgba(224, 123, 58, 0.12);
   --color-sand: #d4c4a8;
   --color-stone: #e8e2d6;
-  --color-teal: #3a8f80;
-  --color-bg: #f4f0e8;
+  --color-teal: #3a9f8f;
+  --color-bg: #f5f1ea;
   --color-bg-elevated: #fdfcfa;
-  --color-surface-glass: rgba(253, 252, 250, 0.92);
+  --color-surface-glass: rgba(253, 252, 250, 0.94);
   --color-text: #1a2220;
-  --color-text-muted: #5e6663;
-  --color-border: rgba(25, 87, 77, 0.14);
-  --gradient-hero: linear-gradient(148deg, #0c332c 0%, #19574d 55%, #1f6358 100%);
-  --gradient-accent: linear-gradient(135deg, #c4602f 0%, #d4783a 100%);
-  --gradient-mesh:
-    linear-gradient(180deg, rgba(253, 252, 250, 0.6) 0%, transparent 40%),
-    repeating-linear-gradient(
-      -12deg,
-      transparent,
-      transparent 48px,
-      rgba(25, 87, 77, 0.025) 48px,
-      rgba(25, 87, 77, 0.025) 49px
-    );
+  --color-text-muted: #607068;
+  --color-border: rgba(25, 87, 77, 0.13);
+
+  --gradient-hero: linear-gradient(135deg, #0d3d36 0%, #1a6b5e 50%, #22877a 100%);
+  --gradient-accent: linear-gradient(135deg, #e07b3a 0%, #f09050 100%);
+  --gradient-card: linear-gradient(160deg, #1a6b5e 0%, #3a9f8f 100%);
+
   --font-family: 'Heebo', 'Segoe UI', Tahoma, sans-serif;
   --font-display: 'Frank Ruhl Libre', 'Heebo', Georgia, serif;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
   --radius-full: 9999px;
-  --shadow-sm: 0 1px 3px rgba(12, 51, 44, 0.06);
-  --shadow-md: 0 6px 24px rgba(12, 51, 44, 0.08);
-  --shadow-lg: 0 14px 40px rgba(12, 51, 44, 0.12);
-  --shadow-glow: 0 8px 28px rgba(196, 96, 47, 0.22);
-  --header-height: 84px;
-  --container-max: 1180px;
+
+  --shadow-sm: 0 2px 8px rgba(13, 61, 54, 0.07);
+  --shadow-md: 0 8px 28px rgba(13, 61, 54, 0.10);
+  --shadow-lg: 0 16px 48px rgba(13, 61, 54, 0.14);
+  --shadow-glow: 0 8px 32px rgba(224, 123, 58, 0.28);
+  --shadow-primary: 0 8px 24px rgba(26, 107, 94, 0.25);
+
+  --header-height: 80px;
+  --container-max: 1200px;
   --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,67 +1,63 @@
-.quick-links {
-  margin-bottom: 52px;
-}
+.quick-links { margin-bottom: 56px; }
 
 .quick-links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 16px;
 }
 
 .quick-link-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: right;
-  gap: 4px;
-  padding: 24px 22px;
+  gap: 6px;
+  padding: 26px 22px;
   background: var(--color-bg-elevated);
-  border: 1px solid var(--color-stone);
-  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-stone);
+  border-radius: var(--radius-lg);
   text-decoration: none;
   color: var(--color-text);
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
   position: relative;
+  overflow: hidden;
 }
 
-.quick-link-card::after {
-  content: '←';
+.quick-link-card::before {
+  content: '';
   position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.1rem;
-  color: var(--color-accent);
-  opacity: 0;
-  transition: opacity var(--transition), transform var(--transition);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: var(--gradient-accent);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  transform-origin: right;
 }
 
 .quick-link-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
   border-color: var(--color-primary-light);
 }
 
-.quick-link-card:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) translateX(-4px);
-}
+.quick-link-card:hover::before { transform: scaleX(1); }
 
 .quick-link-icon {
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 1;
   margin-bottom: 8px;
 }
 
 .quick-link-label {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
+  font-weight: 800;
+  font-size: 1.08rem;
   color: var(--color-primary-dark);
 }
 
 .quick-link-desc {
   font-size: 0.82rem;
   color: var(--color-text-muted);
-  line-height: 1.45;
+  line-height: 1.5;
 }
