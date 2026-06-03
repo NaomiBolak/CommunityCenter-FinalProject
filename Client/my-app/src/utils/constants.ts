@@ -17,5 +17,5 @@ export const ROUTES = {
 export const API_BASE_URL =
   process.env.REACT_APP_API_URL ||
   (process.env.NODE_ENV === 'production'
-    ? '/api'
+    ? 'https://optimistic-education-production-e867.up.railway.app/api'
     : 'http://127.0.0.1:5051/api');
