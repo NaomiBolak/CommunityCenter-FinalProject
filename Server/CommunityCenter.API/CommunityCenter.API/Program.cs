@@ -5,6 +5,7 @@ using CommunityCenter.Application.Interfaces;
 using CommunityCenter.Application.Services;
 using CommunityCenter.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 using CommunityCenter.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;

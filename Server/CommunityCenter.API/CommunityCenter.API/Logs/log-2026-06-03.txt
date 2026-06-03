@@ -2304,3 +2304,184 @@
 [02:01:04] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 36ms
 [02:01:07] [INFO] Request Started | GET /api/Health
 [02:01:07] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:42:01] [INFO] Request Started | GET /swagger/index.html
+[17:42:01] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 147ms
+[17:42:01] [INFO] Request Started | GET /swagger/v1/swagger.json
+[17:42:01] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 58ms
+[17:42:26] [INFO] Request Started | GET /api/News/latest
+[17:42:26] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:28] [INFO] Request Started | GET /api/Health
+[17:42:30] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 1801ms
+[17:42:30] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 4175ms
+[17:42:30] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:30] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:31] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 364ms
+[17:42:31] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:31] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 5090ms
+[17:42:31] [INFO] Request Started | GET /api/News/latest
+[17:42:31] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:31] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 478ms
+[17:42:32] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 345ms
+[17:42:32] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:32] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:32] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 215ms
+[17:42:32] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:33] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:34] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 271ms
+[17:42:34] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:34] [INFO] Request Started | GET /api/Events/upcoming
+[17:42:35] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 315ms
+[17:42:35] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:42:46] [INFO] Request Started | GET /api/Health
+[17:42:46] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[17:43:06] [INFO] Request Started | GET /api/Health
+[17:43:06] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:43:26] [INFO] Request Started | GET /api/Health
+[17:43:26] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 15ms
+[17:43:46] [INFO] Request Started | GET /api/Health
+[17:43:46] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[17:44:06] [INFO] Request Started | GET /api/Health
+[17:44:06] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 12ms
+[17:44:26] [INFO] Request Started | GET /api/Health
+[17:44:26] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:44:42] [INFO] Request Started | POST /api/Auth/login
+[17:44:43] [INFO] משתמש התחבר: admin@test.com (ID: 1)
+[17:44:43] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 1153ms
+[17:44:43] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:43] [INFO] Request Started | GET /api/News/latest
+[17:44:44] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 394ms
+[17:44:44] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:44] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:44] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 513ms
+[17:44:44] [INFO] Request Started | GET /api/News/latest
+[17:44:44] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 249ms
+[17:44:44] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:45] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 608ms
+[17:44:45] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:45] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 252ms
+[17:44:45] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:45] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:45] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 195ms
+[17:44:45] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:46] [INFO] Request Started | GET /api/Health
+[17:44:46] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[17:44:47] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:47] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 240ms
+[17:44:47] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:47] [INFO] Request Started | GET /api/Events/upcoming
+[17:44:47] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 208ms
+[17:44:47] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:44:58] [INFO] Request Started | GET /api/Events
+[17:44:58] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 415ms
+[17:44:58] [INFO] Request Started | GET /api/Events
+[17:44:58] [INFO] Request Started | GET /api/Events/categories
+[17:44:58] [INFO] Request Started | GET /api/Events/locations
+[17:44:58] [INFO] Request Started | GET /api/Events/targetAudience
+[17:44:58] [INFO] Request Started | GET /api/Events/employees
+[17:44:59] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 304ms
+[17:45:00] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 1847ms
+[17:45:00] [INFO] Request Started | GET /api/Events/categories
+[17:45:00] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 1955ms
+[17:45:00] [INFO] Request Started | GET /api/Events/locations
+[17:45:00] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 1961ms
+[17:45:00] [INFO] Request Started | GET /api/Events/targetAudience
+[17:45:00] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 2009ms
+[17:45:00] [INFO] Request Started | GET /api/Events/employees
+[17:45:00] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 329ms
+[17:45:00] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 242ms
+[17:45:01] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 255ms
+[17:45:01] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 239ms
+[17:45:06] [INFO] Request Started | GET /api/Health
+[17:45:06] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[17:45:22] [INFO] Request Started | GET /api/News
+[17:45:23] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 288ms
+[17:45:23] [INFO] Request Started | GET /api/News
+[17:45:23] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 406ms
+[17:45:26] [INFO] Request Started | GET /api/Health
+[17:45:26] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:45:45] [INFO] Request Started | POST /api/News
+[17:45:45] [INFO] Request Finished | POST /api/News | Status: 200 | Time: 466ms
+[17:45:45] [ERROR] [POST /api/News] DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+[17:45:46] [INFO] Request Started | GET /api/Health
+[17:45:46] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[17:46:06] [INFO] Request Started | GET /api/Health
+[17:46:06] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:46:26] [INFO] Request Started | GET /api/Health
+[17:46:26] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 8ms
+[17:46:46] [INFO] Request Started | GET /api/Health
+[17:46:46] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 13ms
+[17:47:06] [INFO] Request Started | GET /api/Health
+[17:47:06] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:47:26] [INFO] Request Started | GET /api/Health
+[17:47:26] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:48:27] [INFO] Request Started | GET /api/Health
+[17:48:27] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 21ms
+[17:49:28] [INFO] Request Started | GET /api/Health
+[17:49:28] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 17ms
+[17:50:29] [INFO] Request Started | GET /api/Health
+[17:50:29] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[17:53:28] [INFO] Request Started | GET /swagger/index.html
+[17:53:28] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 203ms
+[17:53:28] [INFO] Request Started | GET /swagger/v1/swagger.json
+[17:53:28] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 90ms
+[17:54:00] [INFO] Request Started | GET /api/News/latest
+[17:54:00] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:01] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 1078ms
+[17:54:02] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:02] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:02] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 1596ms
+[17:54:02] [INFO] Request Started | GET /api/News/latest
+[17:54:02] [INFO] Request Started | GET /api/Health
+[17:54:02] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 390ms
+[17:54:02] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 585ms
+[17:54:02] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 187ms
+[17:54:02] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:02] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:03] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 362ms
+[17:54:03] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:03] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:04] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 367ms
+[17:54:04] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:05] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:05] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 353ms
+[17:54:05] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:05] [INFO] Request Started | GET /api/Events/upcoming
+[17:54:06] [INFO] Request Started | GET /api/Events
+[17:54:06] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 323ms
+[17:54:06] [ERROR] [GET /api/Events/upcoming] NotSupportedException: Cannot apply binary operation on types 'timestamp with time zone' and 'timestamp without time zone', convert one of the operands first.
+[17:54:06] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 549ms
+[17:54:06] [INFO] Request Started | GET /api/Events
+[17:54:06] [INFO] Request Started | GET /api/Events/locations
+[17:54:06] [INFO] Request Started | GET /api/Events/categories
+[17:54:06] [INFO] Request Started | GET /api/Events/targetAudience
+[17:54:06] [INFO] Request Started | GET /api/Events/employees
+[17:54:06] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 308ms
+[17:54:07] [INFO] Request Started | GET /api/News
+[17:54:08] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 355ms
+[17:54:08] [INFO] Request Started | GET /api/News
+[17:54:08] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 300ms
+[17:54:08] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 2319ms
+[17:54:08] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 2319ms
+[17:54:08] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 2293ms
+[17:54:08] [INFO] Request Started | GET /api/Events/targetAudience
+[17:54:08] [INFO] Request Started | GET /api/Events/locations
+[17:54:08] [INFO] Request Started | GET /api/Events/categories
+[17:54:09] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 249ms
+[17:54:09] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 270ms
+[17:54:09] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 276ms
+[17:54:09] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 2608ms
+[17:54:09] [INFO] Request Started | GET /api/Events/employees
+[17:54:09] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 251ms
+[17:54:14] [INFO] Request Started | POST /api/News
+[17:54:15] [INFO] Request Finished | POST /api/News | Status: 200 | Time: 975ms
+[17:54:15] [ERROR] [POST /api/News] DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+[17:54:20] [INFO] Request Started | GET /api/Health
+[17:54:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[17:54:40] [INFO] Request Started | GET /api/Health
+[17:54:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 10ms
+[17:55:00] [INFO] Request Started | GET /api/Health
+[17:55:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[17:55:20] [INFO] Request Started | GET /api/Health
+[17:55:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[17:55:40] [INFO] Request Started | GET /api/Health
+[17:55:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 9ms
