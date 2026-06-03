@@ -2491,3 +2491,82 @@
 [17:56:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 18ms
 [17:56:43] [INFO] Request Started | GET /api/Health
 [17:56:43] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[17:58:09] [INFO] Request Started | GET /swagger/index.html
+[17:58:09] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 222ms
+[17:58:10] [INFO] Request Started | GET /swagger/v1/swagger.json
+[17:58:10] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 95ms
+[18:00:20] [INFO] Request Started | GET /api/Events/upcoming
+[18:00:20] [INFO] Request Started | GET /api/News/latest
+[18:00:21] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 1031ms
+[18:00:21] [INFO] Request Started | GET /api/News/latest
+[18:00:21] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 446ms
+[18:00:22] [INFO] Request Started | GET /api/Health
+[18:00:22] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 21ms
+[18:00:22] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 2816ms
+[18:00:22] [INFO] Request Started | GET /api/Events/upcoming
+[18:00:23] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 270ms
+[18:00:40] [INFO] Request Started | GET /api/Health
+[18:00:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:00:54] [INFO] Request Started | POST /api/Auth/login
+[18:00:55] [INFO] משתמש התחבר: admin@test.com (ID: 1)
+[18:00:55] [INFO] Request Finished | POST /api/Auth/login | Status: 200 | Time: 1248ms
+[18:00:56] [INFO] Request Started | GET /api/Events/upcoming
+[18:00:56] [INFO] Request Started | GET /api/News/latest
+[18:00:56] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 423ms
+[18:00:56] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 429ms
+[18:00:56] [INFO] Request Started | GET /api/Events/upcoming
+[18:00:56] [INFO] Request Started | GET /api/News/latest
+[18:00:56] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 300ms
+[18:00:56] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 291ms
+[18:01:00] [INFO] Request Started | GET /api/Health
+[18:01:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 11ms
+[18:01:08] [INFO] Request Started | POST /api/Contact
+[18:01:09] [INFO] הודעה חדשה נשלחה על ידי נעמי בולק
+[18:01:09] [INFO] Request Finished | POST /api/Contact | Status: 200 | Time: 729ms
+[18:01:12] [INFO] Request Started | GET /api/Events
+[18:01:12] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 411ms
+[18:01:12] [INFO] Request Started | GET /api/Events
+[18:01:12] [INFO] Request Started | GET /api/Events/categories
+[18:01:12] [INFO] Request Started | GET /api/Events/locations
+[18:01:12] [INFO] Request Started | GET /api/Events/targetAudience
+[18:01:12] [INFO] Request Started | GET /api/Events/employees
+[18:01:13] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 309ms
+[18:01:13] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 336ms
+[18:01:13] [INFO] Request Started | GET /api/Events/categories
+[18:01:13] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 251ms
+[18:01:15] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 2334ms
+[18:01:15] [INFO] Request Started | GET /api/Events/employees
+[18:01:15] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 2364ms
+[18:01:15] [INFO] Request Started | GET /api/Events/locations
+[18:01:15] [INFO] Request Started | GET /api/Contact
+[18:01:15] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 241ms
+[18:01:15] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 236ms
+[18:01:15] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 2738ms
+[18:01:15] [INFO] Request Started | GET /api/Events/targetAudience
+[18:01:15] [INFO] נמשכו 1 הודעות מהמאגר
+[18:01:15] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 331ms
+[18:01:15] [INFO] Request Started | GET /api/Contact
+[18:01:15] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 297ms
+[18:01:15] [INFO] נמשכו 1 הודעות מהמאגר
+[18:01:15] [INFO] Request Finished | GET /api/Contact | Status: 200 | Time: 299ms
+[18:01:17] [INFO] Request Started | GET /api/News
+[18:01:17] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 355ms
+[18:01:17] [INFO] Request Started | GET /api/News
+[18:01:18] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 308ms
+[18:01:20] [INFO] Request Started | GET /api/Health
+[18:01:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:01:23] [INFO] Request Started | POST /api/News
+[18:01:24] [INFO] חדשות חדשות נוצרו: nuief
+[18:01:24] [INFO] Request Finished | POST /api/News | Status: 200 | Time: 386ms
+[18:01:30] [INFO] Request Started | GET /api/News
+[18:01:30] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 277ms
+[18:01:30] [INFO] Request Started | GET /api/News
+[18:01:30] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 275ms
+[18:01:40] [INFO] Request Started | GET /api/Health
+[18:01:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:02:00] [INFO] Request Started | GET /api/Health
+[18:02:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 13ms
+[18:02:20] [INFO] Request Started | GET /api/Health
+[18:02:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 12ms
+[18:02:40] [INFO] Request Started | GET /api/Health
+[18:02:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 10ms
