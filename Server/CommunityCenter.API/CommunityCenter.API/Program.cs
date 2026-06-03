@@ -4,6 +4,7 @@ using CommunityCenter.API.Services;
 using CommunityCenter.Application.Interfaces;
 using CommunityCenter.Application.Services;
 using CommunityCenter.Infrastructure;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 using CommunityCenter.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -15,9 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 #region 1. Services Configuration (DI)
 
 // Database
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (connectionString!.Contains("Host=") || connectionString.Contains("postgres"))
+    builder.Services.AddDbContext<DataContext>(options => options.UseNpgsql(connectionString));
+else
+    builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(connectionString));
 
 // Controllers + JSON
 builder.Services.AddControllers()
