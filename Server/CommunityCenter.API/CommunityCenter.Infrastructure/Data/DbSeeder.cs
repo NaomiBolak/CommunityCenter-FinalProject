@@ -14,7 +14,12 @@ public static class DbSeeder
                 Role = "Admin",
                 FirstName = "Admin",
                 IsActive = true,
-                JoinDate = DateTime.Now
+                JoinDate = DateTime.UtcNow,
+                BirthDate = DateTime.UtcNow,
+                LastName = "",
+                Phone = "",
+                Address = "",
+                IdentityCard = "000000000"
             });
             context.SaveChanges();
         }
