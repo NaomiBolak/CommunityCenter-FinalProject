@@ -5,13 +5,13 @@ using CommunityCenter.Application.Interfaces;
 using CommunityCenter.Application.Services;
 using CommunityCenter.Infrastructure;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
-AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 using CommunityCenter.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 var builder = WebApplication.CreateBuilder(args);
 
 #region 1. Services Configuration (DI)
