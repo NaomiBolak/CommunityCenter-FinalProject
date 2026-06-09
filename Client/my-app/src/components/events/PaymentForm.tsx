@@ -33,6 +33,10 @@ const PaymentForm: React.FC<Props> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    if (maxQuantity < 1) {
+      setError('אין מקומות פנויים לאירוע זה');
+      return;
+    }
     if (quantity < 1 || quantity > maxQuantity) {
       setError(`ניתן לרכוש בין 1 ל-${maxQuantity} כרטיסים`);
       return;
@@ -58,8 +62,10 @@ const PaymentForm: React.FC<Props> = ({
         type="number"
         min={1}
         max={maxQuantity}
+        step={1}
         value={quantity}
-        onChange={e => setQuantity(Number(e.target.value))}
+        onChange={e => setQuantity(Number(e.target.value) || 1)}
+        disabled={maxQuantity < 1}
       />
       <p className="payment-total">סה״כ לתשלום: <strong>{total} ₪</strong></p>
 

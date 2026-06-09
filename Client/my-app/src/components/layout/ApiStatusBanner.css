@@ -1,19 +1,36 @@
 .api-status-banner {
-  background: #c62828;
+  background: var(--color-error);
   color: #fff;
   text-align: center;
-  padding: 10px 16px;
-  font-size: 14px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
   direction: rtl;
+  box-shadow: 0 4px 12px rgba(198, 40, 40, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .api-status-retry {
-  background: #fff;
-  color: #c62828;
+  background: white;
+  color: var(--color-error);
   border: none;
-  border-radius: 4px;
-  padding: 4px 10px;
-  margin-right: 6px;
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
 }
+
+.api-status-retry:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.api-status-retry:active {
+  transform: translateY(0);
+}
+

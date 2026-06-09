@@ -3,8 +3,11 @@
   overflow: hidden;
   border-radius: var(--radius-xl);
   margin-bottom: 52px;
-  background: var(--gradient-hero);
-  min-height: 400px;
+  background: linear-gradient(135deg, #143f39 0%, #1e7061 40%, #29a08d 100%);
+  background-image: radial-gradient(circle at 30% 15%, rgba(255,255,255,0.18), transparent 14%),
+                    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.12), transparent 15%),
+                    linear-gradient(135deg, #143f39 0%, #1e7061 40%, #29a08d 100%);
+  min-height: 420px;
   display: flex;
   align-items: stretch;
   box-shadow: var(--shadow-lg);

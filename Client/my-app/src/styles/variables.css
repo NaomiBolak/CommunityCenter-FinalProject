@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Frank+Ruhl+Libre:wght@400;500;700;900&display=swap');
 
 :root {
-  --color-primary: #1a6b5e;
-  --color-primary-light: #22877a;
-  --color-primary-dark: #0d3d36;
-  --color-accent: #e07b3a;
-  --color-accent-hover: #c96a2a;
-  --color-accent-light: rgba(224, 123, 58, 0.12);
-  --color-sand: #d4c4a8;
-  --color-stone: #e8e2d6;
-  --color-teal: #3a9f8f;
-  --color-bg: #f5f1ea;
-  --color-bg-elevated: #fdfcfa;
-  --color-surface-glass: rgba(253, 252, 250, 0.94);
-  --color-text: #1a2220;
-  --color-text-muted: #607068;
-  --color-border: rgba(25, 87, 77, 0.13);
+  --color-primary: #0f4247;
+  --color-primary-light: #1e6b6f;
+  --color-primary-dark: #0b3438;
+  --color-accent: #277c6d;
+  --color-accent-hover: #1f665c;
+  --color-accent-light: rgba(39, 124, 109, 0.12);
+  --color-sand: #d2cbc1;
+  --color-stone: #e3dfdb;
+  --color-teal: #3c8a80;
+  --color-bg: #f7f8f9;
+  --color-bg-elevated: #ffffff;
+  --color-surface-glass: rgba(255, 255, 255, 0.92);
+  --color-text: #1f3236;
+  --color-text-muted: #5f6f76;
+  --color-border: rgba(33, 90, 84, 0.12);
 
-  --gradient-hero: linear-gradient(135deg, #0d3d36 0%, #1a6b5e 50%, #22877a 100%);
-  --gradient-accent: linear-gradient(135deg, #e07b3a 0%, #f09050 100%);
-  --gradient-card: linear-gradient(160deg, #1a6b5e 0%, #3a9f8f 100%);
+  --gradient-hero: linear-gradient(135deg, #0b3438 0%, #0f4247 50%, #1e6b6f 100%);
+  --gradient-accent: linear-gradient(135deg, #277c6d 0%, #3c8a80 100%);
+  --gradient-card: linear-gradient(160deg, #0b3438 0%, #3c8a80 100%);
 
   --font-family: 'Heebo', 'Segoe UI', Tahoma, sans-serif;
   --font-display: 'Frank Ruhl Libre', 'Heebo', Georgia, serif;
@@ -35,8 +35,27 @@
   --shadow-lg: 0 16px 48px rgba(13, 61, 54, 0.14);
   --shadow-glow: 0 8px 32px rgba(224, 123, 58, 0.28);
   --shadow-primary: 0 8px 24px rgba(26, 107, 94, 0.25);
+  --shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  /* Status Colors */
+  --color-success: #2e7d32;
+  --color-success-light: #e8f5e9;
+  --color-error: #c62828;
+  --color-error-light: #ffebee;
+  --color-warning: #f57c00;
+  --color-warning-light: #fff3e0;
+  --color-info: #0277bd;
+  --color-info-light: #e1f5fe;
+
+  /* Form States */
+  --form-focus-color: #0f4247;
+  --form-focus-shadow: 0 0 0 3px rgba(15, 66, 71, 0.1), 0 0 0 1px #0f4247;
+  --form-error-color: #c62828;
+  --form-success-color: #2e7d32;
 
   --header-height: 80px;
   --container-max: 1200px;
   --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s ease-out;
+  --transition-slow: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }

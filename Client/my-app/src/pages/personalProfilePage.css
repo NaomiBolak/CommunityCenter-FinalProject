@@ -50,3 +50,55 @@
   color: var(--color-accent);
   font-weight: 600;
 }
+
+.profile-classes {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-classes h2 {
+  margin: 0 0 20px;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.classes-list {
+  display: grid;
+  gap: 14px;
+}
+
+.class-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+}
+
+.class-item h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+.class-item p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.class-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 170px;
+  text-align: right;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}

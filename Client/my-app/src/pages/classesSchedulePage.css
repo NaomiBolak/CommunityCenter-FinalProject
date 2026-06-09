@@ -1,0 +1,102 @@
+.classes-page {
+  padding: 40px 20px 60px;
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.classes-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(200px, 1fr);
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 30px;
+  padding: 28px 32px;
+  background: linear-gradient(135deg, rgba(26, 107, 94, 0.08), rgba(224, 123, 58, 0.08));
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(26, 107, 94, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+.classes-hero h1 {
+  margin: 0 0 16px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--color-primary-dark);
+  line-height: 1.05;
+}
+
+.classes-intro {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 720px;
+}
+
+.classes-hero-stats {
+  display: grid;
+  gap: 16px;
+}
+
+.classes-hero-stats div {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: white;
+  border: 1px solid rgba(13, 61, 54, 0.08);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.classes-hero-stats strong {
+  display: block;
+  font-size: 2.1rem;
+  color: var(--color-primary);
+}
+
+.classes-hero-stats span {
+  display: block;
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.classes-note {
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(224, 123, 58, 0.12);
+  border: 1px solid rgba(224, 123, 58, 0.24);
+  color: var(--color-primary-dark);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  justify-items: center;
+}
+
+.section-loading {
+  padding: 80px 20px;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+@media (max-width: 840px) {
+  .classes-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .classes-page {
+    padding: 24px 16px 40px;
+  }
+
+  .classes-hero {
+    padding: 22px 18px;
+  }
+}

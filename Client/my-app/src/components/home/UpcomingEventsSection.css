@@ -43,17 +43,18 @@
 }
 
 .event-preview-card {
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.96);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  border: 1px solid var(--color-stone);
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(26, 107, 94, 0.12);
+  box-shadow: 0 14px 38px rgba(26, 107, 94, 0.1);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
 .event-preview-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 48px rgba(26, 107, 94, 0.16);
+  border-color: rgba(35, 128, 115, 0.25);
 }
 
 .event-preview-image {
@@ -77,15 +78,15 @@
 }
 
 .event-preview-body {
-  padding: 20px;
+  padding: 26px 24px 24px;
 }
 
 .event-preview-body h3 {
-  margin: 0 0 10px;
-  font-size: 1.05rem;
-  font-weight: 700;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--color-primary-dark);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .event-date {

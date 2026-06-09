@@ -1,5 +1,5 @@
 import api from './api';
-import { EventRegistration } from '../types';
+import { EventRegistration, RegisteredCourse } from '../types';
 
 export interface UserProfile {
   id: number;
@@ -13,6 +13,7 @@ export interface UserProfile {
   joinDate: string;
   role: string;
   events: EventRegistration[];
+  courses: RegisteredCourse[];
 }
 
 const profileService = {

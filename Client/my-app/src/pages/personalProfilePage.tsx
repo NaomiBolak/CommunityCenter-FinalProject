@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import profileService, { UserProfile } from '../services/profileService';
 import TicketCard from '../components/events/TicketCard';
-import { EventRegistration } from '../types';
+import { EventRegistration, RegisteredCourse } from '../types';
 import './personalProfilePage.css';
+
+const DAY_NAMES: Record<number, string> = {
+  0: 'ראשון',
+  1: 'שני',
+  2: 'שלישי',
+  3: 'רביעי',
+  4: 'חמישי',
+  5: 'שישי',
+  6: 'שבת',
+};
+
+const formatTime = (time: string) => time?.slice(0, 5) ?? '';
 
 const PersonalProfilePage: React.FC = () => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
@@ -29,6 +41,7 @@ const PersonalProfilePage: React.FC = () => {
   if (!profile) return null;
 
   const tickets: EventRegistration[] = profile.events || [];
+  const courses: RegisteredCourse[] = profile.courses || [];
 
   return (
     <div className="profile-page">
@@ -47,11 +60,32 @@ const PersonalProfilePage: React.FC = () => {
       </section>
 
       <section className="profile-tickets">
-        <h2>🎟️ הכרטיסים שלי ({tickets.length})</h2>
+        <h2>הכרטיסים שלי ({tickets.length})</h2>
         {tickets.length === 0 ? (
           <p className="profile-empty">עדיין לא רכשת כרטיסים לאירועים. <Link to="/activities">לצפייה באירועים</Link></p>
         ) : (
           tickets.map(ticket => <TicketCard key={ticket.registrationId} ticket={ticket} />)
+        )}
+      </section>
+
+      <section className="profile-classes">
+        <h2>החוגים שלי ({courses.length})</h2>
+        {courses.length === 0 ? (
+          <p className="profile-empty">עדיין לא נרשמת לחוגים. <Link to="/classes">לצפייה בחוגים</Link></p>
+        ) : (
+          <div className="classes-list">
+            {courses.map(course => (
+              <div key={course.registrationId} className="class-item">
+                <div>
+                  <h3>{course.courseName}</h3>
+                  <p>יום {DAY_NAMES[course.dayOfWeek]} • {formatTime(course.startTime)} - {formatTime(course.endTime)}</p>
+                </div>
+                <div className="class-meta">
+                  <span>נרשמת ב: {new Date(course.registrationDate).toLocaleDateString('he-IL')}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </section>
     </div>

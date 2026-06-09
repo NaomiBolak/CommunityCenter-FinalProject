@@ -9,7 +9,6 @@ interface Props {
 const TicketCard: React.FC<Props> = ({ ticket }) => (
   <article className="ticket-card">
     <div className="ticket-header">
-      <span className="ticket-icon">🎟️</span>
       <div>
         <h3>{ticket.eventDescription}</h3>
         <p className="ticket-id">מס׳ הזמנה: #{ticket.registrationId}</p>
@@ -21,7 +20,7 @@ const TicketCard: React.FC<Props> = ({ ticket }) => (
       <p><strong>סה״כ שולם:</strong> {ticket.totalPrice} ₪</p>
       <p><strong>תאריך רכישה:</strong> {new Date(ticket.registrationDate).toLocaleDateString('he-IL')}</p>
       <span className={`ticket-status ${ticket.isPaid ? 'paid' : 'pending'}`}>
-        {ticket.isPaid ? '✅ שולם' : '⏳ ממתין לתשלום'}
+        {ticket.isPaid ? 'שולם' : 'ממתין לתשלום'}
       </span>
     </div>
   </article>

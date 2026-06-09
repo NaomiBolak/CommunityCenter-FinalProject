@@ -60,16 +60,17 @@ const RegisterPage: React.FC = () => {
         <p className="auth-subtitle">הצטרפו ל{SITE_NAME}</p>
         {error && <p className="alert-error">{error}</p>}
         <form className="auth-form" onSubmit={handleSubmit} autoComplete="off">
-          <input name="identityCard" placeholder="תעודת זהות" onChange={handleChange} required autoComplete="off" />
+          <input name="identityCard" value={form.identityCard} placeholder="תעודת זהות" onChange={handleChange} required autoComplete="off" />
           <div className="auth-row">
-            <input name="firstName" placeholder="שם פרטי" onChange={handleChange} required autoComplete="off" />
-            <input name="lastName" placeholder="שם משפחה" onChange={handleChange} required autoComplete="off" />
+            <input name="firstName" value={form.firstName} placeholder="שם פרטי" onChange={handleChange} required autoComplete="off" />
+            <input name="lastName" value={form.lastName} placeholder="שם משפחה" onChange={handleChange} required autoComplete="off" />
           </div>
-          <input name="email" type="email" placeholder="אימייל" onChange={handleChange} required autoComplete="off" />
-          <input name="password" type="password" placeholder="סיסמה" onChange={handleChange} required autoComplete="new-password" />
-          <input name="phone" placeholder="טלפון" onChange={handleChange} required autoComplete="off" />
-          <input name="address" placeholder="כתובת" onChange={handleChange} autoComplete="off" />
-          <input name="birthDate" type="date" onChange={handleChange} required autoComplete="off" />
+          <input name="email" type="email" value={form.email} placeholder="אימייל" onChange={handleChange} required autoComplete="off" />
+          <input name="password" type="password" value={form.password} placeholder="סיסמה" onChange={handleChange} required autoComplete="new-password" />
+          <input name="phone" value={form.phone} placeholder="טלפון" onChange={handleChange} required autoComplete="off" />
+          <input name="address" value={form.address} placeholder="כתובת" onChange={handleChange} autoComplete="off" />
+          <label className="input-label" htmlFor="birthDate">תאריך לידה</label>
+          <input id="birthDate" name="birthDate" type="date" value={form.birthDate} onChange={handleChange} required autoComplete="off" />
           <button type="submit" className="btn-primary" disabled={loading}>{loading ? 'נרשם...' : 'הרשמה'}</button>
         </form>
         <p className="auth-footer-link">

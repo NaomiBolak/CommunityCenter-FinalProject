@@ -115,6 +115,26 @@ const EventCard = () => {
 
     const handleSaveUpdate = async () => {
         if (!editingEvent) return;
+        if (!editingEvent.description.trim()) {
+            setFormError('יש להזין תיאור אירוע');
+            return;
+        }
+        if (editingEvent.unitPrice <= 0) {
+            setFormError('יש להזין מחיר אירוע חוקי');
+            return;
+        }
+        if (editingEvent.maxPlaces <= 0) {
+            setFormError('יש להזין מספר מקומות גדול מ-0');
+            return;
+        }
+        if (!editingEvent.date) {
+            setFormError('יש לבחור תאריך לאירוע');
+            return;
+        }
+        if (!editingEvent.locationId || editingEvent.locationId === 0) {
+            setFormError('יש לבחור מיקום לאירוע');
+            return;
+        }
         try {
             if (editingEvent.id === 0) {
                 const response = await eventService.addEvent(editingEvent);
@@ -126,6 +146,7 @@ const EventCard = () => {
                 setSuccessMessage("הנתונים נשמרו בהצלחה!");
             }
             setEditingEvent(null);
+            setFormError('');
         } catch (error: any) {
             setFormError(error.response?.data?.errors ? "חסרים נתונים, אנא מלאי את כל השדות" : "שגיאה בשמירה, נסי שוב");
         }
@@ -242,7 +263,7 @@ const EventCard = () => {
             )}
 
             {userRole === 'admin' && (
-                <button className="btn-add-event" onClick={handleAddNewEvent}>➕ הוספת אירוע חדש</button>
+                <button className="btn-add-event" onClick={handleAddNewEvent}>הוספת אירוע חדש</button>
             )}
 
             {/* מודל מחיקה */}
@@ -282,18 +303,23 @@ const EventCard = () => {
                                     onChange={e => setEditingEvent({ ...editingEvent, description: e.target.value })} />
                             </div>
                             <div>
-                                <label>מחיר</label>
-                                <input type="number" value={editingEvent.unitPrice}
-                                    onChange={e => setEditingEvent({ ...editingEvent, unitPrice: Number(e.target.value) })} />
+                                <label>מחיר ליחידה (₪)</label>
+                                <input type="number" min={0} step={0.01} value={editingEvent.unitPrice}
+                                    onChange={e => setEditingEvent({ ...editingEvent, unitPrice: Number(parseFloat(e.target.value) || 0) })} />
                             </div>
                             <div>
                                 <label>מקומות מקסימליים</label>
-                                <input type="number" value={editingEvent.maxPlaces}
+                                <input type="number" min={1} step={1} value={editingEvent.maxPlaces}
                                     onChange={e => editingEvent.id === 0
                                         ? setEditingEvent({ ...editingEvent, maxPlaces: Number(e.target.value) })
                                         : changemaxPlaces(editingEvent, Number(e.target.value))} />
                             </div>
 
+                            <div>
+                                <label>תאריך אירוע</label>
+                                <input type="date" value={editingEvent.date}
+                                    onChange={e => setEditingEvent({ ...editingEvent, date: e.target.value })} />
+                            </div>
                             <div>
                                 <label>מיקום</label>
                                 <div className="field-with-add">
@@ -301,7 +327,7 @@ const EventCard = () => {
                                         <option value={0}>בחר מיקום...</option>
                                         {locations.map(loc => <option key={loc.id} value={loc.id}>{loc.description}</option>)}
                                     </select>
-                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingLocation(!isAddingLocation)}>➕</button>
+                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingLocation(!isAddingLocation)}>הוסף</button>
                                 </div>
                                 {isAddingLocation && (
                                     <div className="inline-add-row">
@@ -318,7 +344,7 @@ const EventCard = () => {
                                         <option value={0}>בחר קטגוריה...</option>
                                         {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.description || cat.name}</option>)}
                                     </select>
-                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingCategory(!isAddingCategory)}>➕</button>
+                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingCategory(!isAddingCategory)}>הוסף</button>
                                 </div>
                                 {isAddingCategory && (
                                     <div className="inline-add-row">
@@ -335,7 +361,7 @@ const EventCard = () => {
                                         <option value={0}>בחר עובד...</option>
                                         {employees.map(emp => <option key={emp.id} value={emp.id}>{emp.name || emp.firstName}</option>)}
                                     </select>
-                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingEmployee(!isAddingEmployee)}>➕</button>
+                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingEmployee(!isAddingEmployee)}>הוסף</button>
                                 </div>
                                 {isAddingEmployee && (
                                     <div className="inline-add-row">
@@ -354,7 +380,7 @@ const EventCard = () => {
                                         <option value={0}>בחר קהל יעד...</option>
                                         {audiences.map(aud => <option key={aud.id} value={aud.id}>{aud.description || aud.name}</option>)}
                                     </select>
-                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingAudience(!isAddingAudience)}>➕</button>
+                                    <button type="button" className="btn-add-inline" onClick={() => setIsAddingAudience(!isAddingAudience)}>הוסף</button>
                                 </div>
                                 {isAddingAudience && (
                                     <div className="inline-add-row">
@@ -417,22 +443,22 @@ const EventCard = () => {
                             <div className="event-card-body">
                                 <h3>{ev.description}</h3>
                                 <div className="event-meta">
-                                    <p>💰 <strong>מחיר:</strong> {ev.unitPrice} ₪</p>
-                                    <p>📍 <strong>מיקום:</strong> {getLocationName(ev.locationId)}</p>
-                                    <p>📅 <strong>תאריך:</strong> {new Date(ev.date).toLocaleDateString('he-IL')}</p>
-                                    <p>👥 <strong>מיועד ל:</strong> {getTargetAudienceName(ev.targetAudienceId || 3)}</p>
+                                    <p><strong>מחיר:</strong> {ev.unitPrice} ₪</p>
+                                    <p><strong>מיקום:</strong> {getLocationName(ev.locationId)}</p>
+                                    <p><strong>תאריך:</strong> {new Date(ev.date).toLocaleDateString('he-IL')}</p>
+                                    <p><strong>מיועד ל:</strong> {getTargetAudienceName(ev.targetAudienceId || 3)}</p>
                                 </div>
                                 <div className={`event-spots${remaining === 0 ? ' sold-out' : ''}`}>
-                                    🎟️ {remaining === 0 ? 'אזלו הכרטיסים' : `${remaining} / ${ev.maxPlaces} מקומות פנויים`}
+                                    {remaining === 0 ? 'אזלו הכרטיסים' : `${remaining} / ${ev.maxPlaces} מקומות פנויים`}
                                 </div>
                                 <div className="event-card-actions">
                                     {userRole === 'admin' ? (
                                         <>
                                             <div className="event-card-actions-row">
-                                                <button className="btn-event edit" onClick={() => setEditingEvent(ev)}>עדכון ✏️</button>
-                                                <button className="btn-event delete" onClick={() => setConfirmDeleteId(ev.id)}>מחיקה 🗑️</button>
+                                                <button className="btn-event edit" onClick={() => setEditingEvent(ev)}>עדכון</button>
+                                                <button className="btn-event delete" onClick={() => setConfirmDeleteId(ev.id)}>מחיקה</button>
                                             </div>
-                                            <button className="btn-event report" onClick={() => setViewRegistrantsEvent(ev)}>דוח נרשמים 📋</button>
+                                            <button className="btn-event report" onClick={() => setViewRegistrantsEvent(ev)}>דוח נרשמים</button>
                                         </>
                                     ) : (
                                         <button
@@ -440,7 +466,7 @@ const EventCard = () => {
                                             onClick={() => handleStartPurchase(ev)}
                                             disabled={remaining === 0}
                                         >
-                                            {remaining > 0 ? '🎟️ רכישת כרטיסים' : 'אזלו הכרטיסים'}
+                                            {remaining > 0 ? 'רכישת כרטיסים' : 'אזלו הכרטיסים'}
                                         </button>
                                     )}
                                 </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { newsService } from '../../services/newsService';
+import './NewsForm.css';
 
 const NewsForm: React.FC = () => {
   const [newsList, setNewsList] = useState<any[]>([]);
@@ -53,49 +54,82 @@ const NewsForm: React.FC = () => {
     }
   };
 
-  if (loading) return <div>טוען חדשות...</div>;
+  if (loading) {
+    return (
+      <div className="news-form-container">
+        <div className="section-loading">
+          <div className="spinner"></div>
+          טוען חדשות...
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h2>ניהול חדשות</h2>
+    <div className="news-form-container">
+      <h2 className="news-form-title">ניהול חדשות</h2>
 
       {success && (
-        <div style={{ backgroundColor: '#e8f5e9', color: '#2e7d32', padding: '10px', borderRadius: '6px', marginBottom: '10px' }}>
+        <div className="alert-success">
           {success}
-          <button onClick={() => setSuccess('')} style={{ float: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>✕</button>
+          <button className="alert-close" onClick={() => setSuccess('')}>×</button>
         </div>
       )}
       {error && (
-        <div style={{ backgroundColor: '#ffebee', color: '#c62828', padding: '10px', borderRadius: '6px', marginBottom: '10px' }}>
+        <div className="alert-error">
           {error}
-          <button onClick={() => setError('')} style={{ float: 'left', background: 'none', border: 'none', cursor: 'pointer' }}>✕</button>
+          <button className="alert-close" onClick={() => setError('')}>×</button>
         </div>
       )}
 
-      <form onSubmit={handleCreate} style={{ marginBottom: '30px', padding: '15px', border: '1px solid #ddd', borderRadius: '8px' }}>
+      <form onSubmit={handleCreate} className="news-form">
         <h3>הוספת חדשה</h3>
-        <input name="title" placeholder="כותרת" value={form.title} onChange={handleChange} required style={inputStyle} />
-        <textarea name="content" placeholder="תוכן" value={form.content} onChange={handleChange} required style={inputStyle} />
-        <input name="imagePath" placeholder="קישור לתמונה (אופציונלי)" value={form.imagePath} onChange={handleChange} style={inputStyle} />
-        <button type="submit" disabled={saving} style={btnStyle}>{saving ? 'שומר...' : 'הוסף חדשה ➕'}</button>
+        <div className="input-group">
+          <label htmlFor="title">כותרת</label>
+          <input id="title" name="title" placeholder="כותרת החדשה" value={form.title} onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <label htmlFor="content">תוכן</label>
+          <textarea id="content" name="content" placeholder="תוכן החדשה" value={form.content} onChange={handleChange} required></textarea>
+        </div>
+        <div className="input-group">
+          <label htmlFor="imagePath">קישור לתמונה (אופציונלי)</label>
+          <input id="imagePath" name="imagePath" placeholder="https://example.com/image.jpg" value={form.imagePath} onChange={handleChange} />
+        </div>
+        <button type="submit" className="btn-primary" disabled={saving}>
+          {saving ? (
+            <>
+              <span className="spinner"></span>
+              שומר...
+            </>
+          ) : (
+            'הוסף חדשה'
+          )}
+        </button>
       </form>
 
-      <h3>חדשות קיימות</h3>
-      {newsList.length === 0 && <p>אין חדשות להצגה</p>}
-      {newsList.map(n => (
-        <div key={n.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div>
-            <strong>{n.title}</strong>
-            <p style={{ margin: '5px 0', color: '#555' }}>{n.content}</p>
+      <div className="news-list">
+        <h3>חדשות קיימות</h3>
+        {newsList.length === 0 ? (
+          <div className="empty-state">
+            <p>אין חדשות להצגה כרגע</p>
           </div>
-          <button onClick={() => handleDelete(n.id)} style={{ ...btnStyle, backgroundColor: '#f44336', whiteSpace: 'nowrap' }}>מחק 🗑️</button>
-        </div>
-      ))}
+        ) : (
+          <div className="news-items">
+            {newsList.map(n => (
+              <div key={n.id} className="news-item">
+                <div className="news-content">
+                  <h4>{n.title}</h4>
+                  <p>{n.content}</p>
+                </div>
+                <button className="btn-delete" onClick={() => handleDelete(n.id)}>מחק</button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
-
-const inputStyle: React.CSSProperties = { display: 'block', width: '100%', padding: '8px', marginBottom: '10px', borderRadius: '4px', border: '1px solid #ccc' };
-const btnStyle: React.CSSProperties = { backgroundColor: '#4CAF50', color: 'white', padding: '8px 16px', border: 'none', borderRadius: '4px', cursor: 'pointer' };
 
 export default NewsForm;

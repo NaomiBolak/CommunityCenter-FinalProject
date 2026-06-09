@@ -58,6 +58,10 @@ api.interceptors.response.use(
     } else if (error.response?.status === 503) {
       error.message =
         'השרת (API) לא זמין. הפעילי את CommunityCenter.API על http://127.0.0.1:5051 ורענני את הדף.';
+    } else if (error.response?.status === 401) {
+      localStorage.removeItem('token');
+      error.message =
+        'אין הרשאה לגשת למשאב זה. התחברי שוב כדי לטעון את הפרופיל.';
     } else if (error.response?.status === 500) {
       const detail = (error.response.data as { detail?: string })?.detail;
       error.message = detail

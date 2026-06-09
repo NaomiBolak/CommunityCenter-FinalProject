@@ -31,9 +31,11 @@ export interface Class {
   name: string;
   description: string;
   price: number;
-  day: string;
-  time: string;
-  domainId: number;
+  dayOfWeek: number;
+  startTime: string;
+  endTime: string;
+  imagePath?: string;
+  categoryId: number;
   targetAudienceId: number;
   locationId: number;
   employeeId: number;
@@ -84,6 +86,16 @@ export interface EventRegistration {
   totalPrice: number;
   registrationDate: string;
   isPaid: boolean;
+}
+
+export interface RegisteredCourse {
+  registrationId: number;
+  courseId: number;
+  courseName: string;
+  dayOfWeek: number;
+  startTime: string;
+  endTime: string;
+  registrationDate: string;
 }
 
 export interface ContactMessage {

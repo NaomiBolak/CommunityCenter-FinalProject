@@ -4,10 +4,10 @@ import Footer from './Footer';
 import ApiStatusBanner from './ApiStatusBanner';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div>
+  <div className="app-root">
     <ApiStatusBanner />
     <Header />
-    <main>{children}</main>
+    <main className="app-main">{children}</main>
     <Footer />
   </div>
 );

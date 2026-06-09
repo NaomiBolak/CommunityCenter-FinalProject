@@ -39,7 +39,7 @@ const UpcomingEventsSection: React.FC<{ limit?: number }> = ({ limit = 3 }) => {
               {ev.imagePath ? (
                 <img src={ev.imagePath} alt={ev.description} />
               ) : (
-                <span>🎭</span>
+                <span>תמונה לא זמינה</span>
               )}
             </div>
             <div className="event-preview-body">

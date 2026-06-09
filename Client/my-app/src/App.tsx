@@ -15,6 +15,7 @@ import LoginPage from './pages/loginPage';
 import RegisterPage from './pages/registerPage';
 import PersonalProfilePage from './pages/personalProfilePage';
 import AdminDashboardPage from './pages/adminDashbourdPage';
+import AdminClassesPage from './pages/adminClassesPage';
 import { ROUTES } from './utils/constants';
 
 function AppContent() {
@@ -49,6 +50,11 @@ function AppContent() {
           <Route path={ROUTES.ADMIN} element={
             <AdminRoute>
               <AdminDashboardPage />
+            </AdminRoute>
+          } />
+          <Route path={ROUTES.ADMIN_CLASSES} element={
+            <AdminRoute>
+              <AdminClassesPage />
             </AdminRoute>
           } />
         </Routes>
