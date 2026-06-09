@@ -1,4 +1,7 @@
-﻿namespace CommunityCenter.Application.DTOs.Profile
+﻿using System;
+using System.Collections.Generic;
+
+namespace CommunityCenter.Application.DTOs.Profile
 {
     public class ProfileDto
     {
@@ -13,5 +16,6 @@
         public DateTime JoinDate { get; set; }
         public string Role { get; set; } = string.Empty;
         public List<EventTicketDto> Events { get; set; } = new();
+        public List<CourseTicketDto> Courses { get; set; } = new();
     }
 }

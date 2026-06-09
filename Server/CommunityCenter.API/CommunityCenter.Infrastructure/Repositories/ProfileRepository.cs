@@ -1,6 +1,9 @@
 ﻿using CommunityCenter.Application.DTOs.Profile;
 using CommunityCenter.Application.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace CommunityCenter.Infrastructure.Repositories
 {
@@ -18,6 +21,8 @@ namespace CommunityCenter.Infrastructure.Repositories
             var user = await _context.Subscribers
                 .Include(u => u.EventRegistrations)
                     .ThenInclude(r => r.Event)
+                .Include(u => u.CourseRegistrations)
+                    .ThenInclude(r => r.Course)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user == null)
@@ -45,6 +50,16 @@ namespace CommunityCenter.Infrastructure.Repositories
                     TotalPrice = (r.Event?.UnitPrice ?? 0) * r.PlacesCount,
                     RegistrationDate = r.RegistrationDate,
                     IsPaid = r.IsPaid
+                }).ToList(),
+                Courses = user.CourseRegistrations.Select(r => new CourseTicketDto
+                {
+                    RegistrationId = r.Id,
+                    CourseId = r.CourseId,
+                    CourseName = r.Course?.Name ?? string.Empty,
+                    DayOfWeek = r.Course != null ? (int)r.Course.DayOfWeek : 0,
+                    StartTime = r.Course != null ? r.Course.StartTime.ToString(@"hh\:mm") : string.Empty,
+                    EndTime = r.Course != null ? r.Course.EndTime.ToString(@"hh\:mm") : string.Empty,
+                    RegistrationDate = r.RegistrationDate
                 }).ToList()
             };
         }

@@ -2570,3 +2570,358 @@
 [18:02:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 12ms
 [18:02:40] [INFO] Request Started | GET /api/Health
 [18:02:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 10ms
+[18:03:41] [INFO] Request Started | GET /api/Health
+[18:03:41] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 16ms
+[18:04:42] [INFO] Request Started | GET /api/Health
+[18:04:42] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 19ms
+[18:05:00] [INFO] Request Started | GET /api/Health
+[18:05:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 8ms
+[18:05:05] [INFO] Request Started | GET /api/Events/upcoming
+[18:05:05] [INFO] Request Started | GET /api/News/latest
+[18:05:05] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 340ms
+[18:05:05] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 343ms
+[18:05:05] [INFO] Request Started | GET /api/Events/upcoming
+[18:05:05] [INFO] Request Started | GET /api/News/latest
+[18:05:05] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 298ms
+[18:05:05] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 301ms
+[18:05:07] [INFO] Request Started | GET /api/Events
+[18:05:07] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 296ms
+[18:05:07] [INFO] Request Started | GET /api/Events
+[18:05:07] [INFO] Request Started | GET /api/Events/locations
+[18:05:07] [INFO] Request Started | GET /api/Events/categories
+[18:05:07] [INFO] Request Started | GET /api/Events/targetAudience
+[18:05:07] [INFO] Request Started | GET /api/Events/employees
+[18:05:07] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 232ms
+[18:05:07] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 389ms
+[18:05:07] [INFO] Request Started | GET /api/Events/locations
+[18:05:07] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 398ms
+[18:05:07] [INFO] Request Started | GET /api/Events/categories
+[18:05:08] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 244ms
+[18:05:08] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 387ms
+[18:05:09] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 2018ms
+[18:05:09] [INFO] Request Started | GET /api/Events/employees
+[18:05:09] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 299ms
+[18:05:10] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 2630ms
+[18:05:10] [INFO] Request Started | GET /api/Events/targetAudience
+[18:05:10] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 305ms
+[18:05:20] [INFO] Request Started | GET /api/Health
+[18:05:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:05:40] [INFO] Request Started | GET /api/Health
+[18:05:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[18:06:00] [INFO] Request Started | GET /api/Health
+[18:06:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 13ms
+[18:06:01] [INFO] Request Started | POST /api/Events/employee
+[18:06:01] [INFO] Request Finished | POST /api/Events/employee | Status: 201 | Time: 537ms
+[18:06:11] [INFO] Request Started | POST /api/Events
+[18:06:12] [INFO] אירוע חדש נוסף: iuycitxjcgfhj (ID: 1)
+[18:06:12] [INFO] Request Finished | POST /api/Events | Status: 201 | Time: 547ms
+[18:06:20] [INFO] Request Started | GET /api/Health
+[18:06:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 8ms
+[18:06:21] [INFO] Request Started | GET /api/Events/1/registrants
+[18:06:22] [INFO] Request Finished | GET /api/Events/1/registrants | Status: 200 | Time: 733ms
+[18:06:22] [INFO] Request Started | GET /api/Events/1/registrants
+[18:06:22] [INFO] Request Finished | GET /api/Events/1/registrants | Status: 200 | Time: 402ms
+[18:06:37] [INFO] Request Started | GET /api/News/latest
+[18:06:37] [INFO] Request Started | GET /api/Events/upcoming
+[18:06:37] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 280ms
+[18:06:37] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 280ms
+[18:06:37] [INFO] Request Started | GET /api/News/latest
+[18:06:37] [INFO] Request Started | GET /api/Events/upcoming
+[18:06:38] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 303ms
+[18:06:38] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 312ms
+[18:06:39] [INFO] Request Started | GET /api/Events
+[18:06:39] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 385ms
+[18:06:39] [INFO] Request Started | GET /api/Events
+[18:06:39] [INFO] Request Started | GET /api/Events/locations
+[18:06:39] [INFO] Request Started | GET /api/Events/categories
+[18:06:39] [INFO] Request Started | GET /api/Events/employees
+[18:06:39] [INFO] Request Started | GET /api/Events/targetAudience
+[18:06:40] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 268ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 253ms
+[18:06:40] [INFO] Request Started | GET /api/Events/locations
+[18:06:40] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 285ms
+[18:06:40] [INFO] Request Started | GET /api/Events/categories
+[18:06:40] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 293ms
+[18:06:40] [INFO] Request Started | GET /api/Events/employees
+[18:06:40] [INFO] Request Started | GET /api/Health
+[18:06:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 353ms
+[18:06:40] [INFO] Request Started | GET /api/Events/targetAudience
+[18:06:40] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:06:40] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 270ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 258ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 264ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 244ms
+[18:06:40] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 502ms
+[18:06:40] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:06:40] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 288ms
+[18:06:48] [INFO] Request Started | GET /api/Events/upcoming
+[18:06:48] [INFO] Request Started | GET /api/News/latest
+[18:06:48] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 277ms
+[18:06:48] [INFO] Request Started | GET /api/Events/upcoming
+[18:06:48] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 283ms
+[18:06:48] [INFO] Request Started | GET /api/News/latest
+[18:06:48] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 302ms
+[18:06:48] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 311ms
+[18:07:00] [INFO] Request Started | GET /api/Health
+[18:07:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[18:07:20] [INFO] Request Started | GET /api/Health
+[18:07:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:07:40] [INFO] Request Started | GET /api/Health
+[18:07:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[18:07:48] [INFO] Request Started | POST /api/Auth/register
+[18:07:50] [INFO] משתמש חדש נרשם: ldkfnhlb@gmail.com (ID: 2)
+[18:07:50] [INFO] Request Finished | POST /api/Auth/register | Status: 200 | Time: 1530ms
+[18:07:50] [INFO] Request Started | GET /api/Events/upcoming
+[18:07:50] [INFO] Request Started | GET /api/News/latest
+[18:07:50] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 427ms
+[18:07:50] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 431ms
+[18:07:50] [INFO] Request Started | GET /api/News/latest
+[18:07:50] [INFO] Request Started | GET /api/Events/upcoming
+[18:07:51] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 304ms
+[18:07:51] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 306ms
+[18:07:56] [INFO] Request Started | GET /api/Events
+[18:07:57] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 354ms
+[18:07:57] [INFO] Request Started | GET /api/Events
+[18:07:57] [INFO] Request Started | GET /api/Events/categories
+[18:07:57] [INFO] Request Started | GET /api/Events/locations
+[18:07:57] [INFO] Request Started | GET /api/Events/employees
+[18:07:57] [INFO] Request Started | GET /api/Events/targetAudience
+[18:07:57] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 306ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 296ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 302ms
+[18:07:57] [INFO] Request Started | GET /api/Events/locations
+[18:07:57] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 314ms
+[18:07:57] [INFO] Request Started | GET /api/Events/targetAudience
+[18:07:57] [INFO] Request Started | GET /api/Events/categories
+[18:07:57] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 313ms
+[18:07:57] [INFO] Request Started | GET /api/Events/employees
+[18:07:57] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:07:57] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 385ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 353ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 312ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 400ms
+[18:07:57] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 409ms
+[18:07:57] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:07:58] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 350ms
+[18:08:00] [INFO] Request Started | GET /api/Health
+[18:08:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[18:08:20] [INFO] Request Started | GET /api/Health
+[18:08:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 17ms
+[18:08:40] [INFO] Request Started | GET /api/Health
+[18:08:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 13ms
+[18:08:59] [INFO] Request Started | POST /api/Events/register
+[18:09:00] [INFO] Request Started | GET /api/Health
+[18:09:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:09:02] [INFO] משתמש 2 נרשם לאירוע 1 (3 כרטיסים)
+[18:09:02] [INFO] Request Finished | POST /api/Events/register | Status: 200 | Time: 3211ms
+[18:09:20] [INFO] Request Started | GET /api/Health
+[18:09:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:09:25] [INFO] Request Started | GET /api/News
+[18:09:25] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 258ms
+[18:09:25] [INFO] Request Started | GET /api/News
+[18:09:25] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 300ms
+[18:09:40] [INFO] Request Started | GET /api/Health
+[18:09:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[18:09:53] [INFO] Request Started | GET /api/Profile
+[18:09:53] [INFO] Request Finished | GET /api/Profile | Status: 200 | Time: 482ms
+[18:09:53] [INFO] Request Started | GET /api/Profile
+[18:09:53] [INFO] Request Finished | GET /api/Profile | Status: 200 | Time: 274ms
+[18:10:00] [INFO] Request Started | GET /api/Health
+[18:10:00] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:10:20] [INFO] Request Started | GET /api/Health
+[18:10:20] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[18:10:34] [INFO] Request Started | GET /api/Events/upcoming
+[18:10:34] [INFO] Request Started | GET /api/News/latest
+[18:10:34] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 324ms
+[18:10:34] [INFO] Request Started | GET /api/News/latest
+[18:10:35] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 414ms
+[18:10:36] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 2268ms
+[18:10:36] [INFO] Request Started | GET /api/Events/upcoming
+[18:10:36] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 404ms
+[18:10:39] [INFO] Request Started | GET /api/News
+[18:10:39] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 352ms
+[18:10:39] [INFO] Request Started | GET /api/News
+[18:10:39] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 404ms
+[18:10:40] [INFO] Request Started | GET /api/Health
+[18:10:40] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 21ms
+[18:11:27] [INFO] Request Started | GET /swagger/index.html
+[18:11:27] [INFO] Request Finished | GET /swagger/index.html | Status: 200 | Time: 238ms
+[18:11:27] [INFO] Request Started | GET /swagger/v1/swagger.json
+[18:11:27] [INFO] Request Finished | GET /swagger/v1/swagger.json | Status: 200 | Time: 105ms
+[18:11:35] [INFO] Request Started | GET /api/Events/upcoming
+[18:11:35] [INFO] Request Started | GET /api/News/latest
+[18:11:36] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 1353ms
+[18:11:36] [INFO] Request Started | GET /api/News/latest
+[18:11:37] [INFO] Request Started | GET /api/Health
+[18:11:37] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 34ms
+[18:11:37] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 1108ms
+[18:11:39] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 3556ms
+[18:11:39] [INFO] Request Started | GET /api/Events/upcoming
+[18:11:39] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 278ms
+[18:11:47] [INFO] Request Started | GET /api/News/latest
+[18:11:47] [INFO] Request Started | GET /api/Events/upcoming
+[18:11:48] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 299ms
+[18:11:48] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 299ms
+[18:11:48] [INFO] Request Started | GET /api/Events/upcoming
+[18:11:48] [INFO] Request Started | GET /api/News/latest
+[18:11:48] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 296ms
+[18:11:48] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 301ms
+[18:11:49] [INFO] Request Started | GET /api/Health
+[18:11:49] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 7ms
+[18:11:52] [INFO] Request Started | GET /api/Events
+[18:11:52] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 495ms
+[18:11:53] [INFO] Request Started | GET /api/Events
+[18:11:53] [INFO] Request Started | GET /api/Events/locations
+[18:11:53] [INFO] Request Started | GET /api/Events/targetAudience
+[18:11:53] [INFO] Request Started | GET /api/Events/categories
+[18:11:53] [INFO] Request Started | GET /api/Events/employees
+[18:11:53] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 297ms
+[18:11:53] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 308ms
+[18:11:53] [INFO] Request Started | GET /api/Events/categories
+[18:11:53] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 337ms
+[18:11:55] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 2197ms
+[18:11:55] [INFO] Request Started | GET /api/Events/targetAudience
+[18:11:55] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 2213ms
+[18:11:55] [INFO] Request Started | GET /api/Events/employees
+[18:11:55] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 290ms
+[18:11:55] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 275ms
+[18:11:55] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 2811ms
+[18:11:55] [INFO] Request Started | GET /api/Events/locations
+[18:11:55] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:11:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 293ms
+[18:11:56] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 346ms
+[18:11:56] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:11:56] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 372ms
+[18:12:00] [INFO] Request Started | GET /api/Events/upcoming
+[18:12:00] [INFO] Request Started | GET /api/News/latest
+[18:12:01] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 237ms
+[18:12:01] [INFO] Request Started | GET /api/Events/upcoming
+[18:12:01] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 314ms
+[18:12:01] [INFO] Request Started | GET /api/News/latest
+[18:12:01] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 254ms
+[18:12:01] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 225ms
+[18:12:01] [INFO] Request Started | GET /api/Events
+[18:12:02] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 348ms
+[18:12:02] [INFO] Request Started | GET /api/Events
+[18:12:02] [INFO] Request Started | GET /api/Events/locations
+[18:12:02] [INFO] Request Started | GET /api/Events/targetAudience
+[18:12:02] [INFO] Request Started | GET /api/Events/categories
+[18:12:02] [INFO] Request Started | GET /api/Events/employees
+[18:12:02] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 280ms
+[18:12:02] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 298ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 282ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 300ms
+[18:12:02] [INFO] Request Started | GET /api/Events/employees
+[18:12:02] [INFO] Request Started | GET /api/Events/targetAudience
+[18:12:02] [INFO] Request Started | GET /api/Events/categories
+[18:12:02] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 352ms
+[18:12:02] [INFO] Request Started | GET /api/Events/locations
+[18:12:02] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:12:02] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 239ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 249ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 278ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 312ms
+[18:12:02] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 323ms
+[18:12:02] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:12:03] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 273ms
+[18:12:07] [INFO] Request Started | GET /api/Health
+[18:12:07] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:12:27] [INFO] Request Started | GET /api/Health
+[18:12:27] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
+[18:12:47] [INFO] Request Started | GET /api/Health
+[18:12:47] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:13:07] [INFO] Request Started | GET /api/Health
+[18:13:07] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:24:33] [INFO] Request Started | GET /api/Health
+[18:24:33] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 245ms
+[18:24:47] [INFO] Request Started | GET /api/Health
+[18:24:47] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:25:07] [INFO] Request Started | GET /api/Health
+[18:25:07] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 6ms
+[18:25:27] [INFO] Request Started | GET /api/Health
+[18:25:27] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 9ms
+[18:26:28] [INFO] Request Started | GET /api/Health
+[18:26:28] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 24ms
+[18:26:47] [INFO] Request Started | GET /api/Health
+[18:26:47] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 3ms
+[18:26:49] [INFO] Request Started | GET /api/Events/upcoming
+[18:26:49] [INFO] Request Started | GET /api/News/latest
+[18:26:50] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 588ms
+[18:26:50] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 695ms
+[18:26:50] [ERROR] [GET /api/Events/upcoming] InvalidOperationException: An exception has been raised that is likely due to a transient failure.
+[18:26:50] [ERROR] [GET /api/News/latest] InvalidOperationException: An exception has been raised that is likely due to a transient failure.
+[18:26:50] [INFO] Request Started | GET /api/Events/upcoming
+[18:26:50] [INFO] Request Started | GET /api/News/latest
+[18:26:51] [INFO] Request Started | GET /api/Events
+[18:26:53] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 2321ms
+[18:26:53] [INFO] Request Started | GET /api/News/latest
+[18:26:53] [INFO] Request Finished | GET /api/News/latest | Status: 200 | Time: 302ms
+[18:26:53] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 2268ms
+[18:26:53] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 3031ms
+[18:26:53] [INFO] Request Started | GET /api/Events/upcoming
+[18:26:53] [INFO] Request Started | GET /api/Events
+[18:26:53] [INFO] Request Started | GET /api/Events/categories
+[18:26:53] [INFO] Request Started | GET /api/Events/locations
+[18:26:53] [INFO] Request Started | GET /api/Events/targetAudience
+[18:26:53] [INFO] Request Started | GET /api/Events/employees
+[18:26:54] [INFO] Request Finished | GET /api/Events/upcoming | Status: 200 | Time: 306ms
+[18:26:54] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 308ms
+[18:26:54] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 483ms
+[18:26:54] [INFO] Request Started | GET /api/Events/targetAudience
+[18:26:54] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 409ms
+[18:26:55] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 1912ms
+[18:26:55] [INFO] Request Started | GET /api/Events/employees
+[18:26:55] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 2157ms
+[18:26:55] [INFO] Request Started | GET /api/Events/locations
+[18:26:55] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 240ms
+[18:26:56] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 308ms
+[18:26:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 2826ms
+[18:26:56] [INFO] Request Started | GET /api/Events/categories
+[18:26:56] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:26:56] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 232ms
+[18:26:56] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 234ms
+[18:26:56] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:26:57] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 228ms
+[18:27:07] [INFO] Request Started | GET /api/Health
+[18:27:07] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 8ms
+[18:27:14] [INFO] Request Started | GET /api/News
+[18:27:14] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 317ms
+[18:27:14] [INFO] Request Started | GET /api/News
+[18:27:15] [INFO] Request Finished | GET /api/News | Status: 200 | Time: 405ms
+[18:27:22] [INFO] Request Started | GET /api/Profile
+[18:27:23] [INFO] Request Finished | GET /api/Profile | Status: 200 | Time: 581ms
+[18:27:23] [INFO] Request Started | GET /api/Profile
+[18:27:23] [INFO] Request Finished | GET /api/Profile | Status: 200 | Time: 237ms
+[18:27:27] [INFO] Request Started | GET /api/Health
+[18:27:27] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 4ms
+[18:27:29] [INFO] Request Started | GET /api/Events
+[18:27:30] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 418ms
+[18:27:30] [INFO] Request Started | GET /api/Events
+[18:27:30] [INFO] Request Started | GET /api/Events/locations
+[18:27:30] [INFO] Request Started | GET /api/Events/categories
+[18:27:30] [INFO] Request Started | GET /api/Events/targetAudience
+[18:27:30] [INFO] Request Started | GET /api/Events/employees
+[18:27:30] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 285ms
+[18:27:30] [INFO] Request Finished | GET /api/Events | Status: 200 | Time: 307ms
+[18:27:30] [INFO] Request Started | GET /api/Events/locations
+[18:27:30] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 311ms
+[18:27:30] [INFO] Request Started | GET /api/Events/employees
+[18:27:30] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 352ms
+[18:27:30] [INFO] Request Started | GET /api/Events/categories
+[18:27:30] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 386ms
+[18:27:30] [INFO] Request Started | GET /api/Events/targetAudience
+[18:27:30] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:27:30] [INFO] Request Finished | GET /api/Events/locations | Status: 200 | Time: 298ms
+[18:27:30] [INFO] Request Finished | GET /api/Events/employees | Status: 200 | Time: 271ms
+[18:27:30] [INFO] Request Finished | GET /api/Events/categories | Status: 200 | Time: 294ms
+[18:27:30] [INFO] Request Finished | GET /api/Events/targetAudience | Status: 200 | Time: 260ms
+[18:27:30] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 382ms
+[18:27:30] [INFO] Request Started | GET /api/Events/registers/count/1
+[18:27:31] [INFO] Request Finished | GET /api/Events/registers/count/1 | Status: 200 | Time: 407ms
+[18:27:34] [INFO] Request Started | GET /api/Events/1/registrants
+[18:27:35] [INFO] Request Finished | GET /api/Events/1/registrants | Status: 200 | Time: 379ms
+[18:27:35] [INFO] Request Started | GET /api/Events/1/registrants
+[18:27:35] [INFO] Request Finished | GET /api/Events/1/registrants | Status: 200 | Time: 265ms
+[18:27:47] [INFO] Request Started | GET /api/Health
+[18:27:47] [INFO] Request Finished | GET /api/Health | Status: 200 | Time: 5ms
